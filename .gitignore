@@ -1,0 +1,20 @@
+# Node modules
+node_modules/
+
+# Thư mục build/output (nếu có)
+dist/
+build/
+
+# File hệ thống/IDE
+.DS_Store
+Thumbs.db
+.vscode/
+*.log
+
+# File tạm, cache
+*.tmp
+*.swp
+
+# File môi trường, cấu hình cá nhân
+.env
+.env.local
