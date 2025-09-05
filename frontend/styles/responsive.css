@@ -1,0 +1,401 @@
+/* ========== Tắt nút điều hướng header ========== */
+.hamburger-menu {
+    width: auto;
+    display: none;
+    background: none;
+    border: none;
+    font-size: 2em;
+    color: var(--color-green);
+    cursor: pointer;
+    margin-left: 8px;
+}
+
+@media (max-width: 1180px) {
+    .header {
+        position: fixed;
+        height: 60px;
+        max-height: 60px;
+        background: var(--color-header_footer);
+        padding: 0 0;
+        box-sizing: border-box;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        color: var(--color-green);
+        margin-top: auto;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .logo-container {
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        margin: 0;
+        justify-content: center;
+    }
+    .logo-container:hover{
+        transform: translateX(-50%);
+    }
+    
+    .header-btn nav, .header-btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+    }
+
+    .hamburger-menu {
+        display: block;
+        position: absolute;
+        left: 24px;
+        z-index: 201;
+    }
+
+    /* .login-btn {
+        display: block;
+        position: absolute;
+        right: 96px;
+        z-index: 201;
+    } */
+
+    .header-btn {
+        position: static;
+    }
+
+    .page-button-group {
+        display: none;
+        position: fixed;
+        top: 30px;
+        left: 0;
+        right: auto;
+        background: var(--color-header_footer);
+        flex-direction: column;
+        z-index: 200;
+        width: 200px;
+        min-width: 160px;
+        padding: 8px 0;
+        align-items: flex-start;
+        justify-content: flex-start;
+        padding-left: 0px;
+    }
+
+    .page-button-group .btn {
+        width: 100%;
+        justify-content: flex-start;
+        text-align: left;
+        box-shadow: none;
+        border: none
+    }
+
+    .page-button-icon {
+        margin-left: 32px;
+    }
+
+    .page-button-group .btn:hover,
+    .page-button-group .btn:focus,
+    .page-button-group .btn:active {
+        transform: none;
+    }
+
+    .page-button-group.show {
+        display: flex;
+    }
+
+    .main-content, .choose-content {
+        max-width: 95vw;
+        width: 80vw;
+        padding: 16px;
+        border: 10px;
+        margin: 12px 0;
+    }
+}
+
+/* ========== Tablet Layout 768px ========== */
+@media (max-width: 768px) {
+    .header {
+        position: fixed;
+        height: 60px;
+        max-height: 60px;
+        background: var(--color-header_footer);
+        padding: 0 0;
+        box-sizing: border-box;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        color: var(--color-green);
+        margin-top: auto;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .page-button-icon {
+        margin-left: 12px;
+    }
+
+    .main-content-info {
+        font-size: 1em;
+        margin: 24px 0 24px 0;
+    }
+
+    .main-content-title {
+        display: block;
+        font-size: 2.5em;
+    }
+
+    .main-content-description {
+        display: block;
+        font-size: 0.9em;
+        padding-top: 12px;
+    }
+
+    .footer {
+        height: 60px;
+        max-height: 60px;
+        background: var(--color-header_footer);
+        padding: 0 10px;
+        box-sizing: border-box;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        color: var(--color-green);
+        margin-top: auto;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        font-size: 0.9em;
+    }
+
+    .header-btn nav, .header-btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+    }
+
+    .logo-container {
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        margin: 0;
+        justify-content: center;
+    }
+
+    .main-content, .choose-content {
+        max-width: 95vw;
+        width: 95vw;
+        padding: 16px;
+        border: 10px;
+        margin: 0 0;
+    }
+
+    .footer-btn-group {
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .footer-btn-group .btn {
+        min-width: 15px;
+        border-radius: 8px;
+        font-size: 1em;
+        padding: 10px 5px;
+    }
+
+    .footer-btn {
+        margin: 0px 4px;
+    }
+
+    .hamburger-menu {
+        display: block;
+        position: absolute;
+        left: 4px;
+        z-index: 201;
+    }
+
+    .login-btn {
+        display: block;
+        position: absolute;
+        right: 20px;
+        z-index: 201;
+        padding: 8px 16px;
+        cursor: pointer;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        font-weight: bold;
+    }
+
+    .header-btn {
+        position: static;
+    }
+
+    .page-button-group {
+        display: none;
+        position: fixed;
+        top: 30px;
+        left: 0;
+        right: auto;
+        background: var(--color-header_footer);
+        flex-direction: column;
+        z-index: 200;
+        min-width: 160px;
+        padding: 8px 0;
+    }
+
+    .page-button-group.show {
+        display: flex;
+    }
+}
+
+/* ========== Tablet Layout 600px ========== */
+@media (max-width: 600px) {
+    .task-button-group-icon {
+        font-size:1em;
+        margin-right: 0px;
+    }
+
+    .task-button-group-text {
+        display: none;
+    }
+}
+
+/* ========== Mobile Phone Layout 550px ========== */
+@media (max-width: 550px) {
+    .main-content-info {
+        font-size: 1em;
+        margin: 24px 0 20px 0;
+    }
+
+    .main-content-title {
+        display: block;
+        font-size: 2em;
+    }
+
+    .main-content-description {
+        display: block;
+        font-size: 0.8em;
+        padding-top: 10px;
+    }
+
+    .footer-btn-group {
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .footer-btn-group .btn {
+        min-width: 15px;
+        border-radius: 8px;
+        padding: 0px 0px;
+        font-size: 0.9em;
+    }
+
+    .footer-btn {
+        transform: scale(0.9);
+        transform-origin: left;
+        gap: 0px;
+    }
+}
+
+/* ========== Mobile Phone Layout 420px ========== */
+@media (max-width: 420px) {
+    .header {
+        position: fixed;
+        height: 60px;
+        max-height: 60px;
+        background: var(--color-header_footer);
+        padding: 0 0;
+        box-sizing: border-box;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        color: var(--color-green);
+        margin-top: auto;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .footer {
+        height: 60px;
+        max-height: 60px;
+        background: var(--color-header_footer);
+        padding: 0 0;
+        box-sizing: border-box;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        color: var(--color-green);
+        margin-top: auto;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        font-size: 0.8em;
+    }
+
+    .header-btn nav, .header-btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+    }
+
+    .main-content, .choose-content {
+        max-width: 95vw;
+        width: 95vw;
+        padding: 16px;
+        border: 10px;
+        margin: 0 0;
+    }
+
+    .footer-btn-group {
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .footer-btn-group .btn {
+        min-width: 15px;
+        border-radius: 8px;
+        padding: 0px 0px;
+        font-size: 0.8em;
+    }
+
+    .footer-btn {
+        transform: scale(0.8);
+        transform-origin: left;
+        gap: 0px;
+    }
+
+    .hamburger-menu {
+        display: block;
+        position: absolute;
+        left: 4px;
+        z-index: 201;
+        transform: scale(0.9);
+    }
+
+    .login-btn {
+        display: block;
+        position: absolute;
+        right: 20px;
+        z-index: 201;
+        padding: 8px 16px;
+        cursor: pointer;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        font-weight: bold;
+        transform: scale(0.9);
+    }
+
+    .header-btn {
+        position: static;
+    }
+
+    .page-button-group {
+        display: none;
+        position: fixed;
+        top: 30px;
+        left: 0;
+        right: auto;
+        background: var(--color-header_footer);
+        flex-direction: column;
+        z-index: 200;
+        min-width: 160px;
+        padding: 8px 0;
+    }
+
+    .page-button-group.show {
+        display: flex;
+    }
+}

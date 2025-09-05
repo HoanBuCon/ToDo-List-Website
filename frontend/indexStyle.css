@@ -718,6 +718,9 @@ body {
         margin: 0;
         justify-content: center;
     }
+    .logo-container:hover{
+        transform: translateX(-50%);
+    }
     
     .header-btn nav, .header-btn {
         display: flex;

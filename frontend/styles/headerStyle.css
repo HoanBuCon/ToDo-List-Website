@@ -1,0 +1,247 @@
+/* ========== Loại bỏ margin mặc định của trình duyệt ========== */
+html, body {
+    margin: 0;
+    padding: 0;
+}
+
+/* ========== Style trang trí container và button ========== */
+.root, :root {
+    --color-header_footer: #0c0c0c;
+    --color-bg-main: #181a1b;
+    --color-bg-secondary: #23272a;
+    --color-green: #44d62c;
+    --color-green-hover: #00ff41;
+    --color-text-main: #e0e0e0;
+    --color-text-secondary: #b0b0b0;
+    --color-border: #33383b;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background: var(--color-bg-main);
+    color: var(--color-text-main);
+}
+
+.header {
+    height: 60px;
+    max-height: 60px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 100;
+    box-sizing: border-box;
+    background: var(--color-header_footer);
+    padding: 4px 40px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: var(--color-text-main);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.header a {
+    color: var(--color-green);
+    text-decoration: none;
+    transition: color 0.2s;
+}
+.header a:visited,
+.header a:active,
+.header a:focus {
+    color: var(--color-green-hover);
+}
+.header a:hover {
+    color: var(--color-green-hover);
+}
+
+.header-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    gap: 16px;
+}
+
+.header nav {
+    display: flex;
+    align-items: center;
+}
+
+.header-btn nav {
+    display: flex;
+    gap: 4vw;
+    align-items: center;
+    justify-content: center;
+}
+
+.neon-box {
+    border: 2px solid #44d62c;
+    border-radius: 12px;
+    box-shadow:
+        0 0 1px #44d62c,
+        0 0 3px #00ff41,
+        0 0 20px #00ff41;
+}
+
+.neon-btn {
+    background: transparent;
+    color: #44d62c;
+    border: 2px solid #44d62c;
+    border-radius: 4px;
+    font-size: 1em;
+    cursor: pointer;
+    transition: 
+        box-shadow 0.2s,
+        color 0.2s,
+        border-color 0.2s,
+        background 0.2s,
+        transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: none;
+}
+
+.page-button-group .btn {
+    padding: 10px 10px;
+    border: none;
+    border-radius: 4px;
+    color: var(--color-green);
+    font-size: 1em;
+    font-weight: 600;
+    cursor: pointer;
+    transition:
+        box-shadow 0.4s,
+        color 0.4s,
+        border-color 0.4s,
+        background 0.4s,
+        transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    margin: 0;
+    flex: 0 0 auto;
+    min-width: unset;
+}
+.page-button-group .btn:hover {
+    color: var(--color-green-hover);
+    transform: scale(1.05);
+}
+
+.page-button-icon {
+    font-size:1em;
+    margin-right: 4px;
+}
+
+.page-button-text {
+    font-size: 0.85em;
+}
+
+.page-button-group {
+    display: flex;
+    flex-direction: row;
+    gap: 4vw;
+    align-items: center;
+    justify-content: center;
+}
+
+.page-btn {
+    background: transparent;
+    color: var(--color-green);
+    border: none;
+    border-radius: 4px;
+    font-size: 1em;
+    cursor: pointer;
+    transition: 
+        box-shadow 0.2s,
+        color 0.2s,
+        border-color 0.2s,
+        background 0.2s,
+        transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: none;
+}
+.page-btn:hover, .page-btn:focus {
+    color: var(--color-green-hover);
+    border-color: #00ff41;
+    box-shadow:
+        0 0 1px #44d62c,
+        0 0 1px #00ff41,
+        0 0 10px #00ff41;
+    background: rgba(68, 214, 44, 0.05);
+}
+
+
+.logo-container {
+    display: flex;;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: bold;
+    font-style: italic;
+    font-size: 1.2em;
+    color: var(--color-green);
+    cursor: pointer;
+    max-height: 48px;
+    line-height: 1;
+    transition: 
+        text-shadow 0.2s,
+        box-shadow 0.2s,
+        color 0.2s,
+        border-color 0.2s,
+        background 0.2s,
+        transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.logo-container:hover {
+    color: var(--color-green-hover);
+    transform: scale(1.1);
+    text-shadow:
+        0 0 1px #44d62c,
+        0 0 1px #00ff41,
+        0 0 20px #00ff41;
+}
+
+.logo-box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 38px;
+    height: 38px;
+    background: #222;
+    border-radius: 8px;
+    overflow: hidden;
+    text-decoration: none;
+    border: 1px solid var(--color-border);
+}
+
+.logo-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    cursor: pointer;
+}
+
+.logo-text {
+    font-family: cursive;
+    margin: 0;
+    padding: 0;
+}
+
+.login-btn {
+    display: block;
+    position: absolute;
+    right: 40px;
+    z-index: 201;
+    padding: 8px 16px;
+    cursor: pointer;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: bold;
+}
+
+.neon-btn:hover, .neon-btn:focus {
+    color: #00ff41;
+    border-color: #00ff41;
+    box-shadow:
+        0 0 1px #44d62c,
+        0 0 1px #00ff41,
+        0 0 10px #00ff41;
+    background: rgba(68, 214, 44, 0.05);
+}

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MingKing Login</title>
+    <link rel="stylesheet" href="../styles/headerStyle.css">
+    <link rel="stylesheet" href="../styles/mainStyle.css">
+    <link rel="stylesheet" href="../styles/footerStyle.css">
+    <link rel="stylesheet" href="../styles/responsive.css">
+    <link rel="stylesheet" href="loginPage.css">
+    <link rel="stylesheet" href="../node_modules/@fortawesome/fontawesome-free/css/all.min.css">
+</head>
+<body>
+    <div class="header">
+        <div class="logo-container">
+            <a href="#" class="logo-box"><img src="../assets/mingking_peak.jpg" alt="Ming King" class="logo-img"></a>
+            <p class="logo-text">Ming King</p>
+        </div>
+        <button class="login-btn neon-btn" onclick="window.location.href='pages/loginPage.html'">LOGIN</button>
+        <div class="header-btn">
+            <nav class="page-button-group">
+                <button class="btn page-btn">
+                    <span class="page-button-icon"><i class="fa-solid fa-house"></i></span>
+                    <span class="page-button-text"><a href="../index.html">HOME</a></span>
+                </button>
+                <button class="btn page-btn">
+                    <span class="page-button-icon"><i class="fa-solid fa-calendar"></i></span>
+                    <span class="page-button-text"><a>CALENDAR</a></span>
+                </button>
+                <button class="btn page-btn">
+                    <span class="page-button-icon"><i class="fa-solid fa-clipboard-list"></i></span>
+                    <span class="page-button-text"><a href="#">PLANNING</a></span>
+                </button>
+                <button class="btn page-btn">
+                    <span class="page-button-icon"><i class="fa-solid fa-history"></i></span>
+                    <span class="page-button-text"><a href="#">HISTORY</a></span>
+                </button>
+                <button class="btn page-btn">
+                    <span class="page-button-icon"><i class="fa-solid fa-chart-line"></i></span>
+                    <span class="page-button-text"><a href="#">STATISTICS</a></span>
+                </button>
+            </nav>
+        </div>
+        <button class="hamburger-menu" onclick="toggleMenu()"><i class="fa-solid fa-bars"></i></button>
+    </div>
+
+    <div class="main">
+        <div class="main-content neon-box">
+            <h1 class="main-content-title">Login</h1>
+            <form class="login-form" action="">
+                <input type="text" placeholder="Username" class="username">
+                <input type="password" placeholder="Password" class="password">
+                <div class="form-row">
+                    <label for="rememberMe" class="remember-label" tabindex="-1">
+                        <input type="checkbox" id="rememberMe" class="remember-me" tabindex="-1"> Remember me
+                    </label>
+                    <a href="#" class="forgot-password" tabindex="-1">Forgot Password?</a>
+                </div>
+                <button type="submit" class="login-button">Login</button>
+                <p class="register-text">Don't have an account? <a href="#" class="register-link">Register</a></p>
+            </form>
+        </div>
+    </div>
+
+    <div class="footer">
+        <button class="btn footer-btn">&copy; 2025 Hoàn Bự Con</button>
+        <div class="footer-btn-group">
+            <button class="btn footer-btn"><a href="https://hoanbucon.id.vn/">ABOUT US</a></button>
+            <button class="btn footer-btn"><a href="https://hoanbucon.id.vn/">SUPPORT</a></button>
+            <button class="btn footer-btn"><a href="https://hoanbucon.id.vn/">CONTACT</a></button>
+        </div>
+    </div>
+</body>
+</html>
