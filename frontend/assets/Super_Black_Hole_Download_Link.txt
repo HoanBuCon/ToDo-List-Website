@@ -1,4 +1,4 @@
 Because the video is larger than 100MB, GitHub does not allow it to be pushed to the repository. Therefore, you need to download the video using the Google Drive link below and then place it in the current directory
-(There are two videos. You need to rename one of them to Super_Black_Hole.mp4 in order to use it.)
+(There are two videos. You need to rename one of them to "Super_Black_Hole.mp4" in order to use it.)
 
 Download Link: https://drive.google.com/drive/folders/1VUW4lRqdBGzJweku43hTGTmnEj9Z3nvm?usp=sharing
