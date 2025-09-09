@@ -15,6 +15,18 @@ Thumbs.db
 *.tmp
 *.swp
 
-# File môi trường, cấu hình cá nhân
+# Environment variables
 .env
+.env.*
 .env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Backend environment files
+backend/.env
+backend/.env.*
+
+# Frontend environment files
+frontend/.env
+frontend/.env.*

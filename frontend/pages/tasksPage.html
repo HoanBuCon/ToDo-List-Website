@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MingKing Daden</title>
+    <link rel="stylesheet" href="tasksPage.css">
+    <link rel="stylesheet" href="../node_modules/@fortawesome/fontawesome-free/css/all.min.css">
+</head>
+<body>
+    <div class="header">
+        <div class="logo-container">
+            <a href="#" class="logo-box"><img src="../assets/mingking_peak.jpg" alt="Ming King" class="logo-img"></a>
+            <p class="logo-text">Ming King</p>
+        </div>
+        <button class="login-btn neon-btn" onclick="window.location.href='loginPage.html'">LOGIN</button>
+        <div class="header-btn">
+            <nav class="page-button-group">
+                <button class="btn page-btn">
+                    <span class="page-button-icon"><i class="fa-solid fa-house"></i></span>
+                    <span class="page-button-text"><a href="../index.html">HOME</a></span>
+                </button>
+                <button class="btn page-btn">
+                    <span class="page-button-icon"><i class="fa-solid fa-tasks"></i></span>
+                    <span class="page-button-text"><a href="#">TASKS</a></span>
+                </button>
+                <button class="btn page-btn">
+                    <span class="page-button-icon"><i class="fa-solid fa-calendar"></i></span>
+                    <span class="page-button-text"><a href="#">CALENDAR</a></span>
+                </button>
+                <button class="btn page-btn">
+                    <span class="page-button-icon"><i class="fa-solid fa-clipboard-list"></i></span>
+                    <span class="page-button-text"><a href="planningPage.html">PLANNING</a></span>
+                </button>
+                <button class="btn page-btn">
+                    <span class="page-button-icon"><i class="fa-solid fa-chart-line"></i></span>
+                    <span class="page-button-text"><a href="#">STATISTICS</a></span>
+                </button>
+            </nav>
+        </div>
+        <button class="hamburger-menu" onclick="toggleMenu()"><i class="fa-solid fa-bars"></i></button>
+    </div>
+
+    <div class="main">
+        <div class="main-content neon-box">
+            <button title="Tùy chỉnh" class="edit-list-btn"><i class="fa-solid fa-bars"></i></button>
+            <div class="main-content-info">
+                <span class="main-content-title">Just do it bozo</span>
+                <span class="main-content-description">This is description</span>
+            </div>
+            <div class="add-todo-box">
+                <input type="text" placeholder="Add a task..." class="todo-input">
+                <button title="Thêm" class="add-todo-btn"><i class="fa-solid fa-plus"></i></button>
+            </div>
+            <div class="task-button-group">
+                <button class="btn neon-btn">
+                    <span class="task-button-group-icon"><i class="fa-solid fa-pencil"></i></span>
+                    <span class="task-button-group-text">Edit</span>
+                </button>
+                <button class="btn neon-btn">
+                    <span class="task-button-group-icon"><i class="fa-solid fa-check"></i></span>
+                    <span class="task-button-group-text">Complete All</span>
+                </button>
+                <button class="btn neon-btn">
+                    <span class="task-button-group-icon"><i class="fa-solid fa-trash"></i></span>
+                    <span class="task-button-group-text">Delete All</span>
+                </button>
+            </div>
+
+            <div class="todo-list-container">
+                <div class="todo-item">
+                    <input type="checkbox" class="todo-checkbox">
+                    <span class="todo-content">Template task</span>
+                    <button title="Xóa" class="todo-delete"><i class="fa-solid fa-trash"></i></button>
+                </div>
+                <div class="todo-item">
+                    <input type="checkbox" class="todo-checkbox">
+                    <span class="todo-content">Template task</span>
+                    <button title="Xóa" class="todo-delete"><i class="fa-solid fa-trash"></i></button>
+                </div>
+                <div class="todo-item">
+                    <input type="checkbox" class="todo-checkbox">
+                    <span class="todo-content">Template task</span>
+                    <button title="Xóa" class="todo-delete"><i class="fa-solid fa-trash"></i></button>
+                </div>
+                <div class="todo-item">
+                    <input type="checkbox" class="todo-checkbox">
+                    <span class="todo-content">Template task</span>
+                    <button title="Xóa" class="todo-delete"><i class="fa-solid fa-trash"></i></button>
+                </div>
+                <div class="todo-item">
+                    <input type="checkbox" class="todo-checkbox">
+                    <span class="todo-content">Template task</span>
+                    <button title="Xóa" class="todo-delete"><i class="fa-solid fa-trash"></i></button>
+                </div>
+            </div>
+        </div>
+
+        <div class="choose-content">
+            <div class="create-task-button-group" style="display: none">
+                <button class="btn create-task-btn">
+                    <span class="task-btn-icon"><i class="fa-solid fa-plus"></i></span>
+                    <span class="task-btn-text"><p>Create new Tasks</p></span>
+                </button>
+                <button class="btn open-task-btn">
+                    <span class="task-btn-icon"><i class="fa-solid fa-folder-open"></i></span>
+                    <span class="task-btn-text"><p>Open existing Tasks</p></span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">
+        <button class="btn footer-btn">&copy; 2025 Hoàn Bự Con</button>
+        <div class="footer-btn-group">
+            <button class="btn footer-btn"><a href="https://hoanbucon.id.vn/">ABOUT US</a></button>
+            <button class="btn footer-btn"><a href="https://hoanbucon.id.vn/">SUPPORT</a></button>
+            <button class="btn footer-btn"><a href="https://hoanbucon.id.vn/">CONTACT</a></button>
+        </div>
+    </div>
+</body>
+</html>

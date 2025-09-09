@@ -1,0 +1,149 @@
+/* ========== Neon glow effect styles ========== */
+.neon-box {
+    border: 2px solid #44d62c;
+    border-radius: 12px;
+    box-shadow:
+        0 0 1px #44d62c,
+        0 0 3px #00ff41,
+        0 0 20px #00ff41;
+}
+
+.neon-btn {
+    background: transparent;
+    color: #44d62c;
+    border: 2px solid #44d62c;
+    border-radius: 4px;
+    font-size: 1em;
+    cursor: pointer;
+    transition: 
+        box-shadow 0.2s,
+        color 0.2s,
+        border-color 0.2s,
+        background 0.2s,
+        transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: none;
+}
+
+/* ========== Choose content style ========== */
+.choose-content {
+    width: 100%;
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: transparent;
+    border: none;
+    border-radius: 16px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.create-task-button-group {
+    display: flex;
+    flex-direction: row;
+    gap: 32px;
+    justify-content: center;
+    align-items: center;
+    font-size: 1em;
+}
+
+.create-task-button-group .btn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 32px;
+    color: var(--color-green);
+    font-weight: bold;
+    cursor: pointer;
+    transition:
+        box-shadow 0.2s,
+        color 0.2s,
+        border-color 0.2s,
+        background 0.2s,
+        transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    border: 1px solid #44d62c;
+    margin: 32px 32px;
+}
+.create-task-button-group .btn:hover {
+    color: var(--color-green-hover);
+    transform: scale(1.05);
+}
+
+.create-task-btn {
+    width: 250px;
+    height: 250px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: none;
+    font-size: 1em;
+    background: transparent;
+    color: #44d62c;
+    border: 2px solid #44d62c;
+    border-radius: 4px;
+    font-size: 1em;
+    cursor: pointer;
+    transition: 
+        box-shadow 0.2s,
+        color 0.2s,
+        border-color 0.2s,
+        background 0.2s,
+        transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: none;
+}
+.create-task-btn:hover {
+    color: #00ff41;
+    border-color: #00ff41;
+    box-shadow:
+        0 0 5px #44d62c,
+        0 0 10px #00ff41,
+        0 0 30px #00ff41;
+    background: rgba(68, 214, 44, 0.05);
+}
+
+.open-task-btn {
+    width: 250px;
+    height: 250px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: none;
+    font-size: 1em;
+    background: transparent;
+    color: #44d62c;
+    border: 2px solid #44d62c;
+    border-radius: 4px;
+    font-size: 1em;
+    cursor: pointer;
+    transition: 
+        box-shadow 0.2s,
+        color 0.2s,
+        border-color 0.2s,
+        background 0.2s,
+        transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: none;
+}
+.open-task-btn:hover {
+    color: #00ff41;
+    border-color: #00ff41;
+    box-shadow:
+        0 0 5px #44d62c,
+        0 0 10px #00ff41,
+        0 0 30px #00ff41;
+    background: rgba(68, 214, 44, 0.05);
+}
+
+.task-btn-icon {
+    font-size: 4em;
+    margin-top: 32px;
+}
+.task-btn-text {
+    font-size: 1.2em;
+    margin-top: 32px;
+}

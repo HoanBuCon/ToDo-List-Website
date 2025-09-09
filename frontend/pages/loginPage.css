@@ -100,6 +100,7 @@
     display: flex;
     align-items: center;
     gap: 6px;
+    cursor: pointer;
 }
 
 .login-button {
@@ -148,16 +149,23 @@
 .forgot-password {
     color: var(--color-green);
 }
+.forgot-password:hover {
+    color: var(--color-green-hover);
+}
 
 .register-text {
     width: 100%;
     text-align: center;
     margin-top: 24px;
+    cursor: default;
 }
 
 .register-link {
     color: var(--color-green);
     font-weight: bold;
+}
+.register-link:hover {
+    color: var(--color-green-hover);
 }
 
 @media (max-width: 550px) {
