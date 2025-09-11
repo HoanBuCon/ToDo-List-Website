@@ -3,21 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MingKing Daden</title>
-    <link rel="stylesheet" href="indexStyle.css">
-    <link rel="stylesheet" href="node_modules/@fortawesome/fontawesome-free/css/all.min.css">
+    <title>MingKing Login</title>
+    <link rel="stylesheet" href="../../components/headerStyle.css">
+    <link rel="stylesheet" href="../../components/mainStyle.css">
+    <link rel="stylesheet" href="../../components/footerStyle.css">
+    <link rel="stylesheet" href="../../components/responsive.css">
+    <link rel="stylesheet" href="../css/loginPage.css">
+    <link rel="stylesheet" href="../../node_modules/@fortawesome/fontawesome-free/css/all.min.css">
 </head>
-<body>
-    <video autoplay muted loop playsinline class="bg-video">
-        <source src="./assets/Super_Black_Hole.mp4" type="video/mp4">
-        Your browser does not support the video tag.
-    </video>
+<body class="login-page">
     <div class="header">
         <div class="logo-container">
-            <a href="/frontend/index.html" class="logo-box"><img src="./assets/mingking_peak.jpg" alt="Ming King" class="logo-img"></a>
+            <a href="/frontend/index.html" class="logo-box"><img src="../../assets/mingking_peak.jpg" alt="Ming King" class="logo-img"></a>
             <p class="logo-text">Ming King</p>
         </div>
-        <button class="login-btn neon-btn" onclick="window.location.href='./pages/html/loginPage.html'">LOGIN</button>
+        <button class="login-btn neon-btn" onclick="window.location.href='loginPage.html'">LOGIN</button>
             <div class="header-btn">
                 <nav class="page-button-group">
                     <button class="btn page-btn" data-page="/frontend/index.html">
@@ -46,25 +46,37 @@
     </div>
 
     <div class="main">
-        <div class="mingking-main-content neon-box">
-            <div class="main-content-info">
-                <span class="main-content-title">Welcome to MingKing Website</span>
-                <span class="main-content-description">Developed by <a href="https://hoanbucon.id.vn/" target="_blank" class="mingking-description-link">HoanBuCon</a></span>
-            </div>
-            <div>
-                <img src="./assets/ming_king_super_evil.png" alt="Ming King" class="mingking-main-img">
-                <span class="overlay-text">I'm was born Evil</span>
-            </div>
-            <div class="task-button-group">
-                <button class="btn neon-btn">
-                    <span class="task-button-group-icon"><i class="fa-solid fa-rocket"></i></span>
-                    <span class="task-button-group-text">Get Started</span>
+        <div class="main-content neon-box">
+            <h1 class="main-content-title">Login</h1>
+            <form class="login-form" action="">
+                <input type="text" placeholder="Username" class="username">
+                <div class="password-container">
+                    <input type="password" placeholder="Password" class="password" id="password" autocomplete="current-password">
+                    <button type="button" id="togglePasswordButton" class="password-toggle" tabindex="-1">
+                        <i class="fa-solid fa-eye" id="eyeIcon"></i>
+                    </button>
+                </div>
+                
+                <div class="form-row">
+                    <label for="rememberMe" class="remember-label" tabindex="-1">
+                        <input type="checkbox" id="rememberMe" class="remember-me" tabindex="-1"> Remember me
+                    </label>
+                    <a href="#" class="forgot-password" tabindex="-1">Forgot Password?</a>
+                </div>
+                <button type="submit" class="login-button">Login</button>
+                <p class="register-text">Don't have an account? <a href="./registerPage.html" class="register-link">Register</a></p>
+                <div class="or-divider">
+                    <span>OR</span>
+                </div>
+                <button type="submit" class="google-button">
+                    <img src="../../assets/google_logo.png" alt="Google Logo" class="google-img">
+                    Login with Google
                 </button>
-                <button class="btn neon-btn">
-                    <span class="task-button-group-icon"><i class="fa-solid fa-circle-question"></i></span>
-                    <span class="task-button-group-text">Help</span>
+                <button type="submit" class="facebook-button">
+                    <img src="../../assets/facebook_logo.png" alt="Facebook Logo" class="facebook-img">
+                    Login with Facebook
                 </button>
-            </div>
+            </form>
         </div>
     </div>
 

@@ -36,7 +36,7 @@
     flex-direction: column;
     align-items: center;
     background: var(--color-bg-secondary);
-    background-image: url('../assets/vegeta_peak.jpg');
+    background-image: url('../../assets/vegeta_peak.jpg');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;

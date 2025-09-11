@@ -36,7 +36,7 @@
     flex-direction: column;
     align-items: center;
     background: var(--color-bg-secondary);
-    background-image: url('../assets/rau_den_peak.png');
+    background-image: url('../../assets/rau_den_peak.png');
     background-size: cover;
     background-position: top;
     background-repeat: no-repeat;

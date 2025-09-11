@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MingKing Login</title>
+    <link rel="stylesheet" href="../../components/headerStyle.css">
+    <link rel="stylesheet" href="../../components/mainStyle.css">
+    <link rel="stylesheet" href="../../components/footerStyle.css">
+    <link rel="stylesheet" href="../../components/responsive.css">
+    <link rel="stylesheet" href="../css/registerPage.css">
+    <link rel="stylesheet" href="../../node_modules/@fortawesome/fontawesome-free/css/all.min.css">
+</head>
+<body class="register-page">
+    <div class="header">
+        <div class="logo-container">
+            <a href="/frontend/index.html" class="logo-box"><img src="../../assets/mingking_peak.jpg" alt="Ming King" class="logo-img"></a>
+            <p class="logo-text">Ming King</p>
+        </div>
+        <button class="login-btn neon-btn" onclick="window.location.href='./loginPage.html'">LOGIN</button>
+            <div class="header-btn">
+                <nav class="page-button-group">
+                    <button class="btn page-btn" data-page="/frontend/index.html">
+                        <span class="page-button-icon"><i class="fa-solid fa-house"></i></span>
+                        <span class="page-button-text">HOME</span>
+                    </button>
+                    <button class="btn page-btn" data-page="/frontend/pages/html/tasksPage.html">
+                        <span class="page-button-icon"><i class="fa-solid fa-tasks"></i></span>
+                        <span class="page-button-text">TASKS</span>
+                    </button>
+                    <button class="btn page-btn" data-page="/frontend/pages/html/calendarPage.html">
+                        <span class="page-button-icon"><i class="fa-solid fa-calendar"></i></span>
+                        <span class="page-button-text">CALENDAR</span>
+                    </button>
+                    <button class="btn page-btn" data-page="/frontend/pages/html/planningPage.html">
+                        <span class="page-button-icon"><i class="fa-solid fa-clipboard-list"></i></span>
+                        <span class="page-button-text">PLANNING</span>
+                    </button>
+                    <button class="btn page-btn" data-page="/frontend/pages/html/statisticsPage.html">
+                        <span class="page-button-icon"><i class="fa-solid fa-chart-line"></i></span>
+                        <span class="page-button-text">STATISTICS</span>
+                    </button>
+                </nav>
+            </div>
+        <button class="hamburger-menu" onclick="toggleMenu()"><i class="fa-solid fa-bars"></i></button>
+    </div>
+
+    <div class="main">
+        <div class="main-content neon-box">
+            <h1 class="main-content-title">Register</h1>
+            <form class="login-form" action="">
+                <input type="text" placeholder="Username" class="username">
+                <input type="email" placeholder="Email" class="email">
+                <div class="password-container">
+                    <input type="password" placeholder="Password" class="password" id="password" autocomplete="current-password">
+                    <button type="button" id="togglePasswordButton" class="password-toggle" tabindex="-1">
+                        <i class="fa-solid fa-eye" id="eyeIcon"></i>
+                    </button>
+                </div>
+                <div class="password-container">
+                    <input type="password" placeholder="Confirm Password" class="password" id="confirmPassword" autocomplete="current-password">
+                    <button type="button" id="toggleConfirmPasswordButton" class="password-toggle" tabindex="-1">
+                        <i class="fa-solid fa-eye" id="eyeIconConfirm"></i>
+                    </button>
+                </div>
+                
+                <div class="form-row">
+                    <label for="rememberMe" class="remember-label" tabindex="-1">
+                        <input type="checkbox" id="rememberMe" class="remember-me" tabindex="-1">I agree to the <a href="#" class="forgot-password" tabindex="-1" id="openTermsLink">Terms and Conditions</a>
+                    </label>
+                </div>
+                <button type="submit" class="login-button">Register</button>
+                <p class="register-text">Have already an account? <a href="loginPage.html" class="register-link">Login here</a></p>
+                <div class="or-divider">
+                    <span>OR</span>
+                </div>
+                <button type="submit" class="google-button">
+                    <img src="../../assets/google_logo.png" alt="Google Logo" class="google-img">
+                    Continue with Google
+                </button>
+                <button type="submit" class="facebook-button">
+                    <img src="../../assets/facebook_logo.png" alt="Facebook Logo" class="facebook-img">
+                    Continue with Facebook
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <div id="termsModal">
+        <div class="terms-modal-content">
+            <button class="terms-modal-close"><i class="fa-solid fa-xmark"></i><span>Close</span></button>
+            <iframe src="../../assets/terms_and_conditions.pdf"></iframe>
+        </div>
+    </div>
+
+    <div class="footer">
+        <button class="btn footer-btn">&copy; 2025 Hoàn Bự Con</button>
+        <div class="footer-btn-group">
+            <button class="btn footer-btn"><a href="https://hoanbucon.id.vn/">ABOUT US</a></button>
+            <button class="btn footer-btn"><a href="https://hoanbucon.id.vn/">SUPPORT</a></button>
+            <button class="btn footer-btn"><a href="https://hoanbucon.id.vn/">CONTACT</a></button>
+        </div>
+    </div>
+
+    <script type="module" src="/frontend/javascript/app.js"></script>
+</body>
+</html>

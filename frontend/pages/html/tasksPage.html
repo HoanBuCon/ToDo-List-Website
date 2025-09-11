@@ -4,44 +4,44 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MingKing Daden</title>
-    <link rel="stylesheet" href="../styles/headerStyle.css">
-    <link rel="stylesheet" href="../styles/mainStyle.css">
-    <link rel="stylesheet" href="../styles/footerStyle.css">
-    <link rel="stylesheet" href="../styles/responsive.css">
-    <link rel="stylesheet" href="tasksPage.css">
-    <link rel="stylesheet" href="../node_modules/@fortawesome/fontawesome-free/css/all.min.css">
+    <link rel="stylesheet" href="../../components/headerStyle.css">
+    <link rel="stylesheet" href="../../components/mainStyle.css">
+    <link rel="stylesheet" href="../../components/footerStyle.css">
+    <link rel="stylesheet" href="../../components/responsive.css">
+    <link rel="stylesheet" href="../css/tasksPage.css">
+    <link rel="stylesheet" href="../../node_modules/@fortawesome/fontawesome-free/css/all.min.css">
 </head>
 <body>
     <div class="header">
         <div class="logo-container">
-            <a href="#" class="logo-box"><img src="../assets/mingking_peak.jpg" alt="Ming King" class="logo-img"></a>
+            <a href="/frontend/index.html" class="logo-box"><img src="../../assets/mingking_peak.jpg" alt="Ming King" class="logo-img"></a>
             <p class="logo-text">Ming King</p>
         </div>
-        <button class="login-btn neon-btn" onclick="window.location.href='loginPage.html'">LOGIN</button>
-        <div class="header-btn">
-            <nav class="page-button-group">
-                <button class="btn page-btn">
-                    <span class="page-button-icon"><i class="fa-solid fa-house"></i></span>
-                    <span class="page-button-text"><a href="../index.html">HOME</a></span>
-                </button>
-                <button class="btn page-btn">
-                    <span class="page-button-icon"><i class="fa-solid fa-tasks"></i></span>
-                    <span class="page-button-text"><a href="#">TASKS</a></span>
-                </button>
-                <button class="btn page-btn">
-                    <span class="page-button-icon"><i class="fa-solid fa-calendar"></i></span>
-                    <span class="page-button-text"><a href="#">CALENDAR</a></span>
-                </button>
-                <button class="btn page-btn">
-                    <span class="page-button-icon"><i class="fa-solid fa-clipboard-list"></i></span>
-                    <span class="page-button-text"><a href="planningPage.html">PLANNING</a></span>
-                </button>
-                <button class="btn page-btn">
-                    <span class="page-button-icon"><i class="fa-solid fa-chart-line"></i></span>
-                    <span class="page-button-text"><a href="#">STATISTICS</a></span>
-                </button>
-            </nav>
-        </div>
+        <button class="login-btn neon-btn" onclick="window.location.href='./loginPage.html'">LOGIN</button>
+            <div class="header-btn">
+                <nav class="page-button-group">
+                    <button class="btn page-btn" data-page="/frontend/index.html">
+                        <span class="page-button-icon"><i class="fa-solid fa-house"></i></span>
+                        <span class="page-button-text">HOME</span>
+                    </button>
+                    <button class="btn page-btn" data-page="/frontend/pages/html/tasksPage.html">
+                        <span class="page-button-icon"><i class="fa-solid fa-tasks"></i></span>
+                        <span class="page-button-text">TASKS</span>
+                    </button>
+                    <button class="btn page-btn" data-page="/frontend/pages/html/calendarPage.html">
+                        <span class="page-button-icon"><i class="fa-solid fa-calendar"></i></span>
+                        <span class="page-button-text">CALENDAR</span>
+                    </button>
+                    <button class="btn page-btn" data-page="/frontend/pages/html/planningPage.html">
+                        <span class="page-button-icon"><i class="fa-solid fa-clipboard-list"></i></span>
+                        <span class="page-button-text">PLANNING</span>
+                    </button>
+                    <button class="btn page-btn" data-page="/frontend/pages/html/statisticsPage.html">
+                        <span class="page-button-icon"><i class="fa-solid fa-chart-line"></i></span>
+                        <span class="page-button-text">STATISTICS</span>
+                    </button>
+                </nav>
+            </div>
         <button class="hamburger-menu" onclick="toggleMenu()"><i class="fa-solid fa-bars"></i></button>
     </div>
 
@@ -114,8 +114,6 @@
         </div>
     </div>
 
-    <script src="../javascript/frontendScript.js"></script>
-
     <div class="footer">
         <button class="btn footer-btn">&copy; 2025 Hoàn Bự Con</button>
         <div class="footer-btn-group">
@@ -124,5 +122,7 @@
             <button class="btn footer-btn"><a href="https://hoanbucon.id.vn/">CONTACT</a></button>
         </div>
     </div>
+
+    <script type="module" src="/frontend/javascript/app.js"></script>
 </body>
 </html>
