@@ -467,7 +467,7 @@ body {
     border: none;
     border-radius: 4px;
     color: var(--color-green);
-    font-size: 1em;
+    font-size: 1.5em;
     font-weight: 600;
     cursor: pointer;
     transition:
@@ -671,7 +671,7 @@ body {
 
 .overlay-text {
     position: absolute;
-    top: 40%;
+    top: 38%;
     left: 63%;
     transform: translate(-50%, -50%);
     color: #000000;
@@ -765,6 +765,10 @@ body {
     color: var(--color-green);
     cursor: pointer;
     margin-left: 8px;
+    transition: transform 0.3s cubic-bezier(0.4,0,0.2,1);
+}
+.hamburger-menu.active {
+    transform: rotate(90deg);
 }
 
 @media (max-width: 1180px) {
@@ -819,8 +823,9 @@ body {
         position: static;
     }
 
+    /* Đảm bảo menu bị ẩn mặc định */
     .page-button-group {
-        display: none;
+        display: none !important;
         position: fixed;
         top: 30px;
         left: 0;
@@ -834,6 +839,10 @@ body {
         align-items: flex-start;
         justify-content: flex-start;
         padding-left: 0px;
+    }
+
+    .page-button-group.active {
+        display: flex !important;
     }
 
     .page-button-group .btn {
@@ -854,14 +863,14 @@ body {
         transform: none;
     }
 
-    .page-button-group.show {
+    .page-button-group.active {
         display: flex;
     }
 
     .main-content, .choose-content, .mingking-main-content {
         max-width: 95vw;
         width: 80vw;
-        padding: 16px;
+        padding: 16px 1px 36px 16px;
         border: 10px;
         margin: 12px 0;
     }
@@ -941,7 +950,7 @@ body {
     .main-content, .choose-content, .mingking-main-content {
         max-width: 95vw;
         width: 95vw;
-        padding: 16px;
+        padding: 16px 16px 36px 16px;
         border: 10px;
         margin: 0 0;
     }
@@ -998,7 +1007,7 @@ body {
         padding: 8px 0;
     }
 
-    .page-button-group.show {
+    .page-button-group.active {
         display: flex;
     }
 }
@@ -1010,9 +1019,9 @@ body {
         margin-right: 0px;
     }
 
-    .task-button-group-text {
+    /* .task-button-group-text {
         display: none;
-    }
+    } */
 }
 
 /* ========== Mobile Phone Layout 550px ========== */
@@ -1048,6 +1057,10 @@ body {
         display: block;
         font-size: 0.8em;
         padding-top: 10px;
+    }
+
+    .task-button-group .btn {
+        font-size: 1.2em;
     }
 
     .footer-btn-group {
@@ -1180,8 +1193,12 @@ body {
         padding: 8px 0;
     }
 
-    .page-button-group.show {
+    .page-button-group.active {
         display: flex;
+    }
+
+    .task-button-group .btn {
+        font-size: 1em;
     }
 }
 
@@ -1189,7 +1206,7 @@ body {
 
 @media (max-width: 930px) {
     .overlay-text {
-        top: 45%;
+        top: 42%;
         left: 67%;
     }
 }
@@ -1203,7 +1220,7 @@ body {
 
 @media (max-width: 658px) {
     .overlay-text {
-        top: 42%;
+        top: 40%;
         left: 68%;
     }
 }
@@ -1238,7 +1255,21 @@ body {
 
 @media (max-width: 420px) {
     .overlay-text {
-        top: 45%;
-        left: 66%;
+        top: 42%;
+        left: 67%;
+    }
+}
+
+@media (max-width: 329px) {
+    .overlay-text {
+        top: 50%;
+        left: 67%;
+    }
+}
+
+/* ========== Bật tắt menu trên mobile ========== */
+@media (max-width: 1180px) {
+    .page-button-group:not(.active) {
+        display: none !important;
     }
 }

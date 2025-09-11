@@ -36,9 +36,9 @@
     flex-direction: column;
     align-items: center;
     background: var(--color-bg-secondary);
-    background-image: url('../assets/rau_den_peak.png');
+    background-image: url('../assets/vegeta_peak.jpg');
     background-size: cover;
-    background-position: top;
+    background-position: center;
     background-repeat: no-repeat;
     border: 1px solid var(--color-border);
     border-radius: 16px;
@@ -100,6 +100,23 @@
     margin-bottom: 24px;
 }
 
+.email {
+    flex: 1;
+    height: 50px;
+    width: 100%;
+    padding: 0 16px;
+    font-size: 1em;
+    border: 1px solid var(--color-border);
+    border-radius: 4px;
+    box-sizing: border-box;
+    background: var(--color-bg-main);
+    color: var(--color-text-main);
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 24px;
+}
+
 .password {
     flex: 1;
     height: 50px;
@@ -118,17 +135,20 @@
 }
 
 .username,
+.email,
 .password {
     opacity: 0.8;
     transition: opacity 0.2s;
 }
 
 .username:focus,
+.email:focus,
 .password:focus {
     opacity: 1;
 }
 
 .username:hover,
+.email:hover,
 .password:hover {
     opacity: 1;
 }
@@ -243,6 +263,59 @@
     color: var(--color-green-hover);
 }
 
+#termsModal {
+    display: none;
+    position: fixed;
+    z-index: 9999;
+    left: 0;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0,0,0,0.7);
+    align-items: center;
+    justify-content: center;
+}
+
+#termsModal.active {
+    display: flex;
+}
+
+#termsModal .terms-modal-content {
+    position: relative;
+    width: 70vw;
+    height: 100vh;
+    margin: auto;
+    background: #222;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.5);
+    display: flex;
+    flex-direction: column;
+}
+
+#termsModal .terms-modal-close {
+    position: absolute;
+    top: 52px;
+    right: 32px;
+    z-index: 2;
+    font-size: 2em;
+    background: none;
+    border: none;
+    color: var(--color-green);
+    cursor: pointer;
+    transition: color 0.2s;
+        transition:
+        box-shadow 0.2s,
+        color 0.2s,
+        border-color 0.2s,
+        background 0.2s,
+        transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+#termsModal .terms-modal-close:hover {
+    color: var(--color-green-hover, #44d62c);
+    transform: scale(1.1);
+}
+
 /* Tạo đường kẻ ngang với chữ "OR" ở giữa */
 .or-divider {
     display: flex;
@@ -348,6 +421,15 @@
     pointer-events: none;
 }
 
+#termsModal iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+    background: #fff;
+    flex: 1;
+    border-radius: 0 0 8px 8px;
+}
+
 @media (max-width: 550px) {
     .main {
         padding: 0;
@@ -368,7 +450,7 @@
         height: auto;
     }
 
-    .username, .password, .login-button {
+    .username, .email, .password, .login-button {
         width: 100%;
     }
 }

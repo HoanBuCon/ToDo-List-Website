@@ -8,6 +8,10 @@
     color: var(--color-green);
     cursor: pointer;
     margin-left: 8px;
+    transition: transform 0.3s cubic-bezier(0.4,0,0.2,1);
+}
+.hamburger-menu.active {
+    transform: rotate(90deg);
 }
 
 @media (max-width: 1180px) {
@@ -62,8 +66,9 @@
         position: static;
     }
 
+    /* Đảm bảo menu bị ẩn mặc định */
     .page-button-group {
-        display: none;
+        display: none !important;
         position: fixed;
         top: 30px;
         left: 0;
@@ -77,6 +82,10 @@
         align-items: flex-start;
         justify-content: flex-start;
         padding-left: 0px;
+    }
+
+    .page-button-group.active {
+        display: flex !important;
     }
 
     .page-button-group .btn {
@@ -97,7 +106,7 @@
         transform: none;
     }
 
-    .page-button-group.show {
+    .page-button-group.active {
         display: flex;
     }
 
@@ -237,7 +246,7 @@
         padding: 8px 0;
     }
 
-    .page-button-group.show {
+    .page-button-group.active {
         display: flex;
     }
 }
@@ -395,7 +404,14 @@
         padding: 8px 0;
     }
 
-    .page-button-group.show {
+    .page-button-group.active {
         display: flex;
+    }
+}
+
+/* ========== Bật tắt menu trên mobile ========== */
+@media (max-width: 1180px) {
+    .page-button-group:not(.active) {
+        display: none !important;
     }
 }

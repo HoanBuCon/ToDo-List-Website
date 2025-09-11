@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="../styles/mainStyle.css">
     <link rel="stylesheet" href="../styles/footerStyle.css">
     <link rel="stylesheet" href="../styles/responsive.css">
-    <link rel="stylesheet" href="loginPage.css">
+    <link rel="stylesheet" href="registerPage.css">
     <link rel="stylesheet" href="../node_modules/@fortawesome/fontawesome-free/css/all.min.css">
 </head>
 <body>
@@ -47,36 +47,49 @@
 
     <div class="main">
         <div class="main-content neon-box">
-            <h1 class="main-content-title">Login</h1>
+            <h1 class="main-content-title">Register</h1>
             <form class="login-form" action="">
                 <input type="text" placeholder="Username" class="username">
+                <input type="email" placeholder="Email" class="email">
                 <div class="password-container">
                     <input type="password" placeholder="Password" class="password" id="password">
-                    <button type="button" class="password-toggle" onclick="togglePassword('password', 'eyeIcon')">
+                    <button type="button" class="password-toggle" tabindex="-1" onclick="togglePassword('password', 'eyeIcon')">
                         <i class="fa-solid fa-eye" id="eyeIcon"></i>
+                    </button>
+                </div>
+                <div class="password-container">
+                    <input type="password" placeholder="Confirm Password" class="password" id="confirmPassword">
+                    <button type="button" class="password-toggle" tabindex="-1" onclick="togglePassword('confirmPassword', 'eyeIconConfirm')">
+                        <i class="fa-solid fa-eye" id="eyeIconConfirm"></i>
                     </button>
                 </div>
                 
                 <div class="form-row">
                     <label for="rememberMe" class="remember-label" tabindex="-1">
-                        <input type="checkbox" id="rememberMe" class="remember-me" tabindex="-1"> Remember me
+                        <input type="checkbox" id="rememberMe" class="remember-me" tabindex="-1"> I agree to the <a href="#" class="forgot-password" tabindex="-1" onclick="openTerms(event)">Terms and Conditions</a>
                     </label>
-                    <a href="#" class="forgot-password" tabindex="-1">Forgot Password?</a>
                 </div>
-                <button type="submit" class="login-button">Login</button>
-                <p class="register-text">Don't have an account? <a href="registerPage.html" class="register-link">Register</a></p>
+                <button type="submit" class="login-button">Register</button>
+                <p class="register-text">Have already an account? <a href="loginPage.html" class="register-link">Login here</a></p>
                 <div class="or-divider">
                     <span>OR</span>
                 </div>
                 <button type="submit" class="google-button">
                     <img src="../assets/google_logo.png" alt="Google Logo" class="google-img">
-                    Login with Google
+                    Continue with Google
                 </button>
                 <button type="submit" class="facebook-button">
                     <img src="../assets/facebook_logo.png" alt="Facebook Logo" class="facebook-img">
-                    Login with Facebook
+                    Continue with Facebook
                 </button>
             </form>
+        </div>
+    </div>
+
+    <div id="termsModal" onclick="closeTermsByBackground(event)">
+        <div class="terms-modal-content">
+            <button class="terms-modal-close" onclick="closeTerms()"><i class="fa-solid fa-xmark"></i><span>Close</span></button>
+            <iframe src="../assets/terms_and_conditions.pdf"></iframe>
         </div>
     </div>
 
