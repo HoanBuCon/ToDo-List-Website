@@ -1,4 +1,4 @@
-import { openTerms, closeTerms, closeTermsByBackground } from '../components/termsModal.js';;
+import { openTerms, closeTerms, closeTermsByBackground } from '../features/termsModal.js';;
 
 // Hàm khởi tạo và đăng ký các sự kiện toàn cục dùng chung cho các pages
 export function registerRegisterPageEvents() {
@@ -18,5 +18,17 @@ export function registerRegisterPageEvents() {
     const termsModal = document.getElementById('termsModal');
     if (termsModal) {
         termsModal.addEventListener('click', closeTermsByBackground);
+    }
+    
+    // Chuyển đổi giữa trang đăng ký và đăng nhập
+    const link = document.querySelector('.register-link[data-page]');
+    if (link) {
+        link.addEventListener('click', (e) => {
+            e.preventDefault();
+            const page = link.getAttribute('data-page');
+            if (page) {
+                window.location.href = page;
+            }
+        });
     }
 }

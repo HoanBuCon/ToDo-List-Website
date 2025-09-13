@@ -276,6 +276,24 @@ body {
     box-sizing: border-box;
 }
 
+.time-btn {
+    position: absolute;
+    top: 16px;
+    left: 16px;
+    z-index: 1;
+    background: none;
+    border: none;
+    color: #838383;
+    font-size: 1em;
+    cursor: pointer;
+    transition:
+        text-shadow 0.2s,
+        color 0.2s,
+        border-color 0.2s,
+        background 0.2s,
+        transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
 .edit-list-btn {
     position: absolute;
     top: 16px;
@@ -285,7 +303,7 @@ body {
     border: none;
     color: var(--color-green);
     font-size: 1.2em;
-    cursor: pointer;
+    cursor: default;
     transition:
         text-shadow 0.2s,
         color 0.2s,
@@ -948,6 +966,10 @@ body {
     .add-todo-box {
         max-width: 95vw;
         gap: 4px;
+    }
+
+    .time-btn {
+        font-size: 0.75em;
     }
 
     .todo-item {

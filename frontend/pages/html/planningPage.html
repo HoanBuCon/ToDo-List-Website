@@ -11,11 +11,11 @@
     <link rel="stylesheet" href="../css/planningPage.css">
     <link rel="stylesheet" href="../../node_modules/@fortawesome/fontawesome-free/css/all.min.css">
 </head>
-<body>
+<body class="planning-page">
     <div class="header">
         <div class="logo-container">
             <a href="/frontend/index.html" class="logo-box"><img src="../../assets/mingking_peak.jpg" alt="Ming King" class="logo-img"></a>
-            <p class="logo-text">Ming King</p>
+            <p class="logo-text"><a href="/frontend/index.html">Ming King</a></p>
         </div>
         <button class="login-btn neon-btn" onclick="window.location.href='./loginPage.html'">LOGIN</button>
             <div class="header-btn">
@@ -48,11 +48,11 @@
     <div class="main">
         <div class="choose-content">
             <div class="create-task-button-group">
-                <button class="btn create-task-btn">
+                <button class="btn create-task-btn" data-page="/frontend/pages/html/createTaskPage.html">
                     <span class="task-btn-icon"><i class="fa-solid fa-plus"></i></span>
                     <span class="task-btn-text"><p>Create new Tasks</p></span>
                 </button>
-                <button class="btn open-task-btn">
+                <button class="btn open-task-btn" data-page="/frontend/pages/html/openTaskPage.html">
                     <span class="task-btn-icon"><i class="fa-solid fa-folder-open"></i></span>
                     <span class="task-btn-text"><p>Open existing Tasks</p></span>
                 </button>

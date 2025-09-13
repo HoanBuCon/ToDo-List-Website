@@ -168,6 +168,15 @@ body {
     background: rgba(68, 214, 44, 0.05);
 }
 
+.page-btn.active {
+    color: var(--color-green-hover);
+    border-color: #00ff41;
+    box-shadow:
+        0 0 1px #44d62c,
+        0 0 1px #00ff41,
+        0 0 10px #00ff41;
+    background-color: var(--color-bg-main);
+}
 
 .logo-container {
     display: flex;;

@@ -1,4 +1,4 @@
-import { setupPasswordToggle } from '../components/passwordToggle.js';
+import { setupPasswordToggle } from '../features/passwordToggle.js';
 import { registerRegisterPageEvents } from '../events/registerPageEvents.js';
 
 // Thiết lập sự kiện cho trang Register

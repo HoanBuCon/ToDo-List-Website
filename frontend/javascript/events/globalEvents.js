@@ -28,4 +28,12 @@ export function registerGlobalEvents() {
             }
         });
     });
+    
+    // Kích hoạt nút menu tương ứng với trang hiện tại
+    document.querySelectorAll('.page-btn[data-page]').forEach(btn => {
+        const page = btn.getAttribute('data-page');
+        if (page && window.location.pathname.endsWith(page.replace(/^.*[\\/]/, ''))) {
+            btn.classList.add('active');
+        }
+    });
 }
