@@ -49,16 +49,24 @@
         <div class="main-content neon-box">
             <h1 class="main-content-title">Register</h1>
             <form class="login-form" action="">
-                <input type="text" placeholder="Username" class="username">
-                <input type="email" placeholder="Email" class="email">
-                <div class="password-container">
-                    <input type="password" placeholder="Password" class="password" id="password" autocomplete="current-password">
+                <div class="inputbox">
+                    <input type="text" class="username" required>
+                    <span>Username</span>
+                </div>
+                <div class="inputbox">
+                    <input type="email" class="email" required>
+                    <span>Email</span>
+                </div>
+                <div class="inputbox password-container">
+                    <input type="password" class="password" id="password" autocomplete="current-password" required>
+                    <span>Password</span>
                     <button type="button" id="togglePasswordButton" class="password-toggle" tabindex="-1">
                         <i class="fa-solid fa-eye" id="eyeIcon"></i>
                     </button>
                 </div>
-                <div class="password-container">
-                    <input type="password" placeholder="Confirm Password" class="password" id="confirmPassword" autocomplete="current-password">
+                <div class="inputbox password-container">
+                    <input type="password" class="password" id="confirmPassword" autocomplete="current-password" required>
+                    <span>Confirm Password</span>
                     <button type="button" id="toggleConfirmPasswordButton" class="password-toggle" tabindex="-1">
                         <i class="fa-solid fa-eye" id="eyeIconConfirm"></i>
                     </button>

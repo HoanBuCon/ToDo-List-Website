@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="../../components/mainStyle.css">
     <link rel="stylesheet" href="../../components/footerStyle.css">
     <link rel="stylesheet" href="../../components/responsive.css">
+    <link rel="stylesheet" href="../../components/floatingPlaceholder.css">
     <link rel="stylesheet" href="../css/tasksPage.css">
     <link rel="stylesheet" href="../../node_modules/@fortawesome/fontawesome-free/css/all.min.css">
 </head>
@@ -54,7 +55,8 @@
                 <span class="main-content-description">This is description</span>
             </div>
             <div class="add-todo-box">
-                <input type="text" placeholder="Add a task..." class="todo-input">
+                <input type="text" class="todo-input" required>
+                <span>Add a Task</span>
                 <button title="Thêm" class="add-todo-btn"><i class="fa-solid fa-plus"></i></button>
             </div>
             <div class="task-button-group">

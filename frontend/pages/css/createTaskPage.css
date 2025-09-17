@@ -67,11 +67,54 @@
 }
 
 .create-task-info {
+    position: relative;
     width: 100%;
     max-width: 500px;
     display: flex;
     gap: 8px;
     margin-bottom: 20px;
+}
+
+.create-task-info input,
+.create-task-info textarea {
+    width: 100%;
+    padding: 16px 12px;
+    border: 1px solid var(--color-border);
+    background: var(--color-bg-main);
+    border-radius: 4px;
+    outline: none;
+    color: var(--color-text-main);
+    font-size: 1em;
+    opacity: 0.8;
+    transition: opacity 0.2s;
+}
+
+.create-task-info span {
+    justify-content: center;
+    position: absolute;
+    left: 12px;
+    top: 13px;
+    pointer-events: none;
+    font-size: 1em;
+    color: var(--color-text-secondary);
+    background: transparent;
+    padding: 0 4px;
+    transition: 
+        0.3s cubic-bezier(0.4, 0, 0.2, 1),
+        color 0.2s;
+}
+
+.create-task-info input:focus ~ span,
+.create-task-info input:valid ~ span,
+.create-task-info textarea:focus ~ span,
+.create-task-info textarea:not(:placeholder-shown) ~ span {
+    top: -22px;
+    left: 0px;
+    font-size: 0.85em;
+    color: var(--color-green-hover);
+    background: transparent;
+    border-radius: 2px;
+    padding: 0 4px;
 }
 
 .task-title-input {
@@ -85,6 +128,7 @@
     box-sizing: border-box;
     background: var(--color-bg-main);
     color: var(--color-text-main);
+    margin-bottom: 8px;
 }
 .task-title-input:focus {
     border: 1.5px solid var(--color-green);
@@ -151,11 +195,13 @@
     justify-content: space-between;
     align-items: center;
     width: 100%;
+    margin-bottom: 8px;
 }
 
 .task-date-label {
     font-size: 1.2em;
     color: var(--color-text-secondary);
+    cursor: default;
 }
 
 .task-date-input {
@@ -165,6 +211,13 @@
     border-radius: 4px;
     background: var(--color-bg-main);
     color: var(--color-text-secondary);
+    cursor: text;
+}
+
+/* Đổi màu icon lịch của trình duyệt: Chrome, Edge, Safari */
+.task-date-input::-webkit-calendar-picker-indicator {
+    filter: invert(44%) sepia(91%) saturate(749%) hue-rotate(74deg) brightness(92%) contrast(87%);
+    cursor: pointer;
 }
 
 .save-button-group .btn {

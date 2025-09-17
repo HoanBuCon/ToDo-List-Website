@@ -49,14 +49,17 @@
         <div class="main-content neon-box">
             <h1 class="main-content-title">Login</h1>
             <form class="login-form" action="">
-                <input type="text" placeholder="Username" class="username">
-                <div class="password-container">
-                    <input type="password" placeholder="Password" class="password" id="password" autocomplete="current-password">
+                <div class="inputbox">
+                    <input type="text" class="username" required>
+                    <span>Username</span>
+                </div>
+                <div class="inputbox password-container">
+                    <input type="password" class="password" id="password" autocomplete="current-password" required>
+                    <span>Password</span>
                     <button type="button" id="togglePasswordButton" class="password-toggle" tabindex="-1">
                         <i class="fa-solid fa-eye" id="eyeIcon"></i>
                     </button>
                 </div>
-                
                 <div class="form-row">
                     <label for="rememberMe" class="remember-label" tabindex="-1">
                         <input type="checkbox" id="rememberMe" class="remember-me" tabindex="-1"> Remember me

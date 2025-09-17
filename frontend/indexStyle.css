@@ -329,6 +329,7 @@ body {
     font-family: Consolas, 'Courier New', Courier, monospace;
     font-size: 1em;
     margin: 32px 0 32px 0;
+    cursor: default;
 }
 
 .main-content-title {
