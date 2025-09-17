@@ -22,14 +22,10 @@ export function setupPasswordToggle(inputId, toggleId, buttonId) {
     
     const toggleButton = document.getElementById(buttonId);
     if (!toggleButton) {
-        console.error(`Toggle button with ID '${buttonId}' not found`);
         return;
     }
 
-    console.log('Toggle button found:', toggleButton);
-
     toggleButton.addEventListener('click', () => {
-        console.log('Toggle button clicked');
         togglePassword(inputId, toggleId);
     });
 }

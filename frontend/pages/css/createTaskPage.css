@@ -1,0 +1,233 @@
+/* ========== Button styles ========== */
+.task-button-group .btn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    color: var(--color-green);
+    font-size: 1.5em;
+    font-weight: 600;
+    cursor: pointer;
+    transition:
+        box-shadow 0.2s,
+        color 0.2s,
+        border-color 0.2s,
+        background 0.2s,
+        transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    border: 1px solid #44d62c;
+    margin: 0 4px;
+}
+.task-button-group .btn:hover {
+    color: var(--color-green-hover);
+    transform: scale(1.05);
+}
+
+.task-button-group-icon {
+    font-size:1em;
+    margin-right: 4px;
+}
+
+.task-button-group-text {
+    font-size: 0.85em;
+}
+
+/* ========== Neon glow effect styles ========== */
+.neon-box {
+    border: 2px solid #44d62c;
+    border-radius: 12px;
+    box-shadow:
+        0 0 1px #44d62c,
+        0 0 3px #00ff41,
+        0 0 20px #00ff41;
+}
+
+.neon-btn {
+    background: transparent;
+    color: #44d62c;
+    border: 2px solid #44d62c;
+    border-radius: 4px;
+    font-size: 1em;
+    cursor: pointer;
+    transition: 
+        box-shadow 0.2s,
+        color 0.2s,
+        border-color 0.2s,
+        background 0.2s,
+        transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: none;
+}
+
+/* ========== Create Task Page Specific Styles ========== */
+.create-mother {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-width: 800px;
+    margin: 20px auto;
+}
+
+.create-task-info {
+    width: 100%;
+    max-width: 500px;
+    display: flex;
+    gap: 8px;
+    margin-bottom: 20px;
+}
+
+.task-title-input {
+    flex: 1;
+    height: 50px;
+    padding: 0 16px;
+    font-size: 1.2em;
+    border: 1px solid var(--color-border);
+    border-radius: 4px;
+    width: 100%;
+    box-sizing: border-box;
+    background: var(--color-bg-main);
+    color: var(--color-text-main);
+}
+.task-title-input:focus {
+    border: 1.5px solid var(--color-green);
+    outline: none;
+}
+
+.task-desc-input {
+    flex: 1;
+    height: 100px;
+    padding: 12px 16px;
+    font-size: 1em;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    border: 1px solid var(--color-border);
+    border-radius: 4px;
+    width: 100%;
+    box-sizing: border-box;
+    background: var(--color-bg-main);
+    color: var(--color-text-main);
+    resize: vertical; /* Cho phép thay đổi kích thước theo chiều dọc */
+}
+.task-desc-input:focus {
+    border: 1.5px solid var(--color-green);
+    outline: none;
+}
+
+.time-group {
+    position: relative;
+    width: 100%;
+    max-width: 500px;
+    height: 60px;
+    margin-bottom: 32px;
+}
+
+.time-btn {
+    position: absolute;
+    top: 16px;
+    left: 16px;
+    z-index: 1;
+    background: none;
+    border: none;
+    color: #838383;
+    font-size: 1em;
+    cursor: pointer;
+    transition:
+        text-shadow 0.2s,
+        color 0.2s,
+        border-color 0.2s,
+        background 0.2s,
+        transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.task-date-input-group {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    width: 100%;
+    border-collapse: collapse;
+    margin: 0 auto;
+}
+
+.task-date-item {
+    flex: 1;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.task-date-label {
+    font-size: 1.2em;
+    color: var(--color-text-secondary);
+}
+
+.task-date-input {
+    padding: 8px 12px;
+    font-size: 1.5em;
+    border: 1px solid var(--color-border);
+    border-radius: 4px;
+    background: var(--color-bg-main);
+    color: var(--color-text-secondary);
+}
+
+.save-button-group .btn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    color: var(--color-green);
+    font-size: 1.5em;
+    font-weight: 600;
+    cursor: pointer;
+    transition:
+        box-shadow 0.2s,
+        color 0.2s,
+        border-color 0.2s,
+        background 0.2s,
+        transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    border: 1px solid #44d62c;
+    margin-left: 16px;
+    margin-right: 16px;
+    margin-top: 48px;
+    margin-bottom: 16px;
+}
+.save-button-group .btn:hover {
+    color: var(--color-green-hover);
+    transform: scale(1.05);
+}
+
+.save-button-group-icon {
+    font-size:1em;
+    margin-right: 4px;
+}
+
+.save-button-group-text {
+    font-size: 0.85em;
+}
+
+@media (max-width: 600px) {
+    .save-button-group .btn {
+        margin-left: 16px;
+        margin-right: 16px;
+    }
+
+    .save-button-group-icon {
+        font-size: 0.85em;
+        margin-right: 0px;
+    }
+
+    .save-button-group-text {
+    font-size: 0.65em;
+    }
+}
+
+@media (max-width: 420px) {
+    .task-date-label {
+        font-size: 1em;
+    }
+
+    .task-date-input {
+        font-size: 1.2em;
+    }
+
+    .save-button-group .btn {
+        margin-left: 8px;
+        margin-right: 8px;
+    }
+}

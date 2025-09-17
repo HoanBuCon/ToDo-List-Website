@@ -254,7 +254,7 @@
 /* ========== Tablet Layout 600px ========== */
 @media (max-width: 600px) {
     .task-button-group-icon {
-        font-size:1em;
+        font-size: 1em;
         margin-right: 0px;
     }
 
