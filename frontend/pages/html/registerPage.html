@@ -46,6 +46,7 @@
     </div>
 
     <div class="main">
+        <canvas id="nn-background"></canvas>
         <div class="main-content neon-box">
             <h1 class="main-content-title">Register</h1>
             <form class="login-form" action="">
@@ -54,7 +55,7 @@
                     <span>Username</span>
                 </div>
                 <div class="inputbox">
-                    <input type="email" class="email" required>
+                    <input type="email" class="email" required placeholder=" ">
                     <span>Email</span>
                 </div>
                 <div class="inputbox password-container">
@@ -111,5 +112,6 @@
     </div>
 
     <script type="module" src="/frontend/javascript/app.js"></script>
+    <script type="module" src="/frontend/javascript/components/neuralNetwork.js"></script>
 </body>
 </html>

@@ -227,6 +227,18 @@
     border-radius: 2px;
     padding: 0 4px;
 }
+
+.inputbox input.email:focus ~ span,
+.inputbox input.email:not(:placeholder-shown) ~ span {
+    top: -22px;
+    left: 0px;
+    font-size: 0.85em;
+    color: var(--color-green-hover);
+    background: transparent;
+    border-radius: 2px;
+    padding: 0 4px;
+}
+
 .inputbox input:focus,
 .inputbox input:valid {
     border: 1.5px solid var(--color-green);
