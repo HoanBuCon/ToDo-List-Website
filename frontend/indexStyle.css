@@ -660,6 +660,10 @@ body {
     color: var(--color-green);
     margin: 0;
     font-weight: bold;
+    transition: 
+        color 0.2s cubic-bezier(0.4, 0, 0.2, 1),
+        text-shadow 0.2s cubic-bezier(0.4, 0, 0.2, 1),
+        transform 0.2s cubic-bezier(0.4, 0, 0.2, 1);
 }
 .mingking-description-link:hover {
     color: var(--color-green-hover);
