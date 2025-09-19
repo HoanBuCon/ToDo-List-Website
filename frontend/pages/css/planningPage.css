@@ -147,3 +147,24 @@
     font-size: 1.2em;
     margin-top: 32px;
 }
+
+@media (max-width: 768px) {
+    .create-task-btn,
+    .open-task-btn {
+        width: 200px;
+        height: 200px;
+        font-size: 0.85em;
+    }
+}
+
+@media (max-width: 600px) {
+    .create-task-button-group {
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .create-task-btn,
+    .open-task-btn {
+        margin: 0;
+    }
+}

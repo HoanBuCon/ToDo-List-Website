@@ -836,7 +836,7 @@ body {
 
     /* Đảm bảo menu bị ẩn mặc định */
     .page-button-group {
-        display: none !important;
+        display: flex !important; /* Luôn render để có hiệu ứng */
         position: fixed;
         top: 30px;
         left: 0;
@@ -850,10 +850,19 @@ body {
         align-items: flex-start;
         justify-content: flex-start;
         padding-left: 0px;
+        transform: translateY(-30px);
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+        transition: transform 0.3s cubic-bezier(0.4,0,0.2,1), opacity 0.3s cubic-bezier(0.4,0,0.2,1), visibility 0s linear 0.3s;
     }
 
     .page-button-group.active {
-        display: flex !important;
+        transform: translateY(0);
+        opacity: 1;
+        visibility: visible;
+        pointer-events: auto;
+        transition-delay: 0s;
     }
 
     .page-button-group .btn {
@@ -1279,8 +1288,8 @@ body {
 }
 
 /* ========== Bật tắt menu trên mobile ========== */
-@media (max-width: 1180px) {
+/* @media (max-width: 1180px) {
     .page-button-group:not(.active) {
         display: none !important;
     }
-}
+} */
