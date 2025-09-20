@@ -450,6 +450,7 @@ body {
     display: flex;
     flex-direction: column;
     gap: 16px;
+    overflow: hidden;
 }
 
 .todo-item {
@@ -460,6 +461,17 @@ body {
     gap: 32px;
     background: var(--color-bg-secondary);
     border-radius: 16px;
+    transition: 
+        box-shadow 0.2s,
+        background 0.2s,
+        transform 0.2s;
+}
+.todo-item:hover {
+    background: var(--color-border);
+    box-shadow:
+        0 0 1px #0198fcc2,
+        0 0 1px #0198fcc2,
+        0 0 10px #01f3fcc2;
 }
 
 .todo-item span {
@@ -479,6 +491,7 @@ body {
     cursor: pointer;
     background: var(--color-bg-main);
     border-radius: 4px;
+    transition: box-shadow 0.1s, transform 0.1s ease-in-out;
 }
 
 .todo-checkbox:hover {

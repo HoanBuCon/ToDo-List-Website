@@ -32,7 +32,12 @@ export function registerGlobalEvents() {
     // Kích hoạt nút menu tương ứng với trang hiện tại
     document.querySelectorAll('.page-btn[data-page]').forEach(btn => {
         const page = btn.getAttribute('data-page');
-        if (page && window.location.pathname.endsWith(page.replace(/^.*[\\/]/, ''))) {
+        const currentPath = window.location.pathname;
+
+        const isCurrentPage = page && currentPath.endsWith(page.replace(/^.*[\\/]/, ''));
+        const isPlanningPage = page && page.includes('planning') && (currentPath.endsWith('createTaskPage.html') || currentPath.endsWith('openTaskPage.html')); // Nếu là trang planning hoặc là trang create/open task thì active nút planning trên header
+        
+        if (isCurrentPage || isPlanningPage) {
             btn.classList.add('active');
         }
     });
