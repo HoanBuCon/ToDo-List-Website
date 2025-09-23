@@ -17,9 +17,7 @@ export function togglePassword(inputId, toggleId) {
 }
 
 // Thiết lập sự kiện chuyển đổi hiển thị mật khẩu cho nút bấm
-export function setupPasswordToggle(inputId, toggleId, buttonId) {
-    console.log(`Setting up password toggle for input: ${inputId}, icon: ${toggleId}, button: ${buttonId}`);
-    
+export function setupPasswordToggle(inputId, toggleId, buttonId) {  
     const toggleButton = document.getElementById(buttonId);
     if (!toggleButton) {
         return;
