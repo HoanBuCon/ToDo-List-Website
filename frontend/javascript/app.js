@@ -6,11 +6,11 @@ import { domReady } from "./utils/domReady.js";
 import { toggleMenu } from "./components/menuToggle.js";
 import { registerRegisterPageEvents } from "./events/registerPageEvents.js";
 import { registerPlanningPageEvents } from "./events/planningPageEvents.js";
+import { setupTodoList } from "./features/taskPageFeatures.js";   
 
 window.toggleMenu = toggleMenu;
 
 domReady(() => {
-    console.log('DOM ready');
     registerGlobalEvents();
 
     const body = document.body;
@@ -30,5 +30,9 @@ domReady(() => {
 
     if (body.classList.contains('planning-page')) {
         registerPlanningPageEvents();
+    }
+
+    if (body.classList.contains('tasks-page')) {
+        setupTodoList();
     }
 });

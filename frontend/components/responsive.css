@@ -75,9 +75,9 @@
         right: auto;
         background: var(--color-header_footer);
         flex-direction: column;
-        z-index: 200;
-        width: 200px;
-        min-width: 160px;
+        z-index: 50;
+        width: 100vw;
+        min-width: 200px;
         padding: 8px 0;
         align-items: flex-start;
         justify-content: flex-start;
@@ -99,10 +99,12 @@
 
     .page-button-group .btn {
         width: 100%;
+        height: 60px;
+        font-size: 1.2em;
         justify-content: flex-start;
         text-align: left;
         box-shadow: none;
-        border: none
+        border: none;
     }
 
     .page-button-icon {
@@ -250,13 +252,14 @@
         right: auto;
         background: var(--color-header_footer);
         flex-direction: column;
-        z-index: 200;
+        z-index: 50;
         min-width: 160px;
         padding: 8px 0;
     }
 
     .page-button-group.active {
         display: flex;
+        z-index: 50;
     }
 }
 
@@ -408,13 +411,20 @@
         right: auto;
         background: var(--color-header_footer);
         flex-direction: column;
-        z-index: 200;
+        z-index: 50;
         min-width: 160px;
         padding: 8px 0;
     }
 
     .page-button-group.active {
         display: flex;
+    }
+
+}
+
+@media (max-width: 350px) {
+    .logo-text a {
+        display: none;
     }
 }
 

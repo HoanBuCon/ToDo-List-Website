@@ -56,27 +56,31 @@
                 <span class="main-content-description">Merge "Thần Lieems Dai Hiệp" & "Build ưebsite Ming King"</span>
             </div>
             <div class="add-todo-box">
-                <input type="text" class="todo-input" required>
+                <input type="text" id="todo-input" class="todo-input" required>
                 <span>Add a Task</span>
-                <button title="Thêm" class="add-todo-btn"><i class="fa-solid fa-plus"></i></button>
+                <button id="add-todo-button" title="Thêm" class="add-todo-btn"><i class="fa-solid fa-plus"></i></button>
             </div>
             <div class="task-button-group">
-                <button class="btn neon-btn">
+                <button class="btn neon-btn" data-action="edit">
                     <span class="task-button-group-icon"><i class="fa-solid fa-pencil"></i></span>
                     <span class="task-button-group-text">Edit</span>
                 </button>
-                <button class="btn neon-btn">
+                <button class="btn neon-btn" data-action="complete-all">
                     <span class="task-button-group-icon"><i class="fa-solid fa-check"></i></span>
                     <span class="task-button-group-text">Complete All</span>
                 </button>
-                <button class="btn neon-btn">
+                <button class="btn neon-btn" data-action="delete-all">
                     <span class="task-button-group-icon"><i class="fa-solid fa-trash"></i></span>
                     <span class="task-button-group-text">Delete All</span>
                 </button>
             </div>
 
-            <div class="todo-list-container">
-                <div class="todo-item">
+            <div class="todo-list-container" id="todo-list">
+                <div id="empty-message" class="empty-message" style="display:none;">
+                    <p>No Tasks available!</p>
+                    <img src="/frontend/assets/ming_king_bu_cu.jpg" alt="10 nghin bucu mot luot">
+                </div>
+                <!-- <div class="todo-item">
                     <input type="checkbox" class="todo-checkbox">
                     <span class="todo-content">Phân tích thiết kế hệ thống</span>
                     <button title="Xóa" class="todo-delete"><i class="fa-solid fa-trash"></i></button>
@@ -86,7 +90,7 @@
                     <span class="todo-content">Thiết kế UI UX</span>
                     <button title="Xóa" class="todo-delete"><i class="fa-solid fa-trash"></i></button>
                 </div>
-                <div class="todo-item completed">
+                <div class="todo-item">
                     <input type="checkbox" class="todo-checkbox">
                     <span class="todo-content">Hoàn thiện FrontEnd</span>
                     <button title="Xóa" class="todo-delete"><i class="fa-solid fa-trash"></i></button>
@@ -96,7 +100,7 @@
                     <span class="todo-content">Thiết kế Database</span>
                     <button title="Xóa" class="todo-delete"><i class="fa-solid fa-trash"></i></button>
                 </div>
-                <div class="todo-item completed">
+                <div class="todo-item">
                     <input type="checkbox" class="todo-checkbox">
                     <span class="todo-content">Hoàn thiện BackEnd</span>
                     <button title="Xóa" class="todo-delete"><i class="fa-solid fa-trash"></i></button>
@@ -111,7 +115,7 @@
                     <span class="todo-content">Vượt độ khó Casual</span>
                     <button title="Xóa" class="todo-delete"><i class="fa-solid fa-trash"></i></button>
                 </div>
-                <div class="todo-item completed">
+                <div class="todo-item">
                     <input type="checkbox" class="todo-checkbox">
                     <span class="todo-content">Vượt độ khó Expert</span>
                     <button title="Xóa" class="todo-delete"><i class="fa-solid fa-trash"></i></button>
@@ -120,7 +124,7 @@
                     <input type="checkbox" class="todo-checkbox">
                     <span class="todo-content">Dit anh Ming King, trở thành Liemdaidary</span>
                     <button title="Xóa" class="todo-delete"><i class="fa-solid fa-trash"></i></button>
-                </div>
+                </div> -->
             </div>
         </div>
     </div>
