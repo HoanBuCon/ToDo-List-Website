@@ -1,4 +1,5 @@
 import { checkEmptyList } from '../components/checkEmptyList.js';
+import { resetCompleteAllButton } from '../components/checkEmptyList.js';
 import { createTask } from './createNewTask.js';
 
 export function setupTodoList() {
@@ -44,7 +45,7 @@ export function setupTodoList() {
         todoList.addEventListener('click', (event) => {
             if (event.target.closest('.todo-delete')) {
                 event.target.closest('.todo-item').remove();
-                checkEmptyList();
+                if (checkEmptyList()) resetCompleteAllButton(completeAllButton);
             }
         });
     }
@@ -55,6 +56,7 @@ export function setupTodoList() {
             const checkboxes = todoList.querySelectorAll('.todo-checkbox');
             const isCompleting = !completeAllButton.classList.contains('completed-all');
             const message = isCompleting ? 'Complete all tasks?' : 'Undo all tasks?';
+            if (checkEmptyList()) return; // nếu list rỗng thì thoát
 
             if (!confirm(message)) return; // nếu Cancel thì thoát
 
@@ -79,17 +81,19 @@ export function setupTodoList() {
     // Xử lý sự kiện cho nút Delete All
     if (deleteAllButton) {
         deleteAllButton.addEventListener('click', () => {
+            if (checkEmptyList()) return; // nếu list rỗng thì thoát
+
             if (confirm('Are you sure you want to delete all tasks?')) {
                 if (todoList) {
                     todoList.querySelectorAll('.todo-item').forEach(item => item.remove());
                 }
 
                 // Kiểm tra list sau khi xóa
-                checkEmptyList();
+                if (checkEmptyList()) resetCompleteAllButton(completeAllButton);
             }
         });
     }
 
     // Kiểm tra list ngay khi load trang
-    checkEmptyList();
+    if (checkEmptyList()) resetCompleteAllButton(completeAllButton);
 }
