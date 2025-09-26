@@ -6,7 +6,8 @@ import { domReady } from "./utils/domReady.js";
 import { toggleMenu } from "./components/menuToggle.js";
 import { registerRegisterPageEvents } from "./events/registerPageEvents.js";
 import { registerPlanningPageEvents } from "./events/planningPageEvents.js";
-import { setupTodoList } from "./features/taskPageFeatures.js";   
+import { setupTodoList } from "./features/taskPageFeatures.js";
+import { setupHomePageEvents } from "./pages/homePage.js";
 
 window.toggleMenu = toggleMenu;
 
@@ -14,6 +15,10 @@ domReady(() => {
     registerGlobalEvents();
 
     const body = document.body;
+
+    if (body.classList.contains('home-page')) {
+        setupHomePageEvents();
+    }
 
     if (body.classList.contains('login-page')) {
         setupLoginPage();

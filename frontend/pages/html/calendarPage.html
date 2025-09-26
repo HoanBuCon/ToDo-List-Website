@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MingKing Planning</title>
+    <link rel="stylesheet" href="../../components/headerStyle.css">
+    <link rel="stylesheet" href="../../components/mainStyle.css">
+    <link rel="stylesheet" href="../../components/footerStyle.css">
+    <link rel="stylesheet" href="../../components/responsive.css">
+    <link rel="stylesheet" href="../css/calendarPage.css">
+    <link rel="stylesheet" href="../../node_modules/@fortawesome/fontawesome-free/css/all.min.css">
+    <script src='/node_modules/fullcalendar/index.global.min.js'></script>
+    <script src="/frontend/javascript/pages/calendarLoader.js"></script>
+</head>
+<body class="calendar-page">
+    <div class="header">
+        <div class="logo-container">
+            <a href="/frontend/index.html" class="logo-box"><img src="../../assets/mingking_peak.jpg" alt="Ming King" class="logo-img"></a>
+            <p class="logo-text"><a href="/frontend/index.html">Ming King</a></p>
+        </div>
+        <button class="login-btn neon-btn" onclick="window.location.href='./loginPage.html'">LOGIN</button>
+            <div class="header-btn">
+                <nav class="page-button-group">
+                    <button class="btn page-btn" data-page="/frontend/index.html">
+                        <span class="page-button-icon"><i class="fa-solid fa-house"></i></span>
+                        <span class="page-button-text">HOME</span>
+                    </button>
+                    <button class="btn page-btn" data-page="/frontend/pages/html/tasksPage.html">
+                        <span class="page-button-icon"><i class="fa-solid fa-tasks"></i></span>
+                        <span class="page-button-text">TASKS</span>
+                    </button>
+                    <button class="btn page-btn" data-page="/frontend/pages/html/calendarPage.html">
+                        <span class="page-button-icon"><i class="fa-solid fa-calendar"></i></span>
+                        <span class="page-button-text">CALENDAR</span>
+                    </button>
+                    <button class="btn page-btn" data-page="/frontend/pages/html/planningPage.html">
+                        <span class="page-button-icon"><i class="fa-solid fa-clipboard-list"></i></span>
+                        <span class="page-button-text">PLANNING</span>
+                    </button>
+                    <button class="btn page-btn" data-page="/frontend/pages/html/statisticsPage.html">
+                        <span class="page-button-icon"><i class="fa-solid fa-chart-line"></i></span>
+                        <span class="page-button-text">STATISTICS</span>
+                    </button>
+                </nav>
+            </div>
+        <button class="hamburger-menu" onclick="toggleMenu()"><i class="fa-solid fa-bars"></i></button>
+    </div>
+
+    <div class="main">
+        <canvas id="nn-background"></canvas>
+        <div class="main-content neon-box">
+            <div class="calendar-container">
+                <div class="todo-section">
+                    <h2 class="section-title">Todo Lists</h2>
+                    <div class="todo-item">
+                        <div class="todo-item-container">
+                            <label for="todo1" class="todo-content">Hoàn thành dự án website</label>
+                            <div class="todo-desc">Deadline: 30/09/2025</div>
+                        </div>
+                    </div>
+                    <div class="todo-item">
+                        <div class="todo-item-container">
+                            <label for="todo2" class="todo-content">Học React.js</label>
+                            <div class="todo-desc">Deadline: 15/10/2025</div>
+                        </div>
+                    </div>
+                    <div class="todo-item">
+                        <div class="todo-item-container">
+                            <label for="todo3" class="todo-content">Viết documentation</label>
+                            <div class="todo-desc">Deadline: 05/10/2025</div>
+                        </div>
+                    </div>
+                    <div class="todo-item">
+                        <div class="todo-item-container">
+                            <label for="todo4" class="todo-content">Review code</label>
+                            <div class="todo-desc">Deadline: 28/09/2025</div>
+                        </div>
+                    </div>
+                    <div class="todo-item">
+                        <div class="todo-item-container">
+                            <label for="todo5" class="todo-content">Tối ưu performance</label>
+                            <div class="todo-desc">Deadline: 12/10/2025</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="calendar-section">
+                    <h2 class="section-title">Calendar</h2>
+                    <div id="calendar"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">
+        <button class="btn footer-btn">&copy; 2025 Hoàn Bự Con</button>
+        <div class="footer-btn-group">
+            <button class="btn footer-btn"><a href="https://hoanbucon.id.vn/">ABOUT US</a></button>
+            <button class="btn footer-btn"><a href="https://hoanbucon.id.vn/">SUPPORT</a></button>
+            <button class="btn footer-btn"><a href="https://hoanbucon.id.vn/">CONTACT</a></button>
+        </div>
+    </div>
+
+    <script type="module" src="/frontend/javascript/app.js"></script>
+    <script type="module" src="/frontend/javascript/components/neuralNetwork.js"></script>
+</body>
+</html>

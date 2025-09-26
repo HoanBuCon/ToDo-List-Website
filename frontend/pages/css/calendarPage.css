@@ -1,0 +1,306 @@
+.main {
+    flex: 1 0 auto;
+    background: var(--color-bg-main);
+    padding: 86px 20px 20px 20px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.main-content {
+    width: 100%;
+    max-width: 90vw;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 32px;
+    margin-bottom: 32px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: var(--color-bg-secondary);
+    border: 1px solid var(--color-border);
+    border-radius: 16px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    padding: 32px 32px;
+    box-sizing: border-box;
+}
+
+.calendar-container {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    gap: 24px;
+    flex-wrap: nowrap;
+}
+
+.todo-section {
+    width: 30%;
+    background: var(--color-bg-main);
+    border: 1px solid var(--color-border);
+    border-radius: 12px;
+    padding: 20px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    overflow: visible;
+    position: relative;
+}
+
+.calendar-section {
+    width: 70%;
+    background: var(--color-bg-main);
+    border: 1px solid var(--color-border);
+    border-radius: 12px;
+    padding: 20px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    overflow: hidden;
+}
+
+.section-title {
+    font-size: 2em;
+    font-weight: bold;
+    color: var(--color-text-main);
+    margin-bottom: 32px;
+    text-align: center;
+    text-shadow:
+        0 0 1px #44d62c,
+        0 0 1px #44d62c,
+        0 0 8px #44d62c;
+    transition: text-shadow 0.2s ease-in-out;
+}
+.section-title:hover {
+    text-shadow:
+        0 0 1px #44d62c,
+        0 0 1px #00ff41,
+        0 0 16px #00ff41;
+}
+
+.todo-list-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    max-height: 600px;
+    overflow-y: auto;
+    overflow-x: visible;
+    padding: 8px 16px 8px 8px;
+    margin: -8px -16px -8px -8px;
+}
+
+.todo-item {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 16px;
+    gap: 12px;
+    background: #61636149;
+    border-radius: 12px;
+    overflow: visible;
+    position: relative;
+    z-index: 1;
+    transition: 
+        box-shadow 0.2s,
+        background 0.2s,
+        transform 0.2s,
+        z-index 0s;
+}
+.todo-item:hover {
+    background: var(--color-border);
+    box-shadow:
+        0 0 1px #0198fcc2,
+        0 0 1px #0198fcc2,
+        0 0 15px #01f3fcc2;
+    transform: scale(1.02);
+    z-index: 10;
+}
+
+.todo-checkbox {
+    min-width: 24px;
+    min-height: 24px;
+    box-sizing: content-box;
+    flex-shrink: 0;
+    width: 24px;
+    height: 24px;
+    accent-color: var(--color-green);
+    cursor: pointer;
+    background: var(--color-bg-main);
+    border-radius: 4px;
+    transition: box-shadow 0.1s, transform 0.1s ease-in-out;
+}
+
+.todo-checkbox:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 0 2px var(--color-green-hover);
+}
+
+.todo-item-container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 4px;
+    min-width: 0;
+    overflow: visible;
+}
+
+.todo-content {
+    font-size: 1.2em;
+    font-weight: bold;
+    color: var(--color-text-main);
+    cursor: pointer;
+    transition: color 0.2s;
+}
+.todo-content:hover {
+    color: var(--color-green);
+}
+
+.todo-desc {
+    flex: 1;
+    font-size: 1em;
+    font-family: Consolas, 'Courier New', Courier, monospace;
+    color: var(--color-text-secondary);
+}
+
+#calendar {
+    width: 100%;
+    min-height: 600px;
+    color: var(--color-text-main);
+}
+
+.neon-box {
+    border: 2px solid #44d62c;
+    border-radius: 12px;
+    box-shadow:
+        0 0 1px #44d62c,
+        0 0 3px #00ff41,
+        0 0 20px #00ff41;
+}
+
+.fc-day-today, .fc-today {
+    background: #232a3b !important;
+    border: 2px solid #44d62c !important;
+    color: #44d62c !important;
+    font-weight: bold !important;
+    box-shadow: 0 0 20px #44d62c !important;
+}
+
+@media (max-width: 1200px) {
+    .todo-section {
+        width: 35%;
+    }
+    
+    .calendar-section {
+        width: 65%;
+    }
+    
+    .section-title {
+        font-size: 1.8em;
+    }
+    
+    .todo-content {
+        font-size: 1.1em;
+    }
+    
+    .todo-desc {
+        font-size: 0.85em;
+    }
+}
+
+@media (max-width: 1000px) {
+    .calendar-container {
+        flex-direction: column-reverse;
+        gap: 24px;
+    }
+    
+    .todo-section, .calendar-section {
+        width: 100%;
+        padding: 16px;
+    }
+    
+    .section-title {
+        font-size: 1.6em;
+        margin-bottom: 16px;
+    }
+}
+
+@media (max-width: 768px) {
+    .todo-section, .calendar-section {
+        width: 100%;
+    }
+    
+    .main-content {
+        padding: 20px 16px;
+    }
+    
+    .todo-list-container {
+        max-height: 300px;
+    }
+    
+    #calendar {
+        min-height: 400px;
+    }
+}
+
+@media (max-width: 600px) {
+    .main-content {
+        padding: 16px 12px;
+    }
+    
+    .todo-section, .calendar-section {
+        padding: 12px;
+    }
+    
+    .section-title {
+        font-size: 1.4em;
+    }
+    
+    .todo-item {
+        padding: 12px;
+        gap: 8px;
+    }
+    
+    .todo-content {
+        font-size: 1em;
+    }
+    
+    .todo-desc {
+        font-size: 0.8em;
+    }
+    
+    .todo-checkbox {
+        min-width: 16px;
+        min-height: 16px;
+        width: 16px;
+        height: 16px;
+    }
+}
+
+@media (max-width: 480px) {
+    .section-title {
+        font-size: 1.2em;
+        margin-bottom: 12px;
+    }
+    
+    .todo-item {
+        padding: 10px;
+    }
+    
+    .todo-content {
+        font-size: 0.9em;
+    }
+    
+    .todo-desc {
+        font-size: 0.75em;
+    }
+    
+    #calendar {
+        min-height: 350px;
+    }
+}

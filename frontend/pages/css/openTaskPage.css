@@ -190,10 +190,14 @@
 }
 
 .todo-content {
-    flex: 1;
-    font-size: 1.5em;
+    font-size: 1.2em;
     font-weight: bold;
     color: var(--color-text-main);
+    cursor: pointer;
+    transition: color 0.2s;
+}
+.todo-content:hover {
+    color: var(--color-green);
 }
 
 .todo-desc {
