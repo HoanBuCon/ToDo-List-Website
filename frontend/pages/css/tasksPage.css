@@ -1,3 +1,13 @@
+/* Full viewport neural network effect */
+body {
+    background: var(--color-bg-main) !important;
+}
+
+.main {
+    background: transparent !important;
+    min-height: calc(100vh - 86px);
+}
+
 /* ========== Loại bỏ margin mặc định của trình duyệt ========== */
 html, body {
     margin: 0;
@@ -249,7 +259,8 @@ body {
 /* ========== Main section style ========== */
 .main {
     flex: 1 0 auto;
-    background: var(--color-bg-main);
+    background: transparent !important;
+    min-height: calc(100vh - 86px);
     padding: 86px 20px 20px 20px;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     display: flex;

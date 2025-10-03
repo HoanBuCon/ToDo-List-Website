@@ -18,8 +18,32 @@
   let points = [];
 
   function resize() {
-    width = window.innerWidth;
-    height = window.innerHeight;
+    // Check if canvas should cover full viewport or just container
+    const shouldCoverFullViewport = canvas.dataset.fullViewport === 'true';
+    
+    if (shouldCoverFullViewport) {
+      width = window.innerWidth;
+      height = window.innerHeight;
+      
+      // Position canvas to cover full viewport
+      canvas.style.position = 'fixed';
+      canvas.style.top = '0';
+      canvas.style.left = '0';
+      canvas.style.zIndex = '-1';
+      canvas.style.pointerEvents = 'none';
+    } else {
+      // Use container dimensions (original behavior)
+      const container = canvas.parentElement;
+      width = container.clientWidth || window.innerWidth;
+      height = container.clientHeight || window.innerHeight;
+      
+      // Reset to original positioning
+      canvas.style.position = 'absolute';
+      canvas.style.top = '0';
+      canvas.style.left = '0';
+      canvas.style.zIndex = '1';
+      canvas.style.pointerEvents = 'none';
+    }
 
     const areaRatio = (width * height) / BASE_AREA;
 

@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MingKing Statistics</title>
+    <link rel="stylesheet" href="../../components/headerStyle.css">
+    <link rel="stylesheet" href="../../components/mainStyle.css">
+    <link rel="stylesheet" href="../../components/footerStyle.css">
+    <link rel="stylesheet" href="../../components/responsive.css">
+    <link rel="stylesheet" href="../css/statisticsPage.css">
+    <link rel="stylesheet" href="../../node_modules/@fortawesome/fontawesome-free/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="header">
+        <div class="logo-container">
+            <a href="/frontend/index.html" class="logo-box"><img src="../../assets/mingking_peak.jpg" alt="Ming King" class="logo-img"></a>
+            <p class="logo-text"><a href="/frontend/index.html">Ming King</a></p>
+        </div>
+        <button class="login-btn neon-btn" onclick="window.location.href='./loginPage.html'">LOGIN</button>
+            <div class="header-btn">
+                <nav class="page-button-group">
+                    <button class="btn page-btn" data-page="/frontend/index.html">
+                        <span class="page-button-icon"><i class="fa-solid fa-house"></i></span>
+                        <span class="page-button-text">HOME</span>
+                    </button>
+                    <button class="btn page-btn" data-page="/frontend/pages/html/tasksPage.html">
+                        <span class="page-button-icon"><i class="fa-solid fa-tasks"></i></span>
+                        <span class="page-button-text">TASKS</span>
+                    </button>
+                    <button class="btn page-btn" data-page="/frontend/pages/html/calendarPage.html">
+                        <span class="page-button-icon"><i class="fa-solid fa-calendar"></i></span>
+                        <span class="page-button-text">CALENDAR</span>
+                    </button>
+                    <button class="btn page-btn" data-page="/frontend/pages/html/planningPage.html">
+                        <span class="page-button-icon"><i class="fa-solid fa-clipboard-list"></i></span>
+                        <span class="page-button-text">PLANNING</span>
+                    </button>
+                    <button class="btn page-btn active" data-page="/frontend/pages/html/statisticsPage.html">
+                        <span class="page-button-icon"><i class="fa-solid fa-chart-line"></i></span>
+                        <span class="page-button-text">STATISTICS</span>
+                    </button>
+                </nav>
+            </div>
+        <button class="hamburger-menu" onclick="toggleMenu()"><i class="fa-solid fa-bars"></i></button>
+    </div>
+
+    <div class="main">
+        <canvas id="nn-background" data-full-viewport="true"></canvas>
+        <div class="main-content neon-box">
+            <div class="main-content-info">
+                <span class="main-content-title">Statistics Dashboard</span>
+                <span class="main-content-description">Track your progress and achievements</span>
+            </div>
+
+            <!-- Statistics Overview Cards -->
+            <h2 class="section-title">TODO Lists Overview</h2>
+            <div class="stats-overview">
+                <div class="stat-card neon-card">
+                    <div class="stat-icon">
+                        <i class="fa-solid fa-list-check"></i>
+                    </div>
+                    <div class="stat-content">
+                        <div class="stat-number" id="total-todos">15</div>
+                        <div class="stat-label">Total Todo Lists</div>
+                    </div>
+                </div>
+
+                <div class="stat-card neon-card">
+                    <div class="stat-icon completed">
+                        <i class="fa-solid fa-check-circle"></i>
+                    </div>
+                    <div class="stat-content">
+                        <div class="stat-number" id="completed-todos">8</div>
+                        <div class="stat-label">Completed</div>
+                    </div>
+                </div>
+
+                <div class="stat-card neon-card">
+                    <div class="stat-icon pending">
+                        <i class="fa-solid fa-clock"></i>
+                    </div>
+                    <div class="stat-content">
+                        <div class="stat-number" id="pending-todos">5</div>
+                        <div class="stat-label">Pending</div>
+                    </div>
+                </div>
+
+                <div class="stat-card neon-card">
+                    <div class="stat-icon overdue">
+                        <i class="fa-solid fa-exclamation-triangle"></i>
+                    </div>
+                    <div class="stat-content">
+                        <div class="stat-number" id="overdue-todos">2</div>
+                        <div class="stat-label">Overdue</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Task Statistics -->
+            <div class="task-stats-section">
+                <h2 class="section-title">Task Statistics</h2>
+                <div class="task-stats-grid">
+                    <div class="task-stat-item">
+                        <div class="task-stat-icon">
+                            <i class="fa-solid fa-tasks"></i>
+                        </div>
+                        <div class="task-stat-info">
+                            <div class="task-stat-number" id="total-tasks">56</div>
+                            <div class="task-stat-label">Total Tasks</div>
+                        </div>
+                    </div>
+
+                    <div class="task-stat-item">
+                        <div class="task-stat-icon completed">
+                            <i class="fa-solid fa-check"></i>
+                        </div>
+                        <div class="task-stat-info">
+                            <div class="task-stat-number" id="completed-tasks">36</div>
+                            <div class="task-stat-label">Completed Tasks</div>
+                        </div>
+                    </div>
+
+                    <div class="task-stat-item">
+                        <div class="task-stat-icon pending">
+                            <i class="fa-solid fa-times-circle"></i>
+                        </div>
+                        <div class="task-stat-info">
+                            <div class="task-stat-number" id="incomplete-tasks">15</div>
+                            <div class="task-stat-label">Incomplete Tasks</div>
+                        </div>
+                    </div>
+
+                    <div class="task-stat-item">
+                        <div class="task-stat-icon overdue">
+                            <i class="fa-solid fa-exclamation-triangle"></i>
+                        </div>
+                        <div class="task-stat-info">
+                            <div class="task-stat-number" id="overdue-tasks">5</div>
+                            <div class="task-stat-label">Overdue Tasks</div>
+                        </div>
+                    </div>
+
+                    <div class="task-stat-item">
+                        <div class="task-stat-icon average">
+                            <i class="fa-solid fa-percentage"></i>
+                        </div>
+                        <div class="task-stat-info">
+                            <div class="task-stat-number" id="completion-rate">64%</div>
+                            <div class="task-stat-label">Completion Rate</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Charts Section -->
+            <div class="charts-section">
+                <div class="chart-container">
+                    <h3 class="chart-title">Todo Lists Distribution</h3>
+                    <canvas id="todoDistributionChart"></canvas>
+                </div>
+                <div class="chart-container">
+                    <h3 class="chart-title">Completion Progress</h3>
+                    <canvas id="completionProgressChart"></canvas>
+                </div>
+            </div>
+
+            <!-- Todo Lists Sections -->
+            <div class="todo-lists-section">
+                <!-- History Section -->
+                <div class="todo-list-category">
+                    <h2 class="section-title">
+                        <i class="fa-solid fa-history"></i>
+                        History (Completed)
+                    </h2>
+                    <div class="todo-list-container" id="completed-list">
+                        <!-- Completed todos will be inserted here -->
+                    </div>
+                </div>
+
+                <!-- Overdue Section -->
+                <div class="todo-list-category">
+                    <h2 class="section-title">
+                        <i class="fa-solid fa-exclamation-triangle"></i>
+                        Overdue
+                    </h2>
+                    <div class="todo-list-container" id="overdue-list">
+                        <!-- Overdue todos will be inserted here -->
+                    </div>
+                </div>
+
+                <!-- Pending Section -->
+                <div class="todo-list-category">
+                    <h2 class="section-title">
+                        <i class="fa-solid fa-pause-circle"></i>
+                        Pending
+                    </h2>
+                    <div class="todo-list-container" id="pending-list">
+                        <!-- Pending todos will be inserted here -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Refresh Button -->
+            <div class="refresh-section">
+                <button class="btn neon-btn refresh-btn" onclick="refreshStatistics()">
+                    <i class="fa-solid fa-refresh"></i>
+                    Refresh Data
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">
+        <button class="btn footer-btn">&copy; 2025 Hoàn Bự Con</button>
+        <div class="footer-btn-group">
+            <button class="btn footer-btn"><a href="https://hoanbucon.id.vn/">ABOUT US</a></button>
+            <button class="btn footer-btn"><a href="https://hoanbucon.id.vn/">SUPPORT</a></button>
+            <button class="btn footer-btn"><a href="https://hoanbucon.id.vn/">CONTACT</a></button>
+        </div>
+    </div>
+
+    <script type="module" src="/frontend/javascript/app.js"></script>
+    <script type="module" src="/frontend/javascript/components/neuralNetwork.js"></script>
+    <script type="module" src="/frontend/javascript/pages/statisticsLoader.js"></script>
+</body>
+</html>

@@ -1,3 +1,13 @@
+/* Full viewport neural network effect */
+body {
+    background: var(--color-bg-main);
+}
+
+.main {
+    background: transparent !important;
+    min-height: calc(100vh - 86px);
+}
+
 /* ========== Button styles ========== */
 .task-button-group .btn {
     padding: 10px 20px;
