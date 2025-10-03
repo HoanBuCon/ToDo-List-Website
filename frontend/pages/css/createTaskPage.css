@@ -254,6 +254,92 @@
     font-size: 0.85em;
 }
 
+/* ========== Calendar Preview Section (thêm mới) ========== */
+.calendar-preview-section {
+    margin-top: 40px;
+    width: 100%;
+    background: var(--color-bg-main);
+    border: 1px solid var(--color-border);
+    border-radius: 12px;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.section-title {
+    font-size: 1.4em;
+    color: var(--color-text-main);
+    margin-bottom: 16px;
+    text-align: center;
+    font-weight: bold;
+}
+
+#calendar-preview {
+    width: 100%;
+    min-height: 300px;
+    color: var(--color-text-main);
+    font-family: Consolas, 'Courier New', Courier, monospace;
+}
+
+/* FullCalendar theme cho preview */
+.fc {
+    --fc-page-bg-color: var(--color-bg-main);
+    --fc-neutral-text-color: var(--color-text-secondary);
+    --fc-border-color: var(--color-border);
+    --fc-button-text-color: var(--color-green);
+    --fc-button-bg-color: transparent;
+    --fc-button-border-color: var(--color-green);
+}
+
+.fc .fc-toolbar-title {
+    color: var(--color-green);
+    font-weight: bold;
+    font-size: 1.1em;
+    text-align: left;
+}
+
+.fc .fc-button {
+    background: var(--fc-button-bg-color);
+    color: var(--fc-button-text-color);
+    border: 1px solid var(--fc-button-border-color);
+    border-radius: 6px;
+    padding: 4px 8px;
+    font-size: 0.8em;
+    transition: 
+        box-shadow 0.2s,
+        color 0.2s,
+        border-color 0.2s,
+        background 0.2s,
+        transform 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Viết hoa chữ cái đầu cho nút Today */
+.fc .fc-today-button {
+    text-transform: capitalize;
+}
+
+.fc .fc-button:hover,
+.fc .fc-button:focus {
+    background: rgba(68, 214, 44, 0.08);
+    color: var(--color-green-hover);
+    border-color: var(--color-green-hover);
+    box-shadow:
+        0 0 1px #44d62c,
+        0 0 1px #00ff41,
+        0 0 8px #00ff41;
+    transform: translateY(-1px);
+}
+
+.fc .fc-col-header-cell-cushion {
+    color: var(--color-green);
+    font-weight: 600;
+    font-size: 0.9em;
+}
+
+.fc .fc-daygrid-day-number {
+    color: var(--color-text-secondary);
+    font-size: 0.9em;
+}
+
 @media (max-width: 600px) {
     .save-button-group .btn {
         margin-left: 16px;

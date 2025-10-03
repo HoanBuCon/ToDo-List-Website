@@ -34,7 +34,7 @@ export function registerGlobalEvents() {
         const page = btn.getAttribute('data-page');
         const currentPath = window.location.pathname;
 
-        const isCurrentPage = page && currentPath.endsWith(page.replace(/^.*[\\/]/, ''));
+        const isCurrentPage = page && currentPath.endsWith(page.replace(/^.*[\\/]/, '')); // Tôi đếch biết cái regex này nó làm gì đâu, copy trên mạng :v
         const isPlanningPage = page && page.includes('planning') && (currentPath.endsWith('createTaskPage.html') || currentPath.endsWith('openTaskPage.html')); // Nếu là trang planning hoặc là trang create/open task thì active nút planning trên header
         
         if (isCurrentPage || isPlanningPage) {

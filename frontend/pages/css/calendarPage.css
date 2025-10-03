@@ -120,25 +120,6 @@
     z-index: 10;
 }
 
-.todo-checkbox {
-    min-width: 24px;
-    min-height: 24px;
-    box-sizing: content-box;
-    flex-shrink: 0;
-    width: 24px;
-    height: 24px;
-    accent-color: var(--color-green);
-    cursor: pointer;
-    background: var(--color-bg-main);
-    border-radius: 4px;
-    transition: box-shadow 0.1s, transform 0.1s ease-in-out;
-}
-
-.todo-checkbox:hover {
-    transform: scale(1.1);
-    box-shadow: 0 0 0 2px var(--color-green-hover);
-}
-
 .todo-item-container {
     flex: 1;
     display: flex;
@@ -172,6 +153,7 @@
     width: 100%;
     min-height: 600px;
     color: var(--color-text-main);
+    font-family: Consolas, 'Courier New', Courier, monospace;
 }
 
 .neon-box {
@@ -191,6 +173,349 @@
     box-shadow: 0 0 20px #44d62c !important;
 }
 
+/* Đống này cho AI code cho đẹp <(") */
+/* ===== FullCalendar theming - dark, tối giản, sang trọng, đồng bộ palette ===== */
+.fc {
+    --fc-page-bg-color: var(--color-bg-main);
+    --fc-neutral-bg-color: #202326;
+    --fc-neutral-text-color: var(--color-text-secondary);
+    --fc-border-color: var(--color-border);
+
+    --fc-button-text-color: var(--color-green);
+    --fc-button-bg-color: transparent;
+    --fc-button-border-color: var(--color-green);
+    --fc-button-hover-bg-color: rgba(68, 214, 44, 0.08);
+    --fc-button-hover-border-color: var(--color-green-hover);
+    --fc-button-active-bg-color: rgba(68, 214, 44, 0.16);
+    --fc-button-active-border-color: var(--color-green-hover);
+
+    --fc-today-bg-color: #232a3b;
+    --fc-event-bg-color: rgba(68, 214, 44, 0.18);
+    --fc-event-border-color: #44d62c;
+    --fc-event-text-color: var(--color-text-main);
+}
+
+/* Toolbar */
+.fc .fc-toolbar {
+    color: var(--color-text-main);
+    gap: 12px;
+    flex-wrap: nowrap;
+    align-items: center;
+}
+
+.fc .fc-toolbar-chunk {
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+/* Tách riêng nút prev/next như createTaskPage */
+.fc .fc-button-group {
+    display: flex !important;
+    gap: 8px !important;
+}
+
+.fc .fc-button {
+    border-radius: 8px !important;
+}
+
+/* Viết hoa chữ cái đầu cho nút Today */
+.fc .fc-today-button {
+    text-transform: capitalize;
+}
+
+/* Tắt hiệu ứng button group của FullCalendar */
+.fc .fc-button-group .fc-button:not(:first-child) {
+    border-top-left-radius: 8px !important;
+    border-bottom-left-radius: 8px !important;
+}
+
+.fc .fc-button-group .fc-button:not(:last-child) {
+    border-top-right-radius: 8px !important;
+    border-bottom-right-radius: 8px !important;
+    margin-right: 8px !important;
+}
+
+.fc .fc-button-group .fc-button:last-child {
+    margin-left: 0 !important;
+}
+.fc .fc-toolbar-title {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: 800;
+    font-size: 1.4em;
+    color: var(--color-green);
+    letter-spacing: 0.3px;
+}
+
+@media (max-width: 768px) {
+    .fc .fc-toolbar-title {
+        font-size: 1.1em;
+        font-weight: 700;
+    }
+}
+
+@media (max-width: 480px) {
+    .fc .fc-toolbar-title {
+        font-size: 0.9em;
+        font-weight: 600;
+    }
+}
+.fc .fc-button {
+    background: var(--fc-button-bg-color);
+    color: var(--fc-button-text-color);
+    border: 1px solid var(--fc-button-border-color);
+    border-radius: 8px;
+    padding: 6px 12px;
+    font-size: 0.9em;
+    box-shadow: none;
+    transition:
+        box-shadow 0.2s,
+        color 0.2s,
+        border-color 0.2s,
+        background 0.2s,
+        transform 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@media (max-width: 768px) {
+    .fc .fc-button {
+        padding: 4px 8px;
+        font-size: 0.8em;
+    }
+    
+    .fc .fc-toolbar {
+        gap: 8px;
+        flex-wrap: wrap;
+    }
+    
+    .fc .fc-toolbar-chunk {
+        gap: 3px;
+    }
+    
+    .fc .fc-button-group {
+        gap: 6px !important;
+    }
+}
+
+@media (max-width: 480px) {
+    .fc .fc-button {
+        padding: 3px 6px;
+        font-size: 0.7em;
+    }
+    
+    .fc .fc-toolbar {
+        gap: 6px;
+        flex-wrap: wrap;
+    }
+    
+    .fc .fc-toolbar-chunk {
+        gap: 2px;
+    }
+    
+    .fc .fc-button-group {
+        gap: 4px !important;
+    }
+}
+.fc .fc-button:hover,
+.fc .fc-button:focus {
+    background: var(--fc-button-hover-bg-color);
+    color: var(--color-green-hover);
+    border-color: var(--fc-button-hover-border-color);
+    box-shadow:
+        0 0 1px #44d62c,
+        0 0 1px #00ff41,
+        0 0 10px #00ff41;
+    transform: translateY(-1px);
+}
+.fc .fc-button:active,
+.fc .fc-button.fc-button-active {
+    background: var(--fc-button-active-bg-color);
+    border-color: var(--fc-button-active-border-color);
+}
+
+/* Header cột và số ngày */
+.fc .fc-col-header-cell,
+.fc .fc-daygrid-day {
+    background: transparent;
+}
+.fc .fc-col-header-cell-cushion {
+    color: var(--color-green);
+    font-weight: 700;
+    padding: 10px 0;
+}
+.fc .fc-daygrid-day-number {
+    color: var(--color-text-secondary);
+    font-weight: 600;
+    padding: 6px 10px;
+    border-radius: 6px;
+    transition: background 0.2s, color 0.2s, scale 0.3s;
+}
+.fc .fc-daygrid-day:hover .fc-daygrid-day-number {
+    background: transparent;
+    color: var(--color-green);
+    scale: 1.5;
+}
+
+/* Ô ngày và hiệu ứng hover */
+.fc .fc-daygrid-day-frame {
+    transition: background 0.2s;
+}
+.fc .fc-daygrid-day:hover .fc-daygrid-day-frame {
+    background: rgba(255, 255, 255, 0.02);
+}
+
+/* Sự kiện */
+/* Xoá viền vuông bên trong, dùng chỉ 1 lớp viền bo góc ngoài */
+.fc .fc-event {
+    background: transparent;
+    border: none;
+    color: var(--fc-event-text-color);
+}
+.fc .fc-event-main {
+    background: transparent;
+    border: none;
+}
+
+/* DayGrid events (thanh all-day) - dày hơn, viền bo góc */
+.fc .fc-daygrid-event {
+    align-content: center;
+    min-height: 50px;
+    background: var(--color-bg-secondary);
+    border: 2px solid var(--fc-event-border-color);
+    border-radius: 8px;
+    padding: 8px 12px;
+    backdrop-filter: blur(2px);
+    transition: box-shadow 0.2s, transform 0.2s, background 0.2s ease-in-out;
+}
+.fc .fc-daygrid-event-harness {
+    margin-bottom: 6px;
+}
+.fc .fc-daygrid-event .fc-event-main {
+    background: transparent;
+}
+.fc .fc-event:hover {
+    color: var(--color-green-hover);
+    box-shadow:
+        0 0 1px #44d62c,
+        0 0 1px #00ff41,
+        0 0 10px #00ff41;
+}
+.fc .fc-event-time,
+.fc .fc-event-title {
+    font-weight: 600;
+}
+
+/* Đổi màu chữ khi hover: áp cho cả link bên trong event */
+.fc .fc-event a,
+.fc .fc-daygrid-event a,
+.fc .fc-timegrid-event a,
+.fc .fc-event .fc-event-title,
+.fc .fc-event .fc-event-time {
+    color: var(--fc-event-text-color);
+    text-decoration: none;
+    transition: color 0.2s ease-in-out;
+}
+.fc .fc-event:hover a,
+.fc .fc-daygrid-event:hover a,
+.fc .fc-timegrid-event:hover a,
+.fc .fc-event:hover .fc-event-title,
+.fc .fc-event:hover .fc-event-time {
+    color: var(--color-green-hover) !important;
+}
+
+/* TimeGrid events (tuần/giờ) - làm dày hơn và giữ bo góc */
+.fc .fc-timegrid-event {
+    background: var(--fc-event-bg-color);
+    border: 3px solid var(--fc-event-border-color);
+    border-radius: 4px;
+}
+.fc .fc-timegrid-event-harness {
+    margin-bottom: 6px;
+}
+.fc .fc-timegrid-event .fc-event-main {
+    padding: 8px 10px;
+}
+
+/* Lịch tuần/giờ (timeGrid) */
+.fc .fc-timegrid-axis-cushion,
+.fc .fc-timegrid-slot-label-cushion {
+    color: var(--color-text-secondary);
+}
+.fc .fc-timegrid-slot:hover {
+    background: rgba(68, 214, 44, 0.05);
+}
+
+/* List view */
+.fc .fc-list,
+.fc .fc-list-sticky .fc-list-day > * {
+    background: transparent;
+}
+.fc .fc-list-day-cushion {
+    color: var(--color-green);
+    background: rgba(68, 214, 44, 0.06);
+}
+.fc .fc-list-event:hover td {
+    background: rgba(68, 214, 44, 0.06);
+}
+
+/* Popover (sự kiện tràn) */
+.fc .fc-popover {
+    background: var(--color-bg-secondary);
+    border: 1px solid var(--color-border);
+    border-radius: 12px;
+    overflow: hidden;
+}
+.fc .fc-popover-header {
+    background: rgba(255, 255, 255, 0.03);
+    color: var(--color-text-main);
+}
+
+/* Lựa chọn (drag để chọn) */
+.fc .fc-highlight {
+    background: rgba(68, 214, 44, 0.12);
+}
+
+/* Scrollbar trong khung lịch */
+.calendar-section .fc-scroller::-webkit-scrollbar {
+    height: 8px;
+    width: 8px;
+}
+.calendar-section .fc-scroller::-webkit-scrollbar-thumb {
+    background: #2f3437;
+    border-radius: 8px;
+}
+.calendar-section .fc-scroller::-webkit-scrollbar-thumb:hover {
+    background: #3a4044;
+}
+
+
+/* ====================== Mobile Touch-Friendly ====================== */
+/* Cải thiện touch target cho mobile */
+@media (max-width: 768px) {
+    .todo-item {
+        min-height: 44px;           /* iOS/Safari khuyến nghị touch target >= 44px */
+        padding: 12px 16px;
+        user-select: none;           /* tránh select text khi touch */
+        -webkit-user-select: none;
+        -webkit-touch-callout: none; /* tránh callout trên iOS */
+        -webkit-tap-highlight-color: transparent; /* bỏ highlight khi tap */
+    }
+    
+    /* Drag mask cho Mobile */
+    .fc-drag-mask {
+        background: rgba(68, 214, 44, 0.1);
+        border: 2px dashed #44d62c;
+        border-radius: 8px;
+        z-index: 9999;
+    }
+    
+    /* Event giọt có thể kéo trên mobile */
+    .fc .fc-event {
+        touch-action: none;         /* tránh conflict với browser gestures */
+    }
+}
+
+/* ====================== Responsive ====================== */
 @media (max-width: 1200px) {
     .todo-section {
         width: 35%;
