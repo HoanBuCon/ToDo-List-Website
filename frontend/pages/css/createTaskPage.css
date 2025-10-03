@@ -297,6 +297,28 @@
     text-align: left;
 }
 
+/* FullCalendar toolbar layout fix */
+.fc .fc-toolbar {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    flex-wrap: nowrap !important;
+}
+
+.fc .fc-toolbar-chunk {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    gap: 8px !important;
+}
+
+.fc .fc-button-group {
+    display: flex !important;
+    flex-direction: row !important;
+    gap: 8px !important;
+}
+
 .fc .fc-button {
     background: var(--fc-button-bg-color);
     color: var(--fc-button-text-color);
@@ -304,6 +326,10 @@
     border-radius: 6px;
     padding: 4px 8px;
     font-size: 0.8em;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    text-align: center !important;
     transition: 
         box-shadow 0.2s,
         color 0.2s,
@@ -322,11 +348,62 @@
     background: rgba(68, 214, 44, 0.08);
     color: var(--color-green-hover);
     border-color: var(--color-green-hover);
-    box-shadow:
+    box-shadow: 
         0 0 1px #44d62c,
         0 0 1px #00ff41,
         0 0 8px #00ff41;
     transform: translateY(-1px);
+}
+
+/* Vertical alignment cho icon và text */
+.fc .fc-button .fc-icon,
+.fc .fc-button span {
+    display: flex;
+    align-items: center;
+}
+
+/* Responsive alignment */
+@media (max-width: 1200px) {
+    .fc .fc-button {
+        min-height: 32px;
+    }
+    
+    .fc .fc-button .fc-icon,
+    .fc .fc-button span {
+        display: flex;
+        align-items: center;
+    }
+}
+
+@media (max-width: 768px) {
+    .fc .fc-toolbar {
+        flex-wrap: wrap !important;
+        gap: 8px !important;
+    }
+    
+    .fc .fc-toolbar-chunk {
+        gap: 4px !important;
+    }
+    
+    .fc .fc-button-group {
+        gap: 4px !important;
+    }
+    
+    .fc .fc-toolbar-title {
+        font-size: 1em;
+    }
+    
+    .fc .fc-button {
+        font-size: 0.7em;
+        padding: 3px 6px;
+        min-height: 30px;
+    }
+    
+    .fc .fc-button .fc-icon,
+    .fc .fc-button span {
+        display: flex;
+        align-items: center;
+    }
 }
 
 .fc .fc-col-header-cell-cushion {
@@ -338,6 +415,139 @@
 .fc .fc-daygrid-day-number {
     color: var(--color-text-secondary);
     font-size: 0.9em;
+}
+
+/* Preview task event styling - clean style như calendarPage */
+.fc .preview-task-event {
+    background: var(--color-bg-secondary) !important;
+    border: 2px solid #44d62c !important;
+    color: var(--color-text-main) !important;
+    border-radius: 8px !important;
+    min-height: 50px !important;
+    padding: 8px 12px !important;
+    backdrop-filter: blur(2px) !important;
+    cursor: move;
+    transition: box-shadow 0.2s, transform 0.2s, background 0.2s ease-in-out !important;
+}
+
+/* Fix title display */
+.fc .preview-task-event .fc-event-title {
+    color: var(--color-text-main) !important;
+    font-size: 0.9em !important;
+    font-weight: 600 !important;
+    text-overflow: ellipsis !important;
+    overflow: hidden !important;
+    white-space: nowrap !important;
+}
+
+.fc .preview-task-event .fc-event-main {
+    background: transparent !important;
+    padding: 0 !important;
+    overflow: hidden !important;
+}
+
+/* Preview events get the same invisible resize handles */
+.fc .preview-task-event .fc-event-resizer {
+    display: block !important;
+    opacity: 0 !important;
+}
+
+.fc .preview-task-event:hover .fc-event-resizer {
+    opacity: 0.15 !important;
+    background: rgba(68, 214, 44, 0.4) !important;
+}
+
+.fc .preview-task-event .fc-event-resizer:hover {
+    opacity: 0.35 !important;
+    background: rgba(68, 214, 44, 0.6) !important;
+}
+
+.fc .preview-task-event::after {
+    content: "PREVIEW";
+    position: absolute;
+    top: 2px;
+    right: 4px;
+    font-size: 0.6em;
+    color: #44d62c;
+    opacity: 0.7;
+    font-style: italic;
+}
+
+/* Selected event styling */
+.fc .selected-event {
+    background: rgba(68, 214, 44, 0.5) !important;
+    border: 2px solid #00ff41 !important;
+    box-shadow: 0 0 8px #44d62c !important;
+    transform: scale(1.02);
+}
+
+/* Event hover effects - clean style */
+.fc .fc-event:hover {
+    color: var(--color-green-hover) !important;
+    box-shadow: 
+        0 0 1px #44d62c,
+        0 0 1px #00ff41,
+        0 0 10px #00ff41 !important;
+    transform: translateY(-1px);
+}
+
+.fc .preview-task-event:hover .fc-event-title {
+    color: var(--color-green-hover) !important;
+}
+
+/* Clean event styling with invisible resize handles */
+.fc .fc-event {
+    position: relative !important;
+    overflow: visible !important;
+    transition: opacity 0.2s, transform 0.2s !important;
+}
+
+/* Drag state styling */
+.fc .fc-event-dragging {
+    opacity: 0.7 !important;
+    transform: scale(1.05) !important;
+    z-index: 9999 !important;
+    cursor: grabbing !important;
+}
+
+.fc .fc-event-resizing {
+    opacity: 0.8 !important;
+    box-shadow: 0 0 10px rgba(68, 214, 44, 0.5) !important;
+}
+
+/* Invisible resize handles - functionality exists but visually hidden */
+.fc .fc-event-resizer {
+    display: block !important;
+    opacity: 0 !important;
+    background: transparent !important;
+    border: none !important;
+    transition: opacity 0.2s;
+    position: absolute !important;
+    top: 0 !important;
+    bottom: 0 !important;
+    z-index: 10 !important;
+    width: 12px !important; /* Wider touch area */
+}
+
+.fc .fc-event-resizer-start {
+    left: -6px !important;
+    cursor: ew-resize !important;
+}
+
+.fc .fc-event-resizer-end {
+    right: -6px !important;
+    cursor: ew-resize !important;
+}
+
+/* Show subtle hint on hover for better UX */
+.fc .fc-event:hover .fc-event-resizer {
+    opacity: 0.1 !important;
+    background: rgba(68, 214, 44, 0.3) !important;
+}
+
+.fc .fc-event-resizer:hover {
+    opacity: 0.3 !important;
+    background: rgba(68, 214, 44, 0.5) !important;
 }
 
 @media (max-width: 600px) {

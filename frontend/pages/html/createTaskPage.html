@@ -111,30 +111,7 @@
         </div>
     </div>
 
-    <script>
-        // Calendar mini cho Create Task Page
-        document.addEventListener('DOMContentLoaded', function() {
-            setTimeout(function() {
-                var calendarEl = document.getElementById('calendar-preview');
-                console.log('Calendar element:', calendarEl);
-                console.log('FullCalendar available:', typeof FullCalendar !== 'undefined');
-                
-                if (calendarEl && typeof FullCalendar !== 'undefined') {
-                    var calendar = new FullCalendar.Calendar(calendarEl, {
-                        initialView: 'dayGridMonth',
-                        aspectRatio: 1.5,
-                        headerToolbar: { left: 'title', center: '', right: 'today prev next' },
-                        editable: false,
-                        dayMaxEvents: 2
-                    });
-                    calendar.render();
-                    console.log('Calendar rendered');
-                } else {
-                    console.log('Calendar element or FullCalendar not found');
-                }
-            }, 100);
-        });
-    </script>
+    <script type="module" src="/frontend/javascript/pages/miniCalendarLoader.js"></script>
     <script type="module" src="/frontend/javascript/app.js"></script>
     <script type="module" src="/frontend/javascript/components/neuralNetwork.js"></script>
 </body>

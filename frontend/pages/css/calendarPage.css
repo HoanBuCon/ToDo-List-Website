@@ -218,6 +218,10 @@
 
 .fc .fc-button {
     border-radius: 8px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    text-align: center !important;
 }
 
 /* Viết hoa chữ cái đầu cho nút Today */
@@ -281,6 +285,8 @@
     .fc .fc-button {
         padding: 4px 8px;
         font-size: 0.8em;
+        height: auto !important;
+        min-height: 32px;
     }
     
     .fc .fc-toolbar {
@@ -295,12 +301,20 @@
     .fc .fc-button-group {
         gap: 6px !important;
     }
+    
+    .fc .fc-button .fc-icon,
+    .fc .fc-button span {
+        display: flex;
+        align-items: center;
+    }
 }
 
 @media (max-width: 480px) {
     .fc .fc-button {
         padding: 3px 6px;
         font-size: 0.7em;
+        height: auto !important;
+        min-height: 28px;
     }
     
     .fc .fc-toolbar {
@@ -314,6 +328,12 @@
     
     .fc .fc-button-group {
         gap: 4px !important;
+    }
+    
+    .fc .fc-button .fc-icon,
+    .fc .fc-button span {
+        display: flex;
+        align-items: center;
     }
 }
 .fc .fc-button:hover,
