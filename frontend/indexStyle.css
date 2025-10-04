@@ -52,6 +52,7 @@ body {
     object-fit: cover;
     border: 3px solid var(--color-green);
     box-shadow: 0 0 30px rgba(68, 214, 44, 0.5);
+    object-position: 42% 100%;
     animation: avatarPulse 2s ease-in-out infinite;
 }
 
