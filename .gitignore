@@ -34,4 +34,4 @@ frontend/.env
 frontend/.env.*
 
 # Video hố đen(mẹ bạn) siêu nặng
-/frontend/src/assets/Super_Black_Hole.mp4
+frontend/src/assets/Super_Black_Hole.mp4
