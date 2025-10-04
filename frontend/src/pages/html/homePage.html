@@ -1,42 +1,44 @@
-<!DOCTYPE html>
+<!DOCTYPE     <video autoplay muted loop playsinline class="bg-video">
+        <source src="/frontend/src/assets/Super_Black_Hole.mp4" type="video/mp4">
+        Your browser does not support the video tag.l>
 <html lang="vi">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MingKing Daden</title>
-    <link rel="stylesheet" href="/frontend/pages/css/homePage.css">
-    <link rel="stylesheet" href="../../node_modules/@fortawesome/fontawesome-free/css/all.min.css">
+    <link rel="stylesheet" href="/frontend/src/pages/css/homePage.css">
+    <link rel="stylesheet" href="/node_modules/@fortawesome/fontawesome-free/css/all.min.css">
 </head>
 <body class="home-page">
     <video autoplay muted loop playsinline class="bg-video">
-        <source src="/frontend/assets/Super_Black_Hole.mp4" type="video/mp4">
+        <source src="../../assets/Super_Black_Hole.mp4" type="video/mp4">
         Your browser does not support the video tag.
     </video>
     <div class="header">
         <div class="logo-container">
-            <a href="/frontend/pages/html/homePage.html" class="logo-box"><img src="/frontend/assets/mingking_peak.jpg" alt="Ming King" class="logo-img"></a>
-            <p class="logo-text"><a href="/frontend/pages/html/homePage.html">Ming King</a></p>
+            <a href="/frontend/src/pages/html/homePage.html" class="logo-box"><img src="/frontend/src/assets/mingking_peak.jpg" alt="Ming King" class="logo-img"></a>
+            <p class="logo-text"><a href="/frontend/src/pages/html/homePage.html">Ming King</a></p>
         </div>
-        <button class="login-btn neon-btn" onclick="window.location.href='/frontend/pages/html/loginPage.html'">LOGIN</button>
+        <button class="login-btn neon-btn" onclick="window.location.href='/frontend/src/pages/html/loginPage.html'">LOGIN</button>
             <div class="header-btn">
                 <nav class="page-button-group">
-                    <button class="btn page-btn" data-page="/frontend/pages/html/homePage.html">
+                    <button class="btn page-btn" data-page="/frontend/src/pages/html/homePage.html">
                         <span class="page-button-icon"><i class="fa-solid fa-house"></i></span>
                         <span class="page-button-text">HOME</span>
                     </button>
-                    <button class="btn page-btn" data-page="/frontend/pages/html/tasksPage.html">
+                    <button class="btn page-btn" data-page="/frontend/src/pages/html/tasksPage.html">
                         <span class="page-button-icon"><i class="fa-solid fa-tasks"></i></span>
                         <span class="page-button-text">TASKS</span>
                     </button>
-                    <button class="btn page-btn" data-page="/frontend/pages/html/calendarPage.html">
+                    <button class="btn page-btn" data-page="/frontend/src/pages/html/calendarPage.html">
                         <span class="page-button-icon"><i class="fa-solid fa-calendar"></i></span>
                         <span class="page-button-text">CALENDAR</span>
                     </button>
-                    <button class="btn page-btn" data-page="/frontend/pages/html/planningPage.html">
+                    <button class="btn page-btn" data-page="/frontend/src/pages/html/planningPage.html">
                         <span class="page-button-icon"><i class="fa-solid fa-clipboard-list"></i></span>
                         <span class="page-button-text">PLANNING</span>
                     </button>
-                    <button class="btn page-btn" data-page="/frontend/pages/html/statisticsPage.html">
+                    <button class="btn page-btn" data-page="/frontend/src/pages/html/statisticsPage.html">
                         <span class="page-button-icon"><i class="fa-solid fa-chart-line"></i></span>
                         <span class="page-button-text">STATISTICS</span>
                     </button>
@@ -52,15 +54,15 @@
                 <span class="main-content-description">Developed by <a href="https://hoanbucon.id.vn/" target="_blank" class="mingking-description-link">HoanBuCon</a></span>
             </div>
             <div>
-                <img src="/frontend/assets/ming_king_super_evil.png" alt="Ming King" class="mingking-main-img">
+                <img src="/frontend/src/assets/ming_king_super_evil.png" alt="Ming King" class="mingking-main-img">
                 <span class="overlay-text">I'm was born Evil</span>
             </div>
             <div class="task-button-group">
-                <button id="get-started" class="btn neon-btn" data-page="/frontend/pages/html/planningPage.html">
+                <button id="get-started" class="btn neon-btn" data-page="/frontend/src/pages/html/planningPage.html">
                     <span class="task-button-group-icon"><i class="fa-solid fa-rocket"></i></span>
                     <span class="task-button-group-text">Get Started</span>
                 </button>
-                <button id="help" class="btn neon-btn" data-page="/frontend/pages/html/helpPage.html">
+                <button id="help" class="btn neon-btn" data-page="/frontend/src/pages/html/helpPage.html">
                     <span class="task-button-group-icon"><i class="fa-solid fa-circle-question"></i></span>
                     <span class="task-button-group-text">Help</span>
                 </button>
@@ -77,7 +79,7 @@
         </div>
     </div>
 
-    <script type="module" src="/frontend/javascript/app.js"></script>
-    <script type="module" src="/frontend/javascript/components/neuralNetwork.js"></script>
+    <script type="module" src="/frontend/src/javascript/app.js"></script>
+    <script type="module" src="/frontend/src/javascript/components/neuralNetwork.js"></script>
 </body>
 </html>

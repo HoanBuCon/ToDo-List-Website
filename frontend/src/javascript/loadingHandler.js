@@ -113,10 +113,10 @@ class LoadingHandler {
         // Kiểm tra xem có trang homePage không
         if (this.checkHomePageExists()) {
             // Chuyển đến trang home
-            window.location.href = 'pages/html/homePage.html';
+            window.location.href = '/frontend/src/pages/html/homePage.html';
         } else {
             // Nếu không có homePage, chuyển đến trang tasks
-            window.location.href = 'pages/html/tasksPage.html';
+            window.location.href = '/frontend/src/pages/html/tasksPage.html';
         }
     }
     

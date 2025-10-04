@@ -4,12 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MingKing Planning</title>
-    <link rel="stylesheet" href="../../components/headerStyle.css">
-    <link rel="stylesheet" href="../../components/mainStyle.css">
-    <link rel="stylesheet" href="../../components/footerStyle.css">
-    <link rel="stylesheet" href="../../components/responsive.css">
-    <link rel="stylesheet" href="../css/planningPage.css">
-    <link rel="stylesheet" href="../../node_modules/@fortawesome/fontawesome-free/css/all.min.css">
+    <link rel="stylesheet" href="/frontend/src/components/headerStyle.css">
+    <link rel="stylesheet" href="/frontend/src/components/mainStyle.css">
+    <link rel="stylesheet" href="/frontend/src/components/footerStyle.css">
+    <link rel="stylesheet" href="/frontend/src/components/responsive.css">
+    <link rel="stylesheet" href="/frontend/src/pages/css/planningPage.css">
+    <link rel="stylesheet" href="/node_modules/@fortawesome/fontawesome-free/css/all.min.css">
 </head>
 <body class="planning-page">
     <div class="header">
@@ -20,23 +20,23 @@
         <button class="login-btn neon-btn" onclick="window.location.href='./loginPage.html'">LOGIN</button>
             <div class="header-btn">
                 <nav class="page-button-group">
-                    <button class="btn page-btn" data-page="/frontend/pages/html/homePage.html">
+                    <button class="btn page-btn" data-page="/frontend/src/pages/html/homePage.html">
                         <span class="page-button-icon"><i class="fa-solid fa-house"></i></span>
                         <span class="page-button-text">HOME</span>
                     </button>
-                    <button class="btn page-btn" data-page="/frontend/pages/html/tasksPage.html">
+                    <button class="btn page-btn" data-page="/frontend/src/pages/html/tasksPage.html">
                         <span class="page-button-icon"><i class="fa-solid fa-tasks"></i></span>
                         <span class="page-button-text">TASKS</span>
                     </button>
-                    <button class="btn page-btn" data-page="/frontend/pages/html/calendarPage.html">
+                    <button class="btn page-btn" data-page="/frontend/src/pages/html/calendarPage.html">
                         <span class="page-button-icon"><i class="fa-solid fa-calendar"></i></span>
                         <span class="page-button-text">CALENDAR</span>
                     </button>
-                    <button class="btn page-btn" data-page="/frontend/pages/html/planningPage.html">
+                    <button class="btn page-btn" data-page="/frontend/src/pages/html/planningPage.html">
                         <span class="page-button-icon"><i class="fa-solid fa-clipboard-list"></i></span>
                         <span class="page-button-text">PLANNING</span>
                     </button>
-                    <button class="btn page-btn" data-page="/frontend/pages/html/statisticsPage.html">
+                    <button class="btn page-btn" data-page="/frontend/src/pages/html/statisticsPage.html">
                         <span class="page-button-icon"><i class="fa-solid fa-chart-line"></i></span>
                         <span class="page-button-text">STATISTICS</span>
                     </button>
@@ -49,11 +49,11 @@
         <canvas id="nn-background"></canvas>
         <div class="choose-content">
             <div class="create-task-button-group">
-                <button class="btn create-task-btn" data-page="/frontend/pages/html/createTaskPage.html">
+                <button class="btn create-task-btn" data-page="/frontend/src/pages/html/createTaskPage.html">
                     <span class="task-btn-icon"><i class="fa-solid fa-plus"></i></span>
                     <span class="task-btn-text"><p>Create new Tasks</p></span>
                 </button>
-                <button class="btn open-task-btn" data-page="/frontend/pages/html/openTaskPage.html">
+                <button class="btn open-task-btn" data-page="/frontend/src/pages/html/openTaskPage.html">
                     <span class="task-btn-icon"><i class="fa-solid fa-folder-open"></i></span>
                     <span class="task-btn-text"><p>Open existing Tasks</p></span>
                 </button>
@@ -70,7 +70,7 @@
         </div>
     </div>
 
-    <script type="module" src="/frontend/javascript/app.js"></script>
-    <script type="module" src="/frontend/javascript/components/neuralNetwork.js"></script>
+    <script type="module" src="/frontend/src/javascript/app.js"></script>
+    <script type="module" src="/frontend/src/javascript/components/neuralNetwork.js"></script>
 </body>
 </html>
