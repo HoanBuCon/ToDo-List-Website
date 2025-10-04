@@ -21,7 +21,7 @@
         <button class="login-btn neon-btn" onclick="window.location.href='./loginPage.html'">LOGIN</button>
             <div class="header-btn">
                 <nav class="page-button-group">
-                    <button class="btn page-btn" data-page="/frontend/index.html">
+                    <button class="btn page-btn" data-page="/frontend/pages/html/homePage.html">
                         <span class="page-button-icon"><i class="fa-solid fa-house"></i></span>
                         <span class="page-button-text">HOME</span>
                     </button>
@@ -49,9 +49,15 @@
     <div class="main">
         <canvas id="nn-background" data-full-viewport="true"></canvas>
         <div class="main-content neon-box">
-            <div class="main-content-info">
-                <span class="main-content-title">Statistics Dashboard</span>
-                <span class="main-content-description">Track your progress and achievements</span>
+            <button class="btn neon-btn refresh-btn-header" onclick="refreshStatistics()">
+                <i class="fa-solid fa-refresh"></i>
+                Refresh
+            </button>
+            <div class="main-content-header">
+                <div class="main-content-info">
+                    <span class="main-content-title">Statistics Dashboard</span>
+                    <span class="main-content-description">Track your progress and achievements</span>
+                </div>
             </div>
 
             <!-- Statistics Overview Cards -->
@@ -100,7 +106,7 @@
 
             <!-- Task Statistics -->
             <div class="task-stats-section">
-                <h2 class="section-title">Task Statistics</h2>
+                <h2 class="section-title">Task Overview</h2>
                 <div class="task-stats-grid">
                     <div class="task-stat-item">
                         <div class="task-stat-icon">
@@ -155,27 +161,36 @@
             </div>
 
             <!-- Charts Section -->
+            <h2 class="section-title">Statistics</h2>
             <div class="charts-section">
                 <div class="chart-container">
-                    <h3 class="chart-title">Todo Lists Distribution</h3>
-                    <canvas id="todoDistributionChart"></canvas>
+                    <h3 class="chart-title">Todo Lists Timeline</h3>
+                    <canvas id="todoListsTimelineChart"></canvas>
                 </div>
                 <div class="chart-container">
-                    <h3 class="chart-title">Completion Progress</h3>
-                    <canvas id="completionProgressChart"></canvas>
+                    <h3 class="chart-title">Tasks Timeline</h3>
+                    <canvas id="tasksTimelineChart"></canvas>
+                </div>
+                <div class="chart-container">
+                    <h3 class="chart-title">Todo Lists Status</h3>
+                    <canvas id="todoListsStatusChart"></canvas>
+                </div>
+                <div class="chart-container">
+                    <h3 class="chart-title">Tasks Status</h3>
+                    <canvas id="tasksStatusChart"></canvas>
                 </div>
             </div>
 
             <!-- Todo Lists Sections -->
             <div class="todo-lists-section">
-                <!-- History Section -->
+                <!-- Pending Section -->
                 <div class="todo-list-category">
                     <h2 class="section-title">
-                        <i class="fa-solid fa-history"></i>
-                        History (Completed)
+                        <i class="fa-solid fa-pause-circle"></i>
+                        Pending
                     </h2>
-                    <div class="todo-list-container" id="completed-list">
-                        <!-- Completed todos will be inserted here -->
+                    <div class="todo-list-container" id="pending-list">
+                        <!-- Pending todos will be inserted here -->
                     </div>
                 </div>
 
@@ -190,14 +205,14 @@
                     </div>
                 </div>
 
-                <!-- Pending Section -->
+                <!-- History Section -->
                 <div class="todo-list-category">
                     <h2 class="section-title">
-                        <i class="fa-solid fa-pause-circle"></i>
-                        Pending
+                        <i class="fa-solid fa-history"></i>
+                        History (Completed)
                     </h2>
-                    <div class="todo-list-container" id="pending-list">
-                        <!-- Pending todos will be inserted here -->
+                    <div class="todo-list-container" id="completed-list">
+                        <!-- Completed todos will be inserted here -->
                     </div>
                 </div>
             </div>

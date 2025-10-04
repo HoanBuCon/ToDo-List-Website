@@ -38,7 +38,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 },
                 eventDrop: function(info) {
                     // Kéo thay đổi ngày - cập nhật input fields
-                    console.log('Event dropped:', info.event.title, info.event.id);
                     
                     // Auto navigate to the month of the dropped event
                     var eventDate = info.event.start;
@@ -46,7 +45,6 @@ document.addEventListener('DOMContentLoaded', function() {
                     
                     if (eventDate.getMonth() !== currentDate.getMonth() || 
                         eventDate.getFullYear() !== currentDate.getFullYear()) {
-                        console.log('Event moved to different month, navigating...');
                         calendar.gotoDate(eventDate);
                     }
                     
@@ -56,7 +54,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 },
                 eventResize: function(info) {
                     // Kéo giãn để thay đổi duration - cập nhật input fields
-                    console.log('Event resized:', info.event.title, info.event.id);
                     
                     // Auto navigate if resized event extends to different month
                     var startDate = info.event.start;
@@ -70,10 +67,8 @@ document.addEventListener('DOMContentLoaded', function() {
                                              endDate.getFullYear() !== currentDate.getFullYear());
                     
                     if (startInDifferentMonth) {
-                        console.log('Event start moved to different month, navigating...');
                         calendar.gotoDate(startDate);
                     } else if (endInDifferentMonth) {
-                        console.log('Event end moved to different month, navigating...');
                         calendar.gotoDate(endDate);
                     }
                     
@@ -197,11 +192,9 @@ function initTaskPreview() {
     function updateDateInputsFromEvent(event) {
         // Kiểm tra xem có phải là preview event không - sử dụng global previewEventId
         if (!event.id || event.id !== previewEventId) {
-            console.log('Event is not the current preview task, skipping update:', event.id, 'Expected:', previewEventId);
             return;
         }
         
-        console.log('Updating date inputs from calendar event:', event.title, event.start, event.end);
         
         isUpdatingFromCalendar = true;
         
@@ -210,7 +203,6 @@ function initTaskPreview() {
         
         if (startDateInput && start) {
             var startDateValue = formatDateForInput(start);
-            console.log('Setting start date to:', startDateValue);
             startDateInput.value = startDateValue;
             
             // Trigger input event để các listener khác biết
@@ -222,7 +214,6 @@ function initTaskPreview() {
             var endDate = new Date(end);
             endDate.setDate(endDate.getDate() - 1);
             var endDateValue = formatDateForInput(endDate);
-            console.log('Setting end date to:', endDateValue);
             endDateInput.value = endDateValue;
             
             // Trigger input event để các listener khác biết
@@ -232,7 +223,6 @@ function initTaskPreview() {
         // Reset flag sau một khoảng thời gian ngắn
         setTimeout(function() {
             isUpdatingFromCalendar = false;
-            console.log('Calendar update flag reset');
         }, 150);
     }
     
@@ -261,7 +251,6 @@ function setupTaskPreview(calendar) {
     
     // Update preview when dates change
     function updateDatePreview() {
-        console.log('Date input changed, isUpdatingFromCalendar:', isUpdatingFromCalendar);
         if (!isUpdatingFromCalendar) {
             updateCalendarPreview();
         }
@@ -303,7 +292,6 @@ function setupTaskPreview(calendar) {
             if (!isUpdatingFromCalendar && 
                 (start.getMonth() !== currentDate.getMonth() || 
                  start.getFullYear() !== currentDate.getFullYear())) {
-                console.log('Task date in different month, navigating to:', start);
                 calendar.gotoDate(start);
             }
             
@@ -345,7 +333,6 @@ document.addEventListener('keydown', function(e) {
 
 // Force cleanup drag state khi bị lock
 function forceCleanupDragState() {
-    console.log('Force cleaning up drag state...');
     
     // Remove all drag-related classes and elements
     var dragElements = document.querySelectorAll('.fc-event-dragging, .fc-event-resizing, .fc-event-mirror, .fc-drag-helper');
@@ -366,7 +353,6 @@ function forceCleanupDragState() {
         document.ondragstart = null;
     }
     
-    console.log('Drag state cleanup completed');
 }
 
 // Auto cleanup on mouse up globally (failsafe)
@@ -375,7 +361,6 @@ document.addEventListener('mouseup', function(e) {
         // Check if there are stuck drag elements after a brief delay
         var stuckElements = document.querySelectorAll('.fc-event-mirror, .fc-drag-helper');
         if (stuckElements.length > 0) {
-            console.log('Found stuck drag elements, cleaning up...');
             forceCleanupDragState();
         }
     }, 500);
@@ -387,7 +372,6 @@ document.addEventListener('mouseleave', function(e) {
         setTimeout(function() {
             var stuckElements = document.querySelectorAll('.fc-event-mirror, .fc-drag-helper');
             if (stuckElements.length > 0) {
-                console.log('Mouse left calendar with stuck elements, cleaning up...');
                 forceCleanupDragState();
             }
         }, 200);

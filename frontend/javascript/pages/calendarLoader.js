@@ -88,13 +88,11 @@ function initializeCalendar(calendarEl) {
 
 // Event handler functions
 function handleDrop(info) {
-    console.log('Item dropped from external source');
     // Optional: Remove source element if needed
     // info.draggedEl.parentNode.removeChild(info.draggedEl);
 }
 
 function handleEventReceive(info) {
-    console.log('Event received:', info.event.title);
     
     // Ensure event has end date
     if (!info.event.end) {
@@ -113,7 +111,6 @@ function handleEventReceive(info) {
 }
 
 function handleEventDrop(info) {
-    console.log('Event dropped:', info.event.title);
     
     // Auto navigate to month containing the dropped event
     var calendar = info.view.calendar;
@@ -124,7 +121,6 @@ function handleEventDrop(info) {
 }
 
 function handleEventResize(info) {
-    console.log('Event resized:', info.event.title);
     
     var calendar = info.view.calendar;
     var startDate = info.event.start;
@@ -156,7 +152,6 @@ function handleEventClick(info) {
 }
 
 function handleEventDragStart(info) {
-    console.log('Drag started:', info.event.title);
     
     if (info.el) {
         info.el.classList.add('fc-event-dragging');
@@ -167,13 +162,11 @@ function handleEventDragStart(info) {
         clearTimeout(dragCleanupTimer);
     }
     dragCleanupTimer = setTimeout(function() {
-        console.log('Auto cleanup triggered after timeout');
         forceCleanupDragState();
     }, 10000);
 }
 
 function handleEventDragStop(info) {
-    console.log('Drag stopped:', info.event.title);
     
     // Clear timeout timer
     if (dragCleanupTimer) {
@@ -193,14 +186,12 @@ function handleEventDragStop(info) {
 }
 
 function handleEventResizeStart(info) {
-    console.log('Resize started:', info.event.title);
     if (info.el) {
         info.el.classList.add('fc-event-resizing');
     }
 }
 
 function handleEventResizeStop(info) {
-    console.log('Resize stopped:', info.event.title);
     if (info.el) {
         info.el.classList.remove('fc-event-resizing');
     }
@@ -217,7 +208,6 @@ function autoNavigateToEventMonth(calendar, eventDate) {
     
     if (eventDate.getMonth() !== currentDate.getMonth() || 
         eventDate.getFullYear() !== currentDate.getFullYear()) {
-        console.log('Event moved to different month, navigating...');
         calendar.gotoDate(eventDate);
     }
 }
@@ -258,7 +248,6 @@ function cleanupResizeArtifacts() {
 }
 
 function forceCleanupDragState() {
-    console.log('Force cleaning up drag state...');
     
     // Remove all drag-related classes and elements
     var dragElements = document.querySelectorAll('.fc-event-dragging, .fc-event-resizing, .fc-event-mirror, .fc-drag-helper');
@@ -279,7 +268,6 @@ function forceCleanupDragState() {
         document.ondragstart = null;
     }
     
-    console.log('Drag state cleanup completed');
 }
 
 // Global event listeners
@@ -308,7 +296,6 @@ function setupGlobalEventListeners() {
         setTimeout(function() {
             var stuckElements = document.querySelectorAll('.fc-event-mirror, .fc-drag-helper');
             if (stuckElements.length > 0) {
-                console.log('Found stuck drag elements, cleaning up...');
                 forceCleanupDragState();
             }
         }, 500);
@@ -320,7 +307,6 @@ function setupGlobalEventListeners() {
             setTimeout(function() {
                 var stuckElements = document.querySelectorAll('.fc-event-mirror, .fc-drag-helper');
                 if (stuckElements.length > 0) {
-                    console.log('Mouse left calendar with stuck elements, cleaning up...');
                     forceCleanupDragState();
                 }
             }, 200);

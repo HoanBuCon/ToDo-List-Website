@@ -15,8 +15,47 @@ body {
     max-width: 1500px;
 }
 
-.main-content-description {
+/* Main Content Header */
+.main-content-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     margin-bottom: 32px;
+    gap: 20px;
+}
+
+.main-content-info {
+    flex: 1;
+}
+
+.main-content-description {
+    margin-bottom: 0;
+}
+
+/* Header Refresh Button */
+.refresh-btn-header {
+    padding: 10px 16px;
+    font-size: 0.9rem;
+    min-width: auto;
+    white-space: nowrap;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-shrink: 0;
+    margin-left: auto;
+}
+
+.refresh-btn-header i {
+    font-size: 0.9rem;
+}
+
+.refresh-btn-header:hover i {
+    animation: spin 0.5s linear;
+}
+
+@keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
 }
 
 /* Stats Overview Cards */
@@ -195,7 +234,7 @@ body {
 /* Charts Section */
 .charts-section {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(2, 1fr);
     gap: 32px;
     margin-bottom: 40px;
     width: 100%;
@@ -446,6 +485,10 @@ body {
     transform: scale(1.05);
 }
 
+.refresh-btn:hover i {
+    animation: spin 0.5s linear;
+}
+
 /* Empty State */
 .empty-state {
     text-align: center;
@@ -503,6 +546,18 @@ body {
 }
 
 @media (max-width: 768px) {
+    .main-content-header {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 16px;
+    }
+    
+    .refresh-btn-header {
+        align-self: flex-end;
+        padding: 8px 12px;
+        font-size: 0.8rem;
+    }
+    
     .stats-overview {
         grid-template-columns: 1fr;
         gap: 16px;

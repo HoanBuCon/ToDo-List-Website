@@ -3,81 +3,65 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MingKing Daden</title>
+    <title>MingKing Todo - Loading...</title>
     <link rel="stylesheet" href="indexStyle.css">
-    <link rel="stylesheet" href="node_modules/@fortawesome/fontawesome-free/css/all.min.css">
+    <link rel="stylesheet" href="./node_modules/@fortawesome/fontawesome-free/css/all.min.css">
 </head>
-<body class="home-page">
-    <video autoplay muted loop playsinline class="bg-video">
-        <source src="./assets/Super_Black_Hole.mp4" type="video/mp4">
-        Your browser does not support the video tag.
-    </video>
-    <div class="header">
-        <div class="logo-container">
-            <a href="/frontend/index.html" class="logo-box"><img src="./assets/mingking_peak.jpg" alt="Ming King" class="logo-img"></a>
-            <p class="logo-text"><a href="/frontend/index.html">Ming King</a></p>
+<body>
+    <div class="loading-container">
+        <div class="loading-content">
+            <div class="loading-avatar">
+                <img src="assets/ming_king_super_lightning_evil.png" alt="MingKing" class="avatar-img">
+                <div class="avatar-glow"></div>
+            </div>
+            
+            <h1 class="loading-title">MingKing ưebsite</h1>
+            <p class="loading-subtitle">Initializing system...</p>
+            
+            <div class="loading-spinner">
+                <div class="spinner-ring"></div>
+                <div class="spinner-ring"></div>
+                <div class="spinner-ring"></div>
+            </div>
+            
+            <div class="progress-container">
+                <div class="progress-bar">
+                    <div class="progress-fill"></div>
+                </div>
+                <div class="progress-text">0%</div>
+            </div>
+            
+            <div class="loading-steps">
+                <div class="step active" data-step="1">
+                    <i class="fas fa-database"></i>
+                    <span>Loading data...</span>
+                </div>
+                <div class="step" data-step="2">
+                    <i class="fas fa-cogs"></i>
+                    <span>Initializing components...</span>
+                </div>
+                <div class="step" data-step="3">
+                    <i class="fas fa-check-circle"></i>
+                    <span>Done!</span>
+                </div>
+            </div>
         </div>
-        <button class="login-btn neon-btn" onclick="window.location.href='./pages/html/loginPage.html'">LOGIN</button>
-            <div class="header-btn">
-                <nav class="page-button-group">
-                    <button class="btn page-btn" data-page="/frontend/index.html">
-                        <span class="page-button-icon"><i class="fa-solid fa-house"></i></span>
-                        <span class="page-button-text">HOME</span>
-                    </button>
-                    <button class="btn page-btn" data-page="/frontend/pages/html/tasksPage.html">
-                        <span class="page-button-icon"><i class="fa-solid fa-tasks"></i></span>
-                        <span class="page-button-text">TASKS</span>
-                    </button>
-                    <button class="btn page-btn" data-page="/frontend/pages/html/calendarPage.html">
-                        <span class="page-button-icon"><i class="fa-solid fa-calendar"></i></span>
-                        <span class="page-button-text">CALENDAR</span>
-                    </button>
-                    <button class="btn page-btn" data-page="/frontend/pages/html/planningPage.html">
-                        <span class="page-button-icon"><i class="fa-solid fa-clipboard-list"></i></span>
-                        <span class="page-button-text">PLANNING</span>
-                    </button>
-                    <button class="btn page-btn" data-page="/frontend/pages/html/statisticsPage.html">
-                        <span class="page-button-icon"><i class="fa-solid fa-chart-line"></i></span>
-                        <span class="page-button-text">STATISTICS</span>
-                    </button>
-                </nav>
-            </div>
-        <button class="hamburger-menu" onclick="toggleMenu()"><i class="fa-solid fa-bars"></i></button>
-    </div>
-
-    <div class="main">
-        <div class="mingking-main-content neon-box">
-            <div class="main-content-info">
-                <span class="main-content-title">Welcome to MingKing Website</span>
-                <span class="main-content-description">Developed by <a href="https://hoanbucon.id.vn/" target="_blank" class="mingking-description-link">HoanBuCon</a></span>
-            </div>
-            <div>
-                <img src="./assets/ming_king_super_evil.png" alt="Ming King" class="mingking-main-img">
-                <span class="overlay-text">I'm was born Evil</span>
-            </div>
-            <div class="task-button-group">
-                <button id="get-started" class="btn neon-btn" data-page="/frontend/pages/html/planningPage.html">
-                    <span class="task-button-group-icon"><i class="fa-solid fa-rocket"></i></span>
-                    <span class="task-button-group-text">Get Started</span>
-                </button>
-                <button id="help" class="btn neon-btn" data-page="/frontend/pages/html/helpPage.html">
-                    <span class="task-button-group-icon"><i class="fa-solid fa-circle-question"></i></span>
-                    <span class="task-button-group-text">Help</span>
-                </button>
-            </div>
+        
+        <div class="bg-animation">
+            <div class="floating-particle"></div>
+            <div class="floating-particle"></div>
+            <div class="floating-particle"></div>
+            <div class="floating-particle"></div>
+            <div class="floating-particle"></div>
+            <div class="floating-particle"></div>
+            <div class="floating-particle"></div>
+            <div class="floating-particle"></div>
+            <div class="floating-particle"></div>
+            <div class="floating-particle"></div>
         </div>
     </div>
 
-    <div class="footer">
-        <button class="btn footer-btn">&copy; 2025 Hoàn Bự Con</button>
-        <div class="footer-btn-group">
-            <button class="btn footer-btn"><a href="https://hoanbucon.id.vn/">ABOUT US</a></button>
-            <button class="btn footer-btn"><a href="https://hoanbucon.id.vn/">SUPPORT</a></button>
-            <button class="btn footer-btn"><a href="https://hoanbucon.id.vn/">CONTACT</a></button>
-        </div>
-    </div>
-
-    <script type="module" src="/frontend/javascript/app.js"></script>
-    <script type="module" src="/frontend/javascript/components/neuralNetwork.js"></script>
+    <script src="javascript/utils/domReady.js"></script>
+    <script src="javascript/loadingHandler.js"></script>
 </body>
 </html>

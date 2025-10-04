@@ -26,6 +26,30 @@ function initializeStatisticsPage() {
 }
 
 // ===============================
+// Utility Functions for Dynamic Dates
+// ===============================
+
+function getLast6Months() {
+    const months = [];
+    const currentDate = new Date();
+    
+    for (let i = 5; i >= 0; i--) {
+        const date = new Date(currentDate.getFullYear(), currentDate.getMonth() - i, 1);
+        const monthName = date.toLocaleDateString('en-US', { month: 'short' });
+        months.push({
+            month: monthName,
+            fullDate: date
+        });
+    }
+    
+    return months;
+}
+
+function generateRandomData(baseValue, variance) {
+    return Math.floor(baseValue + (Math.random() - 0.5) * variance);
+}
+
+// ===============================
 // Data Management
 // ===============================
 
@@ -46,20 +70,29 @@ function loadStatisticsData() {
                 overdueTasks: 5,
                 completionRate: 64
             },
-            monthlyData: [
-                { month: 'Jan', completed: 45, created: 62 },
-                { month: 'Feb', completed: 52, created: 58 },
-                { month: 'Mar', completed: 48, created: 65 },
-                { month: 'Apr', completed: 61, created: 70 },
-                { month: 'May', completed: 55, created: 63 },
-                { month: 'Jun', completed: 67, created: 72 }
-            ],
-            categoryData: {
-                'Công việc': 45,
-                'Cá nhân': 32,
-                'Học tập': 28,
-                'Sức khỏe': 18,
-                'Khác': 15
+            // Timeline data for Todo Lists (6 months) - Dynamic based on current date
+            todoListsTimeline: getLast6Months().map((monthData, index) => ({
+                month: monthData.month,
+                completed: generateRandomData(15, 10), // Base: 15, variance: ±5
+                created: generateRandomData(20, 8)     // Base: 20, variance: ±4
+            })),
+            // Timeline data for Tasks (6 months) - Dynamic based on current date
+            tasksTimeline: getLast6Months().map((monthData, index) => ({
+                month: monthData.month,
+                completed: generateRandomData(55, 20), // Base: 55, variance: ±10
+                created: generateRandomData(65, 15)    // Base: 65, variance: ±7.5
+            })),
+            // Status distribution for Todo Lists
+            todoListsStatus: {
+                completed: 45,
+                pending: 32,
+                overdue: 12
+            },
+            // Status distribution for Tasks
+            tasksStatus: {
+                completed: 156,
+                pending: 89,
+                overdue: 23
             },
             todos: {
                 completed: [
@@ -221,38 +254,63 @@ function loadChartJS() {
 }
 
 function createCharts() {
-    // Todo Distribution Chart
-    createMonthlyChart();
+    // Chart 1: Todo Lists Timeline (Line Chart)
+    createTodoListsTimelineChart();
     
-    // Completion Progress Chart
-    createCategoryChart();
+    // Chart 2: Tasks Timeline (Line Chart)
+    createTasksTimelineChart();
+    
+    // Chart 3: Todo Lists Status (Doughnut Chart)
+    createTodoListsStatusChart();
+    
+    // Chart 4: Tasks Status (Doughnut Chart)
+    createTasksStatusChart();
 }
 
-function createMonthlyChart() {
-    const ctx = document.getElementById('todoDistributionChart');
+// Chart 1: Todo Lists Timeline (Line Chart)
+function createTodoListsTimelineChart() {
+    const ctx = document.getElementById('todoListsTimelineChart');
     if (!ctx) return;
     
-    // Destroy existing chart if exists
-    if (charts.monthly) {
-        charts.monthly.destroy();
+    // Update chart title with current period
+    const chartTitle = ctx.closest('.chart-container').querySelector('.chart-title');
+    if (chartTitle) {
+        chartTitle.textContent = `Todo Lists Timeline`;
     }
     
-    charts.monthly = new Chart(ctx, {
-        type: 'bar',
+    // Destroy existing chart if exists
+    if (charts.todoListsTimeline) {
+        charts.todoListsTimeline.destroy();
+    }
+    
+    charts.todoListsTimeline = new Chart(ctx, {
+        type: 'line',
         data: {
-            labels: statisticsData.monthlyData.map(item => item.month),
+            labels: statisticsData.todoListsTimeline.map(item => item.month),
             datasets: [{
-                label: 'Hoàn thành',
-                data: statisticsData.monthlyData.map(item => item.completed),
-                backgroundColor: 'rgba(68, 214, 44, 0.8)',
+                label: 'Todo Lists Completed',
+                data: statisticsData.todoListsTimeline.map(item => item.completed),
                 borderColor: '#44d62c',
-                borderWidth: 2
+                backgroundColor: 'rgba(68, 214, 44, 0.1)',
+                borderWidth: 3,
+                fill: true,
+                tension: 0.4,
+                pointBackgroundColor: '#44d62c',
+                pointBorderColor: '#fff',
+                pointBorderWidth: 2,
+                pointRadius: 6
             }, {
-                label: 'Tạo mới',
-                data: statisticsData.monthlyData.map(item => item.created),
-                backgroundColor: 'rgba(52, 152, 219, 0.8)',
+                label: 'Todo Lists Created',
+                data: statisticsData.todoListsTimeline.map(item => item.created),
                 borderColor: '#3498db',
-                borderWidth: 2
+                backgroundColor: 'rgba(52, 152, 219, 0.1)',
+                borderWidth: 3,
+                fill: true,
+                tension: 0.4,
+                pointBackgroundColor: '#3498db',
+                pointBorderColor: '#fff',
+                pointBorderWidth: 2,
+                pointRadius: 6
             }]
         },
         options: {
@@ -260,12 +318,14 @@ function createMonthlyChart() {
             maintainAspectRatio: true,
             aspectRatio: 2,
             interaction: {
-                intersect: false
+                intersect: false,
+                mode: 'index'
             },
             plugins: {
                 legend: {
                     labels: {
-                        color: '#e8e6e3'
+                        color: '#e8e6e3',
+                        usePointStyle: true
                     }
                 }
             },
@@ -289,40 +349,144 @@ function createMonthlyChart() {
                 }
             },
             animation: {
-                duration: 750
+                duration: 1000
             }
         }
     });
 }
 
-function createCategoryChart() {
-    const ctx = document.getElementById('completionProgressChart');
+// Chart 2: Tasks Timeline (Line Chart)
+function createTasksTimelineChart() {
+    const ctx = document.getElementById('tasksTimelineChart');
     if (!ctx) return;
     
-    // Destroy existing chart if exists
-    if (charts.category) {
-        charts.category.destroy();
+    // Update chart title with current period
+    const chartTitle = ctx.closest('.chart-container').querySelector('.chart-title');
+    if (chartTitle) {
+        chartTitle.textContent = `Tasks Timeline`;
     }
     
-    const colors = [
-        '#44d62c', '#3498db', '#e74c3c', '#f39c12', '#9b59b6'
-    ];
+    // Destroy existing chart if exists
+    if (charts.tasksTimeline) {
+        charts.tasksTimeline.destroy();
+    }
     
-    charts.category = new Chart(ctx, {
-        type: 'doughnut',
+    charts.tasksTimeline = new Chart(ctx, {
+        type: 'line',
         data: {
-            labels: Object.keys(statisticsData.categoryData),
+            labels: statisticsData.tasksTimeline.map(item => item.month),
             datasets: [{
-                data: Object.values(statisticsData.categoryData),
-                backgroundColor: colors.map(color => color + '80'),
-                borderColor: colors,
-                borderWidth: 2
+                label: 'Tasks Completed',
+                data: statisticsData.tasksTimeline.map(item => item.completed),
+                borderColor: '#44d62c',
+                backgroundColor: 'rgba(68, 214, 44, 0.1)',
+                borderWidth: 3,
+                fill: true,
+                tension: 0.4,
+                pointBackgroundColor: '#44d62c',
+                pointBorderColor: '#fff',
+                pointBorderWidth: 2,
+                pointRadius: 6
+            }, {
+                label: 'Tasks Created',
+                data: statisticsData.tasksTimeline.map(item => item.created),
+                borderColor: '#e74c3c',
+                backgroundColor: 'rgba(231, 76, 60, 0.1)',
+                borderWidth: 3,
+                fill: true,
+                tension: 0.4,
+                pointBackgroundColor: '#e74c3c',
+                pointBorderColor: '#fff',
+                pointBorderWidth: 2,
+                pointRadius: 6
             }]
         },
         options: {
             responsive: true,
             maintainAspectRatio: true,
-            aspectRatio: 1,
+            aspectRatio: 2,
+            interaction: {
+                intersect: false,
+                mode: 'index'
+            },
+            plugins: {
+                legend: {
+                    labels: {
+                        color: '#e8e6e3',
+                        usePointStyle: true
+                    }
+                }
+            },
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    ticks: {
+                        color: '#e8e6e3'
+                    },
+                    grid: {
+                        color: 'rgba(255, 255, 255, 0.1)'
+                    }
+                },
+                x: {
+                    ticks: {
+                        color: '#e8e6e3'
+                    },
+                    grid: {
+                        color: 'rgba(255, 255, 255, 0.1)'
+                    }
+                }
+            },
+            animation: {
+                duration: 1000
+            }
+        }
+    });
+}
+
+// Chart 3: Todo Lists Status (Doughnut Chart)
+function createTodoListsStatusChart() {
+    const ctx = document.getElementById('todoListsStatusChart');
+    if (!ctx) return;
+    
+    // Destroy existing chart if exists
+    if (charts.todoListsStatus) {
+        charts.todoListsStatus.destroy();
+    }
+    
+    const statusColors = {
+        completed: '#44d62c',
+        pending: '#f39c12',
+        overdue: '#e74c3c'
+    };
+    
+    charts.todoListsStatus = new Chart(ctx, {
+        type: 'doughnut',
+        data: {
+            labels: ['Completed', 'Pending', 'Overdue'],
+            datasets: [{
+                data: [
+                    statisticsData.todoListsStatus.completed,
+                    statisticsData.todoListsStatus.pending,
+                    statisticsData.todoListsStatus.overdue
+                ],
+                backgroundColor: [
+                    statusColors.completed + '80',
+                    statusColors.pending + '80',
+                    statusColors.overdue + '80'
+                ],
+                borderColor: [
+                    statusColors.completed,
+                    statusColors.pending,
+                    statusColors.overdue
+                ],
+                borderWidth: 3,
+                hoverBorderWidth: 5
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: true,
+            aspectRatio: 1.2,
             interaction: {
                 intersect: false
             },
@@ -331,12 +495,77 @@ function createCategoryChart() {
                     position: 'bottom',
                     labels: {
                         color: '#e8e6e3',
-                        padding: 20
+                        padding: 15,
+                        usePointStyle: true
                     }
                 }
             },
             animation: {
-                duration: 750
+                duration: 1000
+            }
+        }
+    });
+}
+
+// Chart 4: Tasks Status (Doughnut Chart)
+function createTasksStatusChart() {
+    const ctx = document.getElementById('tasksStatusChart');
+    if (!ctx) return;
+    
+    // Destroy existing chart if exists
+    if (charts.tasksStatus) {
+        charts.tasksStatus.destroy();
+    }
+    
+    const statusColors = {
+        completed: '#44d62c',
+        pending: '#f39c12',
+        overdue: '#e74c3c'
+    };
+    
+    charts.tasksStatus = new Chart(ctx, {
+        type: 'doughnut',
+        data: {
+            labels: ['Completed', 'Pending', 'Overdue'],
+            datasets: [{
+                data: [
+                    statisticsData.tasksStatus.completed,
+                    statisticsData.tasksStatus.pending,
+                    statisticsData.tasksStatus.overdue
+                ],
+                backgroundColor: [
+                    statusColors.completed + '80',
+                    statusColors.pending + '80',
+                    statusColors.overdue + '80'
+                ],
+                borderColor: [
+                    statusColors.completed,
+                    statusColors.pending,
+                    statusColors.overdue
+                ],
+                borderWidth: 3,
+                hoverBorderWidth: 5
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: true,
+            aspectRatio: 1.2,
+            interaction: {
+                intersect: false
+            },
+            plugins: {
+                legend: {
+                    position: 'bottom',
+                    labels: {
+                        color: '#e8e6e3',
+                        padding: 15,
+                        usePointStyle: true
+                    }
+                }
+            },
+            animation: {
+                duration: 1000
             }
         }
     });
@@ -498,17 +727,38 @@ function refreshStatistics() {
 }
 
 function updateCharts() {
-    // Update todo distribution chart
-    if (charts.monthly) {
-        charts.monthly.data.datasets[0].data = statisticsData.monthlyData.map(item => item.completed);
-        charts.monthly.data.datasets[1].data = statisticsData.monthlyData.map(item => item.created);
-        charts.monthly.update();
+    // Update Todo Lists Timeline chart
+    if (charts.todoListsTimeline) {
+        charts.todoListsTimeline.data.datasets[0].data = statisticsData.todoListsTimeline.map(item => item.completed);
+        charts.todoListsTimeline.data.datasets[1].data = statisticsData.todoListsTimeline.map(item => item.created);
+        charts.todoListsTimeline.update();
     }
     
-    // Update completion progress chart
-    if (charts.category) {
-        charts.category.data.datasets[0].data = Object.values(statisticsData.categoryData);
-        charts.category.update();
+    // Update Tasks Timeline chart
+    if (charts.tasksTimeline) {
+        charts.tasksTimeline.data.datasets[0].data = statisticsData.tasksTimeline.map(item => item.completed);
+        charts.tasksTimeline.data.datasets[1].data = statisticsData.tasksTimeline.map(item => item.created);
+        charts.tasksTimeline.update();
+    }
+    
+    // Update Todo Lists Status chart
+    if (charts.todoListsStatus) {
+        charts.todoListsStatus.data.datasets[0].data = [
+            statisticsData.todoListsStatus.completed,
+            statisticsData.todoListsStatus.pending,
+            statisticsData.todoListsStatus.overdue
+        ];
+        charts.todoListsStatus.update();
+    }
+    
+    // Update Tasks Status chart
+    if (charts.tasksStatus) {
+        charts.tasksStatus.data.datasets[0].data = [
+            statisticsData.tasksStatus.completed,
+            statisticsData.tasksStatus.pending,
+            statisticsData.tasksStatus.overdue
+        ];
+        charts.tasksStatus.update();
     }
 }
 

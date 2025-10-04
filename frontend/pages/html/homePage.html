@@ -3,21 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MingKing Planning</title>
-    <link rel="stylesheet" href="../../components/headerStyle.css">
-    <link rel="stylesheet" href="../../components/mainStyle.css">
-    <link rel="stylesheet" href="../../components/footerStyle.css">
-    <link rel="stylesheet" href="../../components/responsive.css">
-    <link rel="stylesheet" href="../css/planningPage.css">
+    <title>MingKing Daden</title>
+    <link rel="stylesheet" href="/frontend/pages/css/homePage.css">
     <link rel="stylesheet" href="../../node_modules/@fortawesome/fontawesome-free/css/all.min.css">
 </head>
-<body class="planning-page">
+<body class="home-page">
+    <video autoplay muted loop playsinline class="bg-video">
+        <source src="/frontend/assets/Super_Black_Hole.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
     <div class="header">
         <div class="logo-container">
-            <a href="/frontend/index.html" class="logo-box"><img src="../../assets/mingking_peak.jpg" alt="Ming King" class="logo-img"></a>
-            <p class="logo-text"><a href="/frontend/index.html">Ming King</a></p>
+            <a href="/frontend/pages/html/homePage.html" class="logo-box"><img src="/frontend/assets/mingking_peak.jpg" alt="Ming King" class="logo-img"></a>
+            <p class="logo-text"><a href="/frontend/pages/html/homePage.html">Ming King</a></p>
         </div>
-        <button class="login-btn neon-btn" onclick="window.location.href='./loginPage.html'">LOGIN</button>
+        <button class="login-btn neon-btn" onclick="window.location.href='/frontend/pages/html/loginPage.html'">LOGIN</button>
             <div class="header-btn">
                 <nav class="page-button-group">
                     <button class="btn page-btn" data-page="/frontend/pages/html/homePage.html">
@@ -46,16 +46,23 @@
     </div>
 
     <div class="main">
-        <canvas id="nn-background"></canvas>
-        <div class="choose-content">
-            <div class="create-task-button-group">
-                <button class="btn create-task-btn" data-page="/frontend/pages/html/createTaskPage.html">
-                    <span class="task-btn-icon"><i class="fa-solid fa-plus"></i></span>
-                    <span class="task-btn-text"><p>Create new Tasks</p></span>
+        <div class="mingking-main-content neon-box">
+            <div class="main-content-info">
+                <span class="main-content-title">Welcome to MingKing Website</span>
+                <span class="main-content-description">Developed by <a href="https://hoanbucon.id.vn/" target="_blank" class="mingking-description-link">HoanBuCon</a></span>
+            </div>
+            <div>
+                <img src="/frontend/assets/ming_king_super_evil.png" alt="Ming King" class="mingking-main-img">
+                <span class="overlay-text">I'm was born Evil</span>
+            </div>
+            <div class="task-button-group">
+                <button id="get-started" class="btn neon-btn" data-page="/frontend/pages/html/planningPage.html">
+                    <span class="task-button-group-icon"><i class="fa-solid fa-rocket"></i></span>
+                    <span class="task-button-group-text">Get Started</span>
                 </button>
-                <button class="btn open-task-btn" data-page="/frontend/pages/html/openTaskPage.html">
-                    <span class="task-btn-icon"><i class="fa-solid fa-folder-open"></i></span>
-                    <span class="task-btn-text"><p>Open existing Tasks</p></span>
+                <button id="help" class="btn neon-btn" data-page="/frontend/pages/html/helpPage.html">
+                    <span class="task-button-group-icon"><i class="fa-solid fa-circle-question"></i></span>
+                    <span class="task-button-group-text">Help</span>
                 </button>
             </div>
         </div>
