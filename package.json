@@ -1,32 +1,28 @@
 {
-  "name": "mingking-todo-website",
-  "version": "1.0.0",
-  "description": "MingKing Evil Todo List Website",
-  "main": "frontend/index.html",
-  "scripts": {
-    "start": "npm install && echo 'Project ready! Open frontend/index.html in your browser'",
-    "install-deps": "npm install",
-    "dev": "echo 'Open frontend/index.html in your browser'"
-  },
-  "dependencies": {
-    "fullcalendar": "^6.1.19",
-    "@fortawesome/fontawesome-free": "^7.0.0"
-  },
-  "devDependencies": {},
+    "name": "mingking-todo-workspace",
+    "version": "1.0.0",
+    "description": "MingKing Evil Todo List Website - Full Stack Project",
+    "private": true,
+    "scripts": {
+        "install:all": "cd frontend && npm install && cd ../backend && npm install",
+        "start": "echo 'Choose: npm run frontend:dev OR npm run backend:dev'",
+        "frontend:dev": "cd frontend && npm run dev",
+        "backend:dev": "cd backend && npm run dev",
+        "backend:start": "cd backend && npm start",
+        "db:up": "cd backend && docker-compose up -d",
+        "db:down": "cd backend && docker-compose down",
+        "docker:dev": "npm run db:up && echo 'Database started! Now run: npm run backend:dev'",
+        "docker:full": "echo 'Full Docker setup not implemented yet - use: npm run docker:dev'",
+        "setup": "npm run install:all && npm run db:up && echo 'Setup complete! Run: npm run backend:dev'"
+    },
+  "workspaces": [
+    "frontend",
+    "backend"
+  ],
   "repository": {
     "type": "git",
     "url": "https://github.com/HoanBuCon/ToDo-List-Website.git"
   },
-  "keywords": [
-    "todo",
-    "task-manager",
-    "javascript",
-    "html",
-    "css",
-    "calendar",
-    "statistics",
-    "mingking"
-  ],
   "author": "Hoàn Bự Con",
   "license": "MIT"
 }

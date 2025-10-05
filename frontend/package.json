@@ -1,0 +1,31 @@
+{
+    "name": "mingking-todo-website",
+    "version": "1.0.0",
+    "description": "MingKing Evil Todo List Website",
+    "main": "frontend/index.html",
+    "type": "module",
+    "scripts": {
+        "start": "echo 'Project ready! Open frontend/index.html in your browser'",
+        "dev": "echo 'Frontend is static HTML/CSS/JS - open index.html in browser'"
+    },
+  "dependencies": {
+    "@fortawesome/fontawesome-free": "^7.0.0",
+    "fullcalendar": "^6.1.19"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/HoanBuCon/ToDo-List-Website.git"
+  },
+  "keywords": [
+    "todo",
+    "task-manager",
+    "javascript",
+    "html",
+    "css",
+    "calendar",
+    "statistics",
+    "mingking"
+  ],
+  "author": "Hoàn Bự Con",
+  "license": "MIT"
+}

@@ -19,7 +19,6 @@ Thumbs.db
 
 # Environment variables
 .env
-.env.*
 .env.local
 .env.development.local
 .env.test.local
@@ -35,3 +34,6 @@ frontend/.env.*
 
 # Video hố đen(mẹ bạn) siêu nặng
 frontend/src/assets/Super_Black_Hole.mp4
+
+# Backend data
+data/

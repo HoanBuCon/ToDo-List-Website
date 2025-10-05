@@ -1,0 +1,43 @@
+# Node modules
+node_modules/
+npm-debug.log*
+
+# Environment files  
+.env
+.env.*
+
+# Git
+.git/
+.gitignore
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+logs/
+
+# Frontend build files (nếu có)
+frontend/dist/
+frontend/build/
+
+# Database data
+backend/data/
+
+# Docker
+Dockerfile*
+docker-compose*
+
+# Documentation
+README.md
+*.md
+
+# Large files
+*.mp4
+*.avi
+*.mov
