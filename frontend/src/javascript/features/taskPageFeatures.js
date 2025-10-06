@@ -84,14 +84,20 @@ export function setupTodoList() {
         completeAllButton.addEventListener('click', async () => { // Thêm async cho await
             const checkboxes = todoList.querySelectorAll('.todo-checkbox');
             const isCompleting = !completeAllButton.classList.contains('completed-all');
-            const message = isCompleting ? 'Complete all tasks?' : 'Undo all tasks?';
+            const message = isCompleting ? 'Are you sure you want to complete all tasks?' : 'Are you sure you want to undo all completed tasks?';
             const title = isCompleting ? 'Complete All Tasks' : 'Undo All Tasks';
             const confirmText = isCompleting ? 'Complete All' : 'Undo All';
+            const buttonColor = isCompleting ? '#44d62c' : '#ffa500'; // Xanh cho Complete, Cam cho Undo
             
             if (checkEmptyList()) return; // nếu list rỗng thì thoát
 
-            // Sử dụng custom modal thay vì confirm()
-            const confirmed = await showConfirmDialog(title, message, confirmText, 'Cancel');
+            const confirmed = await showConfirmModal({
+                title: title,
+                message: message,
+                confirmText: confirmText,
+                cancelText: 'Cancel',
+                confirmButtonColor: buttonColor
+            });
             if (!confirmed) return; // nếu Cancel thì thoát
 
             completeAllButton.classList.toggle('completed-all', isCompleting);
