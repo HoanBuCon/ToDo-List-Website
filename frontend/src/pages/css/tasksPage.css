@@ -1195,32 +1195,7 @@ body {
     font-weight: inherit;
 }
 
-/* Success Toast Notification */
-.success-toast {
-    position: fixed;
-    top: 20px;
-    right: 20px;
-    background: #44d62c;
-    color: #000;
-    padding: 12px 20px;
-    border-radius: 8px;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    font-weight: bold;
-    box-shadow: 0 4px 12px rgba(68, 214, 44, 0.3);
-    z-index: 10001;
-    opacity: 0;
-    transform: translateX(100%);
-    transition: all 0.3s ease-in-out;
-}
 
-.success-toast.show {
-    opacity: 1;
-    transform: translateX(0);
-}
-
-.success-toast i {
-    margin-right: 8px;
-}
 
 /* ========== Mobile Phone Layout 420px ========== */
 @media (max-width: 420px) {

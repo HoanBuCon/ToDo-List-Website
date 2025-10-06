@@ -1,4 +1,5 @@
 import { showConfirmModal } from '../components/confirmModal.js';
+import { showSuccessToast, showInfoToast, showWarningToast } from '../components/toast.js';
 
 class TaskListManager {
     constructor() {
@@ -292,7 +293,7 @@ class TaskListManager {
         const allListItems = Array.from(document.querySelectorAll('.all-list .todo-item'));
         
         if (allListItems.length === 0) {
-            this.showMessage('No tasks to select!', 'info');
+            showInfoToast('No tasks to select!');
             return;
         }
 
@@ -305,7 +306,7 @@ class TaskListManager {
             confirmButtonColor: '#44d62c'
         });
         if (!confirmed) {
-            this.showMessage('Selection cancelled!', 'info');
+            showInfoToast('Selection cancelled!');
             return;
         }
 
@@ -316,7 +317,7 @@ class TaskListManager {
             movedCount++;
         });
 
-        this.showMessage(`Selected ${movedCount} tasks!`, 'success');
+        showSuccessToast(`Selected ${movedCount} tasks!`);
     }
 
     // Xóa tất cả tasks từ Selected List về All List
@@ -324,7 +325,7 @@ class TaskListManager {
         const selectedListItems = Array.from(document.querySelectorAll('.selected-list .todo-item'));
         
         if (selectedListItems.length === 0) {
-            this.showMessage('No tasks to remove!', 'warning');
+            showWarningToast('No tasks to remove!');
             return;
         }
 
@@ -337,7 +338,7 @@ class TaskListManager {
             confirmButtonColor: '#ff4444'
         });
         if (!confirmed) {
-            this.showMessage('Removal cancelled!', 'info');
+            showInfoToast('Removal cancelled!');
             return;
         }
 
@@ -348,46 +349,11 @@ class TaskListManager {
             movedCount++;
         });
 
-        this.showMessage(`Removed ${movedCount} tasks!`, 'info');
+        showInfoToast(`Removed ${movedCount} tasks!`);
     }
 
 
-    // Toast notification system
-    showMessage(message, type = 'info') {
-        const toast = document.createElement('div');
-        toast.className = `toast toast-${type}`;
-        toast.textContent = message;
-        toast.style.cssText = `
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            padding: 12px 24px;
-            background: ${type === 'success' ? '#44d62c' : type === 'warning' ? '#ffa500' : '#0198fc'};
-            color: white;
-            border-radius: 4px;
-            z-index: 1000;
-            opacity: 0;
-            transition: opacity 0.3s;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            font-weight: 600;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-        `;
-        
-        document.body.appendChild(toast);
-        
-        // Animate in
-        setTimeout(() => toast.style.opacity = '1', 10);
-        
-        // Remove after 3 seconds
-        setTimeout(() => {
-            toast.style.opacity = '0';
-            setTimeout(() => {
-                if (document.body.contains(toast)) {
-                    document.body.removeChild(toast);
-                }
-            }, 300);
-        }, 3000);
-    }
+
 }
 
 // Khởi tạo TaskListManager khi DOM đã sẵn sàng

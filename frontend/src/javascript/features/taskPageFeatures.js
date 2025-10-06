@@ -2,6 +2,7 @@ import { checkEmptyList } from '../components/checkEmptyList.js';
 import { resetCompleteAllButton } from '../components/checkEmptyList.js';
 import { createTask } from './createNewTask.js';
 import { showConfirmModal } from '../components/confirmModal.js';
+import { showSuccessToast, showInfoToast } from '../components/toast.js';
 
 
 export function setupTodoList() {
@@ -115,6 +116,13 @@ export function setupTodoList() {
             textSpan.textContent = isCompleting ? 'Undo All' : 'Complete All';
             icon.classList.toggle('fa-check', !isCompleting);
             icon.classList.toggle('fa-rotate-left', isCompleting);
+
+            // Hiển thị toast notification
+            if (isCompleting) {
+                showSuccessToast('All tasks completed!');
+            } else {
+                showInfoToast('All tasks restored!');
+            }
         });
     }
 
@@ -133,12 +141,16 @@ export function setupTodoList() {
             });
             
             if (confirmed) {
+                const taskCount = todoList.querySelectorAll('.todo-item').length;
                 if (todoList) {
                     todoList.querySelectorAll('.todo-item').forEach(item => item.remove());
                 }
 
                 // Kiểm tra list sau khi xóa
                 if (checkEmptyList()) resetCompleteAllButton(completeAllButton);
+                
+                // Hiển thị toast notification
+                showSuccessToast(`Deleted ${taskCount} tasks!`);
             }
         });
     }
@@ -171,7 +183,7 @@ export function setupTodoList() {
             editButton.style.color = '';
             
             // Hiển thị thông báo đã lưu thành công
-            showSuccessMessage();
+            showSuccessToast('Changes saved successfully!');
         } else {
             // Nếu Cancel thì khôi phục dữ liệu gốc
             restoreOriginalData();
@@ -187,30 +199,6 @@ export function setupTodoList() {
             editButton.style.background = '';
             editButton.style.color = '';
         }
-    }
-
-    // Hàm hiển thị thông báo thành công
-    function showSuccessMessage() {
-        const successDiv = document.createElement('div');
-        successDiv.className = 'success-toast';
-        successDiv.innerHTML = '<i class="fa-solid fa-check"></i>Changes saved successfully!';
-        
-        document.body.appendChild(successDiv);
-        
-        // Animation vào
-        setTimeout(() => {
-            successDiv.classList.add('show');
-        }, 10);
-        
-        // Tự động ẩn sau 3 giây
-        setTimeout(() => {
-            successDiv.classList.remove('show');
-            setTimeout(() => {
-                if (document.body.contains(successDiv)) {
-                    document.body.removeChild(successDiv);
-                }
-            }, 300);
-        }, 3000);
     }
 
     // Hàm khôi phục dữ liệu gốc khi Cancel
@@ -327,4 +315,6 @@ export function setupTodoList() {
             input.replaceWith(span);
         });
     }
+
+
 }

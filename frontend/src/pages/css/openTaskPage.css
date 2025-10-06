@@ -116,8 +116,8 @@
 .list-header {
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    margin-bottom: 16px;
+    flex-direction: column;
+    margin-bottom: 0px;
     flex-wrap: wrap;
     gap: 12px;
 }
@@ -126,7 +126,7 @@
     font-size: 2em;
     font-weight: bold;
     color: var(--color-text-main);
-    margin: 0;
+    margin: 16px 0;
     text-align: center;
     text-shadow:
         0 0 1px #44d62c,
@@ -145,12 +145,15 @@
 /* ========== Select All / Remove All Button Styles ========== */
 .select-all-btn, .remove-all-btn {
     display: flex;
-    gap: 8px;
+    width: 100%;
+    height: 48px;
+    gap: 4px;
     align-items: center;
-    background: #292a2b49;
+    justify-content: center;
+    background: var(--color-bg-secondary);
     padding: 8px 12px;
     border-radius: 8px;
-    border: 2px solid var(--color-border);
+    border: 1px solid var(--color-border);
     color: var(--color-green);
     font-size: 0.9em;
     font-weight: bold;
@@ -168,7 +171,6 @@
 .select-all-btn:hover {
     background: #2d2e2ea1;
     color: rgb(1, 255, 65);
-    transform: scale(1.05);
     box-shadow:
         0 0 5px #44d62c,
         0 0 10px #00ff41;
@@ -185,7 +187,6 @@
 .remove-all-btn:hover {
     background: #2d2e2ea1;
     color: rgb(255, 52, 1);
-    transform: scale(1.05);
     box-shadow:
         0 0 5px #ff8801,
         0 0 10px #ff4000;
@@ -405,6 +406,14 @@
 
 .todo-item[draggable="true"]:hover {
     cursor: grab;
+}
+
+.all-list,
+.selected-list {
+    transition:
+        box-shadow 0.2s ease-in-out,
+        border-color 0.2s ease-in-out,
+        background 0.2s ease-in-out;
 }
 
 .all-list.drag-over,
