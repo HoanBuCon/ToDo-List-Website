@@ -1,3 +1,95 @@
+/* ========== Overlay hiển thị ảnh khi bấm nút ========== */
+.custom-image-overlay.show .overlay-btn-group {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+}
+.overlay-btn-group {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transform: translateY(24px) scale(0.97);
+    transition: opacity 0.35s cubic-bezier(0.4,0,0.2,1), transform 0.35s cubic-bezier(0.4,0,0.2,1);
+    margin-top: 36px;
+    gap: 48px;
+}
+
+.custom-image-overlay .overlay-btn-group .btn {
+    background-color: var(--color-bg-main);
+    color: #00eeff;
+    border: 2px solid #00d9ff;
+    border-radius: 16px;
+    padding: 32px 32px;
+    box-shadow:
+        0 0 5px #00e1ff,
+        0 0 10px #00e1ff,
+        0 0 50px #00c3ff;
+    transition:  all 0.3s ease;
+}
+.custom-image-overlay .overlay-btn-group .btn:hover {
+    border: 2px solid var(--color-green-hover);
+    box-shadow:
+        0 0 5px #44d62c,
+        0 0 15px #00ff41,
+        0 0 60px #00ff41;
+}
+
+.custom-image-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0,0,0,0.7);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.35s cubic-bezier(0.4,0,0.2,1);
+}
+.custom-image-overlay.show {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.custom-image-overlay-img {
+    max-width: 80vw;
+    max-height: 80vh;
+    border-radius: 16px;
+    box-shadow: 0 0 32px #00ffe7;
+    background: #181a1b;
+    opacity: 0;
+    transform: scale(0.95);
+    transition: opacity 0.35s cubic-bezier(0.4,0,0.2,1), transform 0.35s cubic-bezier(0.4,0,0.2,1);
+}
+.custom-image-overlay.show .custom-image-overlay-img {
+    opacity: 1;
+    transform: scale(1);
+}
+/* ========== Overlay hiển thị ảnh khi bấm nút ========== */
+.custom-image-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0,0,0,0.7);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+}
+
+.custom-image-overlay-img {
+    max-width: 80vw;
+    max-height: 80vh;
+    border-radius: 16px;
+    box-shadow: 0 0 32px #00ffe7;
+    background: #181a1b;
+}
 /* ========== Loại bỏ margin mặc định của trình duyệt ========== */
 html, body {
     margin: 0;
