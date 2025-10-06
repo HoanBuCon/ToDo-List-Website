@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="/frontend/src/components/mainStyle.css">
     <link rel="stylesheet" href="/frontend/src/components/footerStyle.css">
     <link rel="stylesheet" href="/frontend/src/components/responsive.css">
+    <link rel="stylesheet" href="/frontend/src/components/confirmModal.css">
     <link rel="stylesheet" href="/frontend/src/pages/css/openTaskPage.css">
     <link rel="stylesheet" href="/frontend/node_modules/@fortawesome/fontawesome-free/css/all.min.css">
 </head>
@@ -63,33 +64,17 @@
             </div>
             <div class="all-list-container">
                 <div class="all-list">
-                    <div>
+                    <div class="list-header">
                         <h2 class="list-title">All Task Lists</h2>
+                        <button class="btn select-all-btn" title="Select All Tasks">
+                            <span><i class="fa-solid fa-check-double"></i></span>
+                            <span>Select All</span>
+                        </button>
                     </div>
                     <div class="todo-item">
                         <div class="todo-item-container">
                             <span class="todo-content">Thần Lieems Dai Hiệp</span>
                             <span class="todo-desc">Chọn độ khó: Liemdaidary</span>
-                        </div>
-                        <button title="Chọn" class="todo-select">
-                            <span><i class="fa-solid fa-plus"></i></span>
-                            <span>Select</span>
-                        </button>
-                    </div>
-                    <div class="todo-item">
-                        <div class="todo-item-container">
-                            <span class="todo-content">Build ưebsite Ming King</span>
-                            <span class="todo-desc">Who tf need database?</span>
-                        </div>
-                        <button title="Chọn" class="todo-select">
-                            <span><i class="fa-solid fa-plus"></i></span>
-                            <span>Select</span>
-                        </button>
-                    </div>
-                    <div class="todo-item">
-                        <div class="todo-item-container">
-                            <span class="todo-content">Chơi GA...me Valorant</span>
-                            <span class="todo-desc">🏳️‍🌈?</span>
                         </div>
                         <button title="Chọn" class="todo-select">
                             <span><i class="fa-solid fa-plus"></i></span>
@@ -118,8 +103,12 @@
                     </div>
                 </div>
                 <div class="selected-list">
-                    <div>
+                    <div class="list-header">
                         <h2 class="list-title">Selected Lists</h2>
+                        <button class="btn remove-all-btn" title="Remove All Tasks">
+                            <span><i class="fa-solid fa-trash-can"></i></span>
+                            <span>Remove All</span>
+                        </button>
                     </div>
                     <div class="todo-item">
                         <div class="todo-item-container">
@@ -157,5 +146,6 @@
 
     <script type="module" src="/frontend/src/javascript/app.js"></script>
     <script type="module" src="/frontend/src/javascript/components/neuralNetwork.js"></script>
+    <script type="module" src="/frontend/src/javascript/pages/dragTaskList.js"></script>
 </body>
 </html>

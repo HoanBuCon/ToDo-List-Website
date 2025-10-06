@@ -112,23 +112,87 @@
     overflow: hidden;
 }
 
+/* ========== List Header Styles ========== */
+.list-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 16px;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
 .list-title {
     font-size: 2em;
     font-weight: bold;
     color: var(--color-text-main);
-    margin-bottom: 32px;
+    margin: 0;
     text-align: center;
     text-shadow:
         0 0 1px #44d62c,
         0 0 1px #44d62c,
         0 0 8px #44d62c;
     transition: text-shadow 0.2s ease-in-out;
+    flex: 1;
 }
 .list-title:hover {
     text-shadow:
         0 0 1px #44d62c,
         0 0 1px #00ff41,
         0 0 16px #00ff41;
+}
+
+/* ========== Select All / Remove All Button Styles ========== */
+.select-all-btn, .remove-all-btn {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    background: #292a2b49;
+    padding: 8px 12px;
+    border-radius: 8px;
+    border: 2px solid var(--color-border);
+    color: var(--color-green);
+    font-size: 0.9em;
+    font-weight: bold;
+    cursor: pointer;
+    transition:
+        box-shadow 0.2s,
+        text-shadow 0.2s,
+        color 0.2s,
+        border-color 0.2s,
+        background 0.2s,
+        transform 0.2s;
+    white-space: nowrap;
+}
+
+.select-all-btn:hover {
+    background: #2d2e2ea1;
+    color: rgb(1, 255, 65);
+    transform: scale(1.05);
+    box-shadow:
+        0 0 5px #44d62c,
+        0 0 10px #00ff41;
+    text-shadow:
+        0 0 1px #32d62c,
+        0 0 1px #15ff00,
+        0 0 10px #15ff00;
+}
+
+.remove-all-btn {
+    color: rgb(255, 136, 1);
+}
+
+.remove-all-btn:hover {
+    background: #2d2e2ea1;
+    color: rgb(255, 52, 1);
+    transform: scale(1.05);
+    box-shadow:
+        0 0 5px #ff8801,
+        0 0 10px #ff4000;
+    text-shadow:
+        0 0 1px #d6792c,
+        0 0 1px #ff4000,
+        0 0 10px #ff4000;
 }
 
 .todo-item {
@@ -329,6 +393,46 @@
     font-size: 0.85em;
 }
 
+/* ========== Kéo Thả style ========== */
+.todo-item.dragging {
+    transform: rotate(2deg);
+    cursor: grabbing;
+}
+
+.todo-item[draggable="true"] {
+    cursor: grab;
+}
+
+.todo-item[draggable="true"]:hover {
+    cursor: grab;
+}
+
+.all-list.drag-over,
+.selected-list.drag-over {
+    background: #44d62c20;
+    border-color: #44d62c;
+    box-shadow:
+        0 0 5px #44d62c,
+        0 0 10px #00ff41,
+        inset 0 0 10px #00ff4120;
+}
+
+.toast {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: 600;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+/* ========== Hiệu ứng hover cho các mục kéo ========== */
+.todo-item[draggable="true"]:hover {
+    transform: scale(1.02);
+    cursor: grab;
+}
+
+.todo-item[draggable="true"]:active {
+    cursor: grabbing;
+}
+
 @media (max-width: 1180px) {
     .todo-content {
         font-size: 1.2em;
@@ -361,6 +465,21 @@
 
     .all-list, .selected-list {
         width: 100%;
+    }
+
+    .list-header {
+        flex-direction: column;
+        text-align: center;
+        gap: 16px;
+    }
+
+    .list-title {
+        font-size: 1.8em;
+    }
+
+    .select-all-btn, .remove-all-btn {
+        font-size: 0.85em;
+        padding: 6px 10px;
     }
 }
 

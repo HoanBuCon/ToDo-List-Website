@@ -596,6 +596,46 @@ body {
     font-size: 0.85em;
 }
 
+/* ========== Edit Mode Input Styles ========== */
+.edit-title-input, .edit-desc-input, .edit-task-input {
+    width: 100%;
+    padding: 16px 12px;
+    border: 1px solid var(--color-border);
+    background: var(--color-bg-main);
+    border-radius: 4px;
+    outline: none;
+    color: var(--color-text-main);
+    font-size: 1em;
+    opacity: 1;
+    transition: opacity 0.2s;
+    box-sizing: border-box;
+}
+
+.edit-title-input:focus, .edit-desc-input:focus, .edit-task-input:focus {
+    border-color: #5ae940;
+    box-shadow: 0 0 0 2px rgba(68, 214, 44, 0.3);
+}
+
+.edit-title-input:hover, .edit-desc-input:hover, .edit-task-input:hover {
+    border-color: #5ae940;
+}
+
+/* Animation cho edit mode */
+.edit-title-input, .edit-desc-input, .edit-task-input {
+    animation: fadeInEdit 0.3s ease-in-out;
+}
+
+@keyframes fadeInEdit {
+    from {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
 body {
     min-height: 100vh;
     display: flex;
@@ -1117,6 +1157,69 @@ body {
         transform-origin: left;
         gap: 0px;
     }
+}
+
+/* ========== Edit Mode CSS Classes ========== */
+.edit-mode-input {
+    width: 100%;
+    padding: 16px 12px;
+    border: 1px solid var(--color-border);
+    background: var(--color-bg-main);
+    border-radius: 4px;
+    outline: none;
+    color: var(--color-text-main);
+    font-size: 1em;
+    opacity: 0.8;
+    transition: opacity 0.2s;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.edit-mode-input:focus {
+    border: 1.5px solid var(--color-green);
+    opacity: 1;
+}
+
+.edit-title-input-custom {
+    margin-bottom: 32px;
+    text-align: center;
+    font-weight: inherit;
+}
+
+.edit-desc-input-custom {
+    text-align: center;
+    color: var(--color-text-secondary);
+}
+
+.edit-task-input-custom {
+    font-weight: inherit;
+}
+
+/* Success Toast Notification */
+.success-toast {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: #44d62c;
+    color: #000;
+    padding: 12px 20px;
+    border-radius: 8px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: bold;
+    box-shadow: 0 4px 12px rgba(68, 214, 44, 0.3);
+    z-index: 10001;
+    opacity: 0;
+    transform: translateX(100%);
+    transition: all 0.3s ease-in-out;
+}
+
+.success-toast.show {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.success-toast i {
+    margin-right: 8px;
 }
 
 /* ========== Mobile Phone Layout 420px ========== */
