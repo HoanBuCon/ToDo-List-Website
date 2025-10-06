@@ -110,6 +110,7 @@ body {
     overflow: visible;
     position: relative;
     z-index: 1;
+    cursor: grab;
     transition: 
         box-shadow 0.2s,
         background 0.2s,
@@ -411,6 +412,7 @@ body {
     border-radius: 8px;
     padding: 8px 12px;
     backdrop-filter: blur(2px);
+    cursor: move !important; /* Cursor move để báo hiệu có thể kéo thả */
     transition: box-shadow 0.2s, transform 0.2s, background 0.2s ease-in-out;
 }
 
@@ -418,13 +420,16 @@ body {
 .fc .fc-daygrid-event:hover {
     background: rgb(9, 54, 0);
     transform: scale(1.02);
+    cursor: move !important; /* Cursor grab khi hover để ready kéo */
 }
 
-/* Class để đánh dấu tất cả segments của cùng event khi hover */
-.fc .fc-daygrid-event.event-hover-active {
+/* Class để đánh dấu tất cả segments của cùng event khi hover - HIGH PRIORITY */
+.fc .fc-daygrid-event.event-hover-active,
+.fc .fc-daygrid-event.event-hover-active:hover {
     background: rgb(9, 54, 0) !important;
     transform: scale(1.02) !important;
     box-shadow: 0 0 1px #44d62c, 0 0 1px #00ff41, 0 0 10px #00ff41 !important;
+    color: var(--color-green-hover) !important;
 }
 
 .fc .fc-daygrid-event-harness {
@@ -433,14 +438,15 @@ body {
 .fc .fc-daygrid-event .fc-event-main {
     background: transparent;
 }
-.fc .fc-event:hover,
+/* DISABLED direct hover to prevent conflict with multi-segment hover */
+/* .fc .fc-event:hover,
 .fc .fc-daygrid-event-harness:hover .fc-daygrid-event {
     color: var(--color-green-hover);
     box-shadow:
         0 0 1px #44d62c,
         0 0 1px #00ff41,
         0 0 10px #00ff41;
-}
+} */
 .fc .fc-event-time,
 .fc .fc-event-title {
     font-weight: 600;
@@ -457,15 +463,10 @@ body {
     transition: color 0.2s ease-in-out;
 }
 
-/* Hover cho event và event harness */
-.fc .fc-event:hover a,
-.fc .fc-daygrid-event:hover a,
-.fc .fc-timegrid-event:hover a,
-.fc .fc-event:hover .fc-event-title,
-.fc .fc-event:hover .fc-event-time,
-.fc .fc-daygrid-event-harness:hover a,
-.fc .fc-daygrid-event-harness:hover .fc-event-title,
-.fc .fc-daygrid-event-harness:hover .fc-event-time {
+/* Text color for hover active events - HIGH PRIORITY */
+.fc .fc-daygrid-event.event-hover-active a,
+.fc .fc-daygrid-event.event-hover-active .fc-event-title,
+.fc .fc-daygrid-event.event-hover-active .fc-event-time {
     color: var(--color-green-hover) !important;
 }
 
@@ -474,6 +475,7 @@ body {
     background: var(--fc-event-bg-color);
     border: 3px solid var(--fc-event-border-color);
     border-radius: 4px;
+    cursor: move !important; /* Cursor move cho timegrid events */
 }
 .fc .fc-timegrid-event-harness {
     margin-bottom: 6px;
@@ -558,6 +560,15 @@ body {
     /* Event giọt có thể kéo trên mobile */
     .fc .fc-event {
         touch-action: none;         /* tránh conflict với browser gestures */
+    }
+    
+    /* Mobile cursor states */
+    .fc .fc-event-dragging {
+        cursor: grabbing !important;
+    }
+    
+    .fc .fc-event-resizing {
+        cursor: ew-resize !important;
     }
 }
 
@@ -674,4 +685,50 @@ body {
     #calendar {
         min-height: 350px;
     }
+}
+
+/* ====================== Event Interaction States ====================== */
+/* Drag and resize cursor states for better UX */
+.fc .fc-event-dragging {
+    opacity: 0.7 !important;
+    transform: scale(1.05) !important;
+    z-index: 9999 !important;
+    cursor: grabbing !important; /* Cursor grabbing khi đang kéo */
+}
+
+.fc .fc-event-resizing {
+    opacity: 0.8 !important;
+    box-shadow: 0 0 10px rgba(68, 214, 44, 0.5) !important;
+    cursor: ew-resize !important; /* Cursor resize khi đang resize */
+}
+
+/* Resize handles - invisible but functional */
+.fc .fc-event-resizer {
+    display: block !important;
+    opacity: 0 !important;
+    background: transparent !important;
+    border: none !important;
+    transition: opacity 0.1s !important;
+    position: absolute !important;
+    top: 0 !important;
+    bottom: 0 !important;
+    z-index: 10 !important;
+    width: 12px !important;
+    pointer-events: auto !important;
+    cursor: ew-resize !important;
+}
+
+.fc .fc-event-resizer-start {
+    left: -6px !important;
+}
+
+.fc .fc-event-resizer-end {
+    right: -6px !important;
+}
+
+/* Show resize handles on event hover */
+.fc .fc-daygrid-event:hover .fc-event-resizer,
+.fc .fc-timegrid-event:hover .fc-event-resizer {
+    opacity: 0.2 !important;
+    background: rgba(68, 214, 44, 0.3) !important;
 }

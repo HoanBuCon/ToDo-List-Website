@@ -322,35 +322,38 @@ function setupGlobalEventListeners() {
     setupEventHoverEffect();
 }
 
-// Setup hover effect for all segments of the same event
+// Setup hover effect for all segments of the same event - SCOPED TO MAIN CALENDAR ONLY
 function setupEventHoverEffect() {
-    // Use event delegation để handle dynamic elements
-    document.addEventListener('mouseenter', function(e) {
+    var mainCalendar = document.getElementById('calendar');
+    if (!mainCalendar) return;
+    
+    // Event delegation chỉ trong main calendar container
+    mainCalendar.addEventListener('mouseenter', function(e) {
         var eventElement = e.target.closest('.fc-daygrid-event');
         if (!eventElement) return;
         
         // Lấy event ID từ các class hoặc data attribute
-        var eventId = getEventIdFromElement(eventElement);
+        var eventId = getMainEventIdFromElement(eventElement);
         if (!eventId) return;
         
-        // Highlight tất cả segments của cùng event
-        highlightEventSegments(eventId, true);
+        // Highlight tất cả segments của cùng event chỉ trong main calendar
+        highlightMainEventSegments(eventId, true);
     }, true);
     
-    document.addEventListener('mouseleave', function(e) {
+    mainCalendar.addEventListener('mouseleave', function(e) {
         var eventElement = e.target.closest('.fc-daygrid-event');
         if (!eventElement) return;
         
-        var eventId = getEventIdFromElement(eventElement);
+        var eventId = getMainEventIdFromElement(eventElement);
         if (!eventId) return;
         
-        // Remove highlight từ tất cả segments
-        highlightEventSegments(eventId, false);
+        // Remove highlight từ tất cả segments chỉ trong main calendar
+        highlightMainEventSegments(eventId, false);
     }, true);
 }
 
-// Extract event ID from element
-function getEventIdFromElement(eventElement) {
+// Extract event ID from element - MAIN CALENDAR SPECIFIC
+function getMainEventIdFromElement(eventElement) {
     // Look for our custom event-id class
     var classList = eventElement.classList;
     for (var i = 0; i < classList.length; i++) {
@@ -374,13 +377,16 @@ function getEventIdFromElement(eventElement) {
     return null;
 }
 
-// Highlight/unhighlight all segments of an event
-function highlightEventSegments(eventId, highlight) {
+// Highlight/unhighlight all segments of an event - MAIN CALENDAR SPECIFIC
+function highlightMainEventSegments(eventId, highlight) {
     if (!eventId) return;
     
-    // Find all elements with the same event ID class
+    // Find all elements with the same event ID class within main calendar ONLY
+    var mainCalendar = document.getElementById('calendar');
+    if (!mainCalendar) return;
+    
     var selector = '.' + eventId;
-    var elements = document.querySelectorAll(selector);
+    var elements = mainCalendar.querySelectorAll(selector);
     
     elements.forEach(function(element) {
         var eventEl = element.querySelector('.fc-daygrid-event') || element;

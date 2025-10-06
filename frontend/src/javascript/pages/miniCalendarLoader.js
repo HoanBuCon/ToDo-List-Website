@@ -25,6 +25,11 @@ document.addEventListener('DOMContentLoaded', function() {
                     start: '1900-01-01',
                     end: '2100-12-31'
                 },
+                
+                // Ensure events have proper class names for hover effect
+                eventClassNames: function(arg) {
+                    return ['event-id-' + arg.event.id];
+                },
                 eventReceive: function(info) {
                     // Khi drop task vào calendar
                     if (!info.event.end) {
@@ -77,92 +82,74 @@ document.addEventListener('DOMContentLoaded', function() {
                     }
                 },
                 eventClick: function(info) {
-                    // Select event để có thể xóa bằng phím
-                    if (selectedEvent && selectedEvent.el) {
-                        selectedEvent.el.classList.remove('selected-event');
-                    }
-                    selectedEvent = info.event;
-                    if (info.el) {
-                        info.el.classList.add('selected-event');
-                    }
+                    // Preview events are not selectable in create task page
+                    // Just a visual preview, no interaction needed
                 },
                 eventDragStart: function(info) {
                     console.log('Drag started for:', info.event.title);
                     // Store original date for potential navigation
                     info.event.originalDate = calendar.getDate();
-                    // Add dragging class for visual feedback
-                    if (info.el) {
-                        info.el.classList.add('fc-event-dragging');
-                    }
                     
-                    // Set auto cleanup timer as failsafe (10 seconds)
+                    // Clear any existing cleanup timers
                     if (dragCleanupTimer) {
                         clearTimeout(dragCleanupTimer);
                     }
+                    
+                    // Set shorter cleanup timer as failsafe (3 seconds)
                     dragCleanupTimer = setTimeout(function() {
                         console.log('Auto cleanup triggered after timeout');
                         forceCleanupDragState();
-                    }, 10000);
+                    }, 3000);
                 },
                 eventDragStop: function(info) {
                     console.log('Drag stopped for:', info.event.title);
                     
-                    // Clear timeout timer
+                    // Clear timeout timer immediately
                     if (dragCleanupTimer) {
                         clearTimeout(dragCleanupTimer);
                         dragCleanupTimer = null;
                     }
                     
-                    // Remove dragging class
-                    if (info.el) {
-                        info.el.classList.remove('fc-event-dragging');
-                    }
-                    
-                    // Force cleanup any drag artifacts
-                    setTimeout(function() {
-                        var dragElements = document.querySelectorAll('.fc-event-dragging, .fc-event-mirror');
-                        dragElements.forEach(function(el) {
-                            if (el && el.parentNode) {
-                                if (el.classList.contains('fc-event-mirror')) {
-                                    el.parentNode.removeChild(el);
-                                } else {
-                                    el.classList.remove('fc-event-dragging');
-                                }
-                            }
-                        });
-                    }, 100);
+                    // Immediate cleanup
+                    forceCleanupDragState();
                 },
                 eventResizeStart: function(info) {
                     console.log('Resize started for:', info.event.title);
-                    if (info.el) {
-                        info.el.classList.add('fc-event-resizing');
+                    // Clear any existing cleanup timers
+                    if (dragCleanupTimer) {
+                        clearTimeout(dragCleanupTimer);
                     }
+                    
+                    // Set cleanup timer for resize as well
+                    dragCleanupTimer = setTimeout(function() {
+                        console.log('Auto cleanup triggered during resize');
+                        forceCleanupDragState();
+                    }, 3000);
                 },
                 eventResizeStop: function(info) {
                     console.log('Resize stopped for:', info.event.title);
-                    if (info.el) {
-                        info.el.classList.remove('fc-event-resizing');
+                    
+                    // Clear timeout timer immediately
+                    if (dragCleanupTimer) {
+                        clearTimeout(dragCleanupTimer);
+                        dragCleanupTimer = null;
                     }
-                    // Force cleanup any resize artifacts
-                    setTimeout(function() {
-                        var resizeElements = document.querySelectorAll('.fc-event-resizing');
-                        resizeElements.forEach(function(el) {
-                            if (el && el.parentNode) {
-                                el.classList.remove('fc-event-resizing');
-                            }
-                        });
-                    }, 100);
+                    
+                    // Immediate cleanup
+                    forceCleanupDragState();
                 }
             });
             calendar.render();
             
             // Setup calendar for task preview functionality
             setupTaskPreview(calendar);
+            
+            // Setup event hover effect for multi-segment events
+            setupEventHoverEffect();
         }
     }, 100);
 });
 
-var selectedEvent = null;
 var isUpdatingFromCalendar = false; // Global flag để tránh loop giữa input và calendar
 var previewEventId = 'preview-task-' + Date.now(); // Global preview event ID
 var dragCleanupTimer = null; // Timer cho auto cleanup
@@ -316,23 +303,23 @@ function setupTaskPreview(calendar) {
     updateCalendarPreview();
 }
 
-// Lắng nghe phím Delete/Backspace để xóa sự kiện đang chọn
+// ESC key để cancel drag nếu bị stuck - chỉ giữ lại chức năng này
 document.addEventListener('keydown', function(e) {
-    if (!selectedEvent) return;
-    if (e.key === 'Delete' || e.key === 'Backspace') {
-        e.preventDefault();
-        selectedEvent.remove();
-        selectedEvent = null;
-    }
-    
     // ESC key để cancel drag nếu bị stuck
     if (e.key === 'Escape') {
         forceCleanupDragState();
     }
 });
 
-// Force cleanup drag state khi bị lock
+// Force cleanup drag state khi bị lock - Enhanced version
 function forceCleanupDragState() {
+    console.log('Force cleanup drag state');
+    
+    // Clear any pending timers first
+    if (dragCleanupTimer) {
+        clearTimeout(dragCleanupTimer);
+        dragCleanupTimer = null;
+    }
     
     // Remove all drag-related classes and elements
     var dragElements = document.querySelectorAll('.fc-event-dragging, .fc-event-resizing, .fc-event-mirror, .fc-drag-helper');
@@ -340,40 +327,149 @@ function forceCleanupDragState() {
         if (el && el.parentNode) {
             el.classList.remove('fc-event-dragging', 'fc-event-resizing');
             if (el.classList.contains('fc-event-mirror') || el.classList.contains('fc-drag-helper')) {
-                el.parentNode.removeChild(el);
+                try {
+                    el.parentNode.removeChild(el);
+                } catch (e) {
+                    console.log('Error removing drag element:', e);
+                }
             }
         }
     });
     
-    // Reset cursor
+    // Reset all cursors
     document.body.style.cursor = '';
-    
-    // Clear any ongoing drag operations
-    if (document.ondragstart) {
-        document.ondragstart = null;
+    var calendarEl = document.getElementById('calendar-preview');
+    if (calendarEl) {
+        calendarEl.style.cursor = '';
     }
     
+    // Clear any drag/drop event handlers that might be stuck
+    document.ondragstart = null;
+    document.ondragover = null;
+    document.ondrop = null;
+    
+    // Force release any mouse capture
+    if (document.releasePointerCapture) {
+        try {
+            document.releasePointerCapture();
+        } catch (e) {}
+    }
+    
+    // Clear any selection that might interfere
+    if (window.getSelection) {
+        window.getSelection().removeAllRanges();
+    }
 }
 
-// Auto cleanup on mouse up globally (failsafe)
+// Enhanced global cleanup events with proper scope
 document.addEventListener('mouseup', function(e) {
-    setTimeout(function() {
-        // Check if there are stuck drag elements after a brief delay
-        var stuckElements = document.querySelectorAll('.fc-event-mirror, .fc-drag-helper');
-        if (stuckElements.length > 0) {
+    // Only cleanup if we're actually in a drag state or have stuck elements
+    var stuckElements = document.querySelectorAll('.fc-event-mirror, .fc-drag-helper, .fc-event-dragging, .fc-event-resizing');
+    if (stuckElements.length > 0) {
+        setTimeout(function() {
             forceCleanupDragState();
-        }
-    }, 500);
+        }, 100); // Shorter delay
+    }
 });
 
-// Auto cleanup on mouse leave calendar area (failsafe)
+// Cleanup on mouse leave document (handles case where mouse leaves window during drag)
 document.addEventListener('mouseleave', function(e) {
-    if (e.target.closest('#calendar-preview')) {
+    // Only trigger if mouse leaves the entire document
+    if (e.target === document.documentElement || e.target === document.body) {
         setTimeout(function() {
             var stuckElements = document.querySelectorAll('.fc-event-mirror, .fc-drag-helper');
             if (stuckElements.length > 0) {
                 forceCleanupDragState();
             }
-        }, 200);
+        }, 100);
     }
 });
+
+// Cleanup on window blur (when user switches tabs/windows during drag)
+window.addEventListener('blur', function() {
+    setTimeout(function() {
+        var stuckElements = document.querySelectorAll('.fc-event-mirror, .fc-drag-helper, .fc-event-dragging, .fc-event-resizing');
+        if (stuckElements.length > 0) {
+            console.log('Window blur cleanup triggered');
+            forceCleanupDragState();
+        }
+    }, 100);
+});
+
+// Setup hover effect for all segments of the same event - SCOPED TO MINI CALENDAR ONLY
+function setupEventHoverEffect() {
+    var calendarPreview = document.getElementById('calendar-preview');
+    if (!calendarPreview) return;
+    
+    // Event delegation chỉ trong mini calendar container
+    calendarPreview.addEventListener('mouseenter', function(e) {
+        var eventElement = e.target.closest('.fc-daygrid-event');
+        if (!eventElement) return;
+        
+        // Lấy event ID từ các class hoặc data attribute
+        var eventId = getMiniEventIdFromElement(eventElement);
+        if (!eventId) return;
+        
+        // Highlight tất cả segments của cùng event chỉ trong mini calendar
+        highlightMiniEventSegments(eventId, true);
+    }, true);
+    
+    calendarPreview.addEventListener('mouseleave', function(e) {
+        var eventElement = e.target.closest('.fc-daygrid-event');
+        if (!eventElement) return;
+        
+        var eventId = getMiniEventIdFromElement(eventElement);
+        if (!eventId) return;
+        
+        // Remove highlight từ tất cả segments chỉ trong mini calendar
+        highlightMiniEventSegments(eventId, false);
+    }, true);
+}
+
+// Extract event ID from element - MINI CALENDAR SPECIFIC
+function getMiniEventIdFromElement(eventElement) {
+    // Look for our custom event-id class
+    var classList = eventElement.classList;
+    for (var i = 0; i < classList.length; i++) {
+        var className = classList[i];
+        if (className.startsWith('event-id-')) {
+            return className;
+        }
+    }
+    
+    // Fallback: check parent harness
+    var harness = eventElement.closest('.fc-daygrid-event-harness');
+    if (harness) {
+        for (var i = 0; i < harness.classList.length; i++) {
+            var className = harness.classList[i];
+            if (className.startsWith('event-id-')) {
+                return className;
+            }
+        }
+    }
+    
+    return null;
+}
+
+// Highlight/unhighlight all segments of an event - MINI CALENDAR SPECIFIC
+function highlightMiniEventSegments(eventId, highlight) {
+    if (!eventId) return;
+    
+    // Find all elements with the same event ID class within calendar preview ONLY
+    var calendarPreview = document.getElementById('calendar-preview');
+    if (!calendarPreview) return;
+    
+    var selector = '.' + eventId;
+    var elements = calendarPreview.querySelectorAll(selector);
+    
+    elements.forEach(function(element) {
+        var eventEl = element.querySelector('.fc-daygrid-event') || element;
+        if (eventEl && eventEl.classList.contains('fc-daygrid-event')) {
+            if (highlight) {
+                eventEl.classList.add('event-hover-active');
+            } else {
+                eventEl.classList.remove('event-hover-active');
+            }
+        }
+    });
+}

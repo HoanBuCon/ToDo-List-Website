@@ -436,11 +436,76 @@ body {
     min-height: 50px !important;
     padding: 8px 12px !important;
     backdrop-filter: blur(2px) !important;
-    cursor: move;
+    cursor: move !important; /* Cursor move để báo hiệu có thể kéo thả */
     transition: box-shadow 0.2s, transform 0.2s, background 0.2s ease-in-out !important;
 }
 
-/* Fix title display */
+/* Multi-day event segments - viền liền mạch không bị bo góc */
+.fc .preview-task-event.fc-event-start:not(.fc-event-end) {
+    border-top-right-radius: 0 !important;
+    border-bottom-right-radius: 0 !important;
+    border-right: none !important;
+}
+
+.fc .preview-task-event.fc-event-end:not(.fc-event-start) {
+    border-top-left-radius: 0 !important;
+    border-bottom-left-radius: 0 !important;
+    border-left: none !important;
+}
+
+.fc .preview-task-event:not(.fc-event-start):not(.fc-event-end) {
+    border-radius: 0 !important;
+    border-left: none !important;
+    border-right: none !important;
+}
+
+/* Simplified hover state for multi-segment events - no duplicated :hover to avoid conflicts */
+.fc .fc-daygrid-event.event-hover-active {
+    background: rgb(9, 54, 0) !important;
+    transform: scale(1.02) !important;
+    box-shadow: 0 0 1px #44d62c, 0 0 1px #00ff41, 0 0 10px #00ff41 !important;
+    color: var(--color-green-hover) !important;
+}
+
+/* Multi-day event segments hover - simplified without duplicate :hover selectors */
+.fc .fc-daygrid-event.event-hover-active.fc-event-start:not(.fc-event-end) {
+    border-top-right-radius: 0 !important;
+    border-bottom-right-radius: 0 !important;
+    border-right: none !important;
+}
+
+.fc .fc-daygrid-event.event-hover-active.fc-event-end:not(.fc-event-start) {
+    border-top-left-radius: 0 !important;
+    border-bottom-left-radius: 0 !important;
+    border-left: none !important;
+}
+
+.fc .fc-daygrid-event.event-hover-active:not(.fc-event-start):not(.fc-event-end) {
+    border-radius: 0 !important;
+    border-left: none !important;
+    border-right: none !important;
+}
+
+/* Tất cả daygrid events - viền liền mạch cho multi-day events */
+.fc .fc-daygrid-event.fc-event-start:not(.fc-event-end) {
+    border-top-right-radius: 0 !important;
+    border-bottom-right-radius: 0 !important;
+    border-right: none !important;
+}
+
+.fc .fc-daygrid-event.fc-event-end:not(.fc-event-start) {
+    border-top-left-radius: 0 !important;
+    border-bottom-left-radius: 0 !important;
+    border-left: none !important;
+}
+
+.fc .fc-daygrid-event:not(.fc-event-start):not(.fc-event-end) {
+    border-radius: 0 !important;
+    border-left: none !important;
+    border-right: none !important;
+}
+
+/* Fix title display - disable pointer events on content to prevent hover conflicts */
 .fc .preview-task-event .fc-event-title {
     color: var(--color-text-main) !important;
     font-size: 0.9em !important;
@@ -448,28 +513,45 @@ body {
     text-overflow: ellipsis !important;
     overflow: hidden !important;
     white-space: nowrap !important;
+    pointer-events: none !important; /* Prevent child hover conflicts */
 }
 
 .fc .preview-task-event .fc-event-main {
     background: transparent !important;
     padding: 0 !important;
     overflow: hidden !important;
+    pointer-events: none !important; /* Prevent child hover conflicts */
 }
 
-/* Preview events get the same invisible resize handles */
+/* Ensure all interactive elements work properly for drag/resize */
+.fc .preview-task-event {
+    pointer-events: auto !important; /* Main container fully interactive */
+}
+
+/* Keep content elements interactive but prevent their own hover */
+.fc .preview-task-event .fc-event-title,
+.fc .preview-task-event .fc-event-main {
+    pointer-events: auto !important; /* Keep interactive for drag */
+}
+
+/* Ensure resize handles are fully functional */
+.fc .preview-task-event .fc-event-resizer {
+    pointer-events: auto !important;
+    opacity: 0 !important; /* Keep invisible but functional */
+    transition: opacity 0.1s !important; /* Fast transition */
+}
+
+/* Show resize handles on event hover for better UX */
+.fc .preview-task-event:hover .fc-event-resizer {
+    opacity: 0.2 !important;
+    background: rgba(68, 214, 44, 0.3) !important;
+}
+
+/* Preview events get invisible resize handles - keep functionality but hide hover */
 .fc .preview-task-event .fc-event-resizer {
     display: block !important;
     opacity: 0 !important;
-}
-
-.fc .preview-task-event:hover .fc-event-resizer {
-    opacity: 0.15 !important;
-    background: rgba(68, 214, 44, 0.4) !important;
-}
-
-.fc .preview-task-event .fc-event-resizer:hover {
-    opacity: 0.35 !important;
-    background: rgba(68, 214, 44, 0.6) !important;
+    /* Keep pointer-events enabled for resize functionality */
 }
 
 .fc .preview-task-event::after {
@@ -491,16 +573,26 @@ body {
     transform: scale(1.02);
 }
 
-/* Event hover effects - clean style */
-.fc .fc-event:hover {
+/* Event hover effects - clean style - DISABLED to prevent conflict with multi-segment hover */
+/* .fc .fc-event:hover {
     color: var(--color-green-hover) !important;
     box-shadow: 
         0 0 1px #44d62c,
         0 0 1px #00ff41,
         0 0 10px #00ff41 !important;
     transform: translateY(-1px);
+} */
+
+/* Clean hover only on event container - no child element hover conflicts */
+.fc .preview-task-event:hover {
+    background: rgb(9, 54, 0) !important;
+    transform: scale(1.02) !important;
+    box-shadow: 0 0 1px #44d62c, 0 0 1px #00ff41, 0 0 10px #00ff41 !important;
+    color: var(--color-green-hover) !important;
+    cursor: grab !important; /* Cursor grab khi hover để ready kéo */
 }
 
+/* Apply hover effect to title when parent is hovered */
 .fc .preview-task-event:hover .fc-event-title {
     color: var(--color-green-hover) !important;
 }
@@ -509,7 +601,7 @@ body {
 .fc .fc-event {
     position: relative !important;
     overflow: visible !important;
-    transition: opacity 0.2s, transform 0.2s !important;
+    transition: opacity 0.2s, transform 0.2s, background 0.2s, box-shadow 0.2s !important;
 }
 
 /* Drag state styling */
@@ -517,7 +609,7 @@ body {
     opacity: 0.7 !important;
     transform: scale(1.05) !important;
     z-index: 9999 !important;
-    cursor: grabbing !important;
+    cursor: grabbing !important; /* Cursor grabbing khi đang kéo */
 }
 
 .fc .fc-event-resizing {
@@ -549,15 +641,11 @@ body {
     cursor: ew-resize !important;
 }
 
-/* Show subtle hint on hover for better UX */
-.fc .fc-event:hover .fc-event-resizer {
-    opacity: 0.1 !important;
-    background: rgba(68, 214, 44, 0.3) !important;
-}
-
-.fc .fc-event-resizer:hover {
-    opacity: 0.3 !important;
-    background: rgba(68, 214, 44, 0.5) !important;
+/* Ensure all resize handles work properly */
+.fc .fc-event-resizer {
+    pointer-events: auto !important; /* Fully functional */
+    cursor: ew-resize !important; /* Proper cursor */
+    transition: opacity 0.1s !important; /* Fast transition only */
 }
 
 @media (max-width: 600px) {
