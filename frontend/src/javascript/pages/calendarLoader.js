@@ -70,6 +70,11 @@ function initializeCalendar(calendarEl) {
             end: '2100-12-31'
         },
         
+        // Ensure events have proper class names
+        eventClassNames: function(arg) {
+            return ['event-id-' + arg.event.id];
+        },
+        
         // Event handlers
         drop: handleDrop,
         eventReceive: handleEventReceive,
@@ -310,6 +315,81 @@ function setupGlobalEventListeners() {
                     forceCleanupDragState();
                 }
             }, 200);
+        }
+    });
+    
+    // Event hover effect for multi-segment events
+    setupEventHoverEffect();
+}
+
+// Setup hover effect for all segments of the same event
+function setupEventHoverEffect() {
+    // Use event delegation để handle dynamic elements
+    document.addEventListener('mouseenter', function(e) {
+        var eventElement = e.target.closest('.fc-daygrid-event');
+        if (!eventElement) return;
+        
+        // Lấy event ID từ các class hoặc data attribute
+        var eventId = getEventIdFromElement(eventElement);
+        if (!eventId) return;
+        
+        // Highlight tất cả segments của cùng event
+        highlightEventSegments(eventId, true);
+    }, true);
+    
+    document.addEventListener('mouseleave', function(e) {
+        var eventElement = e.target.closest('.fc-daygrid-event');
+        if (!eventElement) return;
+        
+        var eventId = getEventIdFromElement(eventElement);
+        if (!eventId) return;
+        
+        // Remove highlight từ tất cả segments
+        highlightEventSegments(eventId, false);
+    }, true);
+}
+
+// Extract event ID from element
+function getEventIdFromElement(eventElement) {
+    // Look for our custom event-id class
+    var classList = eventElement.classList;
+    for (var i = 0; i < classList.length; i++) {
+        var className = classList[i];
+        if (className.startsWith('event-id-')) {
+            return className;
+        }
+    }
+    
+    // Fallback: check parent harness
+    var harness = eventElement.closest('.fc-daygrid-event-harness');
+    if (harness) {
+        for (var i = 0; i < harness.classList.length; i++) {
+            var className = harness.classList[i];
+            if (className.startsWith('event-id-')) {
+                return className;
+            }
+        }
+    }
+    
+    return null;
+}
+
+// Highlight/unhighlight all segments of an event
+function highlightEventSegments(eventId, highlight) {
+    if (!eventId) return;
+    
+    // Find all elements with the same event ID class
+    var selector = '.' + eventId;
+    var elements = document.querySelectorAll(selector);
+    
+    elements.forEach(function(element) {
+        var eventEl = element.querySelector('.fc-daygrid-event') || element;
+        if (eventEl && eventEl.classList.contains('fc-daygrid-event')) {
+            if (highlight) {
+                eventEl.classList.add('event-hover-active');
+            } else {
+                eventEl.classList.remove('event-hover-active');
+            }
         }
     });
 }

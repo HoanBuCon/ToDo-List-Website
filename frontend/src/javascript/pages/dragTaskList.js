@@ -61,7 +61,7 @@ class TaskListManager {
             item.draggable = true;
             item.addEventListener('dragstart', (e) => this.handleDragStart(e));
             item.addEventListener('dragend', (e) => this.handleDragEnd(e));
-        });
+    });
 
         // Setup kéo thả cho các mục trong danh sách đã chọn
         const selectedListItems = document.querySelectorAll('.selected-list .todo-item');
@@ -351,9 +351,6 @@ class TaskListManager {
 
         showInfoToast(`Removed ${movedCount} tasks!`);
     }
-
-
-
 }
 
 // Khởi tạo TaskListManager khi DOM đã sẵn sàng

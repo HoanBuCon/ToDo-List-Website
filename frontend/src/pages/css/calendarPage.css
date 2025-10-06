@@ -413,13 +413,28 @@ body {
     backdrop-filter: blur(2px);
     transition: box-shadow 0.2s, transform 0.2s, background 0.2s ease-in-out;
 }
+
+/* Hover cho individual event segment */
+.fc .fc-daygrid-event:hover {
+    background: rgb(9, 54, 0);
+    transform: scale(1.02);
+}
+
+/* Class để đánh dấu tất cả segments của cùng event khi hover */
+.fc .fc-daygrid-event.event-hover-active {
+    background: rgb(9, 54, 0) !important;
+    transform: scale(1.02) !important;
+    box-shadow: 0 0 1px #44d62c, 0 0 1px #00ff41, 0 0 10px #00ff41 !important;
+}
+
 .fc .fc-daygrid-event-harness {
     margin-bottom: 6px;
 }
 .fc .fc-daygrid-event .fc-event-main {
     background: transparent;
 }
-.fc .fc-event:hover {
+.fc .fc-event:hover,
+.fc .fc-daygrid-event-harness:hover .fc-daygrid-event {
     color: var(--color-green-hover);
     box-shadow:
         0 0 1px #44d62c,
@@ -441,11 +456,16 @@ body {
     text-decoration: none;
     transition: color 0.2s ease-in-out;
 }
+
+/* Hover cho event và event harness */
 .fc .fc-event:hover a,
 .fc .fc-daygrid-event:hover a,
 .fc .fc-timegrid-event:hover a,
 .fc .fc-event:hover .fc-event-title,
-.fc .fc-event:hover .fc-event-time {
+.fc .fc-event:hover .fc-event-time,
+.fc .fc-daygrid-event-harness:hover a,
+.fc .fc-daygrid-event-harness:hover .fc-event-title,
+.fc .fc-daygrid-event-harness:hover .fc-event-time {
     color: var(--color-green-hover) !important;
 }
 
