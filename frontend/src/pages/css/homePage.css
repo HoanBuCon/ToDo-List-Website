@@ -337,6 +337,17 @@ body {
     font-size: 3em;
     font-weight: bold;
     text-align: center;
+    text-shadow:
+        0 0 1px #00f7ff,
+        0 0 1px #00ffff,
+        0 0 10px #00d9ff;
+    transition: text-shadow 0.3s ease;
+}
+.main-content-title:hover {
+    text-shadow:
+        0 0 2px #00f7ff,
+        0 0 2px #00ffff,
+        0 0 20px #00d9ff;
 }
 
 .main-content-description {

@@ -17,6 +17,18 @@ export function setupTodoList() {
     let isEditMode = false;
     let originalData = {}; // Lưu trữ dữ liệu gốc khi vào edit mode
 
+    // Global event listener cho Enter key trong edit mode
+    document.addEventListener('keydown', (event) => {
+        if (isEditMode && event.key === 'Enter') {
+            // Chỉ trigger nếu không phải đang focus vào input khác
+            const activeElement = document.activeElement;
+            if (activeElement && !activeElement.matches('input[type="text"], textarea')) {
+                event.preventDefault();
+                editButton.click();
+            }
+        }
+    });
+
     // Tạo task mới
     if (addButton && taskInput) {
         addButton.addEventListener('click', () => {
@@ -232,6 +244,9 @@ export function setupTodoList() {
             description: document.querySelector('.main-content-description')?.textContent || '',
             tasks: Array.from(document.querySelectorAll('.todo-content')).map(el => el.textContent || '')
         };
+        
+        // Thêm class để style edit mode
+        document.body.classList.add('edit-mode-active');
         // Biến title thành input
         const titleElement = document.querySelector('.main-content-title');
         if (titleElement) {
@@ -244,7 +259,13 @@ export function setupTodoList() {
             
             // Thêm event listeners cho Enter và ESC
             input.addEventListener('keydown', (e) => {
-                if (e.key === 'Enter' || e.key === 'Escape') {
+                if (e.key === 'Enter') {
+                    e.preventDefault(); // Prevent form submission
+                    editButton.click(); // Trigger save
+                } else if (e.key === 'Escape') {
+                    e.preventDefault();
+                    // ESC để cancel - restore original value và trigger save với cancel
+                    input.value = originalData.title;
                     editButton.click();
                 }
             });
@@ -261,6 +282,19 @@ export function setupTodoList() {
             input.value = currentText;
             input.className = 'edit-desc-input edit-mode-input edit-desc-input-custom';
             descElement.replaceWith(input);
+            
+            // Thêm event listeners cho Enter và ESC
+            input.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter') {
+                    e.preventDefault();
+                    editButton.click(); // Trigger save
+                } else if (e.key === 'Escape') {
+                    e.preventDefault();
+                    // ESC để cancel - restore original value
+                    input.value = originalData.description;
+                    editButton.click();
+                }
+            });
         }
 
         // Biến task names thành inputs
@@ -276,9 +310,10 @@ export function setupTodoList() {
             // Thêm event listeners cho Enter và ESC
             input.addEventListener('keydown', (e) => {
                 if (e.key === 'Enter') {
-                    // Enter để save
-                    editButton.click();
+                    e.preventDefault(); // Prevent any default behavior
+                    editButton.click(); // Trigger save
                 } else if (e.key === 'Escape') {
+                    e.preventDefault();
                     // ESC để cancel - khôi phục giá trị cũ
                     input.value = currentText;
                     editButton.click();
@@ -288,6 +323,9 @@ export function setupTodoList() {
     }
 
     function exitEditMode() {
+        // Remove edit mode class
+        document.body.classList.remove('edit-mode-active');
+        
         // Biến title input thành span
         const titleInput = document.querySelector('.edit-title-input');
         if (titleInput) {
