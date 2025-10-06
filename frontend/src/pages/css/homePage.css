@@ -1212,6 +1212,15 @@ body {
         transform-origin: left;
         gap: 0px;
     }
+
+    .overlay-btn-group {
+        gap: 32px;
+    }
+
+    .custom-image-overlay .overlay-btn-group .btn {
+        font-size: 0.9em;
+        padding: 24px 24px;
+    }
 }
 
 /* ========== Mobile Phone Layout 420px ========== */
@@ -1330,6 +1339,19 @@ body {
 
     .task-button-group .btn {
         font-size: 1em;
+    }
+}
+
+@media (max-width: 370px) {
+    .task-button-group .btn {
+        font-size: 0.9em;
+        padding: 8px 16px;
+    }
+
+
+    .custom-image-overlay .overlay-btn-group .btn {
+        font-size: 0.9em;
+        padding: 16px 16px;
     }
 }
 
