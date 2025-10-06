@@ -49,6 +49,8 @@
     opacity: 0;
     pointer-events: none;
     transition: opacity 0.35s cubic-bezier(0.4,0,0.2,1);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px); /* cho Safari */
 }
 .custom-image-overlay.show {
     opacity: 1;
