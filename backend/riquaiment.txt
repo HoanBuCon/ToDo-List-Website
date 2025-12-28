@@ -1,0 +1,9 @@
+
+#làm việc với API
+flask
+
+
+#kết nối database
+mysql-connector-python
+
+
