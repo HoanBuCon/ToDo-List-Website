@@ -16,6 +16,7 @@ Thumbs.db
 # File tạm, cache
 *.tmp
 *.swp
+*.zip
 
 # Environment variables
 .env
