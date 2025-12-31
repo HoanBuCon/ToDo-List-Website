@@ -1,0 +1,1 @@
+print("HoanBuCon is gay")
