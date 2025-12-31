@@ -1,0 +1,1 @@
+print("yag si noCuBnaoH")
