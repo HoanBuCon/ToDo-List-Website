@@ -17,8 +17,10 @@ def receive_text():
     if request.method == "POST":
         data = request.get_json()
         text = data.get("text")
+        email = data.get("email")
+        password = data.get("password")
 
-        print("📥 TEXT FROM FE:", text)
+        print("📥 TEXT FROM FE:", text, email, password)
 
         return jsonify({
             "status": "ok",
