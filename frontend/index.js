@@ -1,31 +1,40 @@
-document.addEventListener("DOMContentLoaded", () => {
+// Lấy các element từ HTML
+const textInput = document.getElementById('textInput');
+const emailInput = document.getElementById('emailInput');
+const passwordInput = document.getElementById('passwordInput');
+const sendBtn = document.getElementById('sendBtn');
+const responseText = document.getElementById('responseText');
 
-  // GET
-  fetch("/api/mmb")
-    .then(res => res.json())
-    .then(data => {
-      document.getElementById("sua").innerText = data.message;
-    });
+// Khi người dùng bấm nút Send
+sendBtn.addEventListener('click', async () => {
+    // Lấy dữ liệu từ input
+    const data = {
+        username: textInput.value,
+        email: emailInput.value,
+        password: passwordInput.value
+    };
 
-  // POST
-  document.getElementById("sendBtn").addEventListener("click", () => {
-    const text = document.getElementById("textInput").value;
-    const email = document.getElementById("emailInput").value;
-    const password = document.getElementById("passwordInput").value;
+    console.log("Dữ liệu chuẩn bị gửi:", data);
 
-    console.log("Thông tin đã nhập:", text, email, password);
+    try {
+        // Gửi POST request về backend
+        const res = await fetch('http://127.0.0.1:5000/api/auth/login', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        });
 
-    fetch("/api/mmb", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ text, email, password })
-    })
-    .then(res => res.json())
-    .then(data => {
-      console.log("Response from server:", data);
-    });
-  });
+        // Nhận phản hồi từ backend
+        const result = await res.json();
+        console.log("Phản hồi từ backend:", result);
 
+        // Hiển thị lên HTML
+        responseText.innerText = result.message || "Gửi thành công!";
+
+    } catch (err) {
+        console.error("Lỗi khi gửi dữ liệu:", err);
+        responseText.innerText = "Gửi thất bại!";
+    }
 });
-
-// I changed something
