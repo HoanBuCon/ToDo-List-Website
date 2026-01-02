@@ -1,0 +1,15 @@
+# Core Flask
+flask
+flask-cors
+
+# Database
+mysql-connector-python
+
+# Security (hash password)
+Werkzeug
+
+# JWT authentication
+PyJWT
+
+# Environment variables (.env)
+python-dotenv
