@@ -1,6 +1,6 @@
 import { registerGlobalEvents } from "./events/globalEvents.js";
-import { setupLoginPage } from "./pages/setupLoginPage.js";
-import { setupRegisterPage } from "./pages/setupRegisterPage.js";
+import { loginPage } from "./pages/loginPage.js";
+import { registerPage } from "./pages/registerPage.js";
 import { changeLoginButton } from "./features/changeLoginButton.js";
 import { domReady } from "./utils/domReady.js";
 import { toggleMenu } from "./components/menuToggle.js";
@@ -21,12 +21,12 @@ domReady(() => {
     }
 
     if (body.classList.contains('login-page')) {
-        setupLoginPage();
+        loginPage();
         changeLoginButton();
     }
     
     if (body.classList.contains('register-page')) {
-        setupRegisterPage();
+        registerPage();
     }
 
     if (body.classList.contains('login-page') || body.classList.contains('register-page')) {
