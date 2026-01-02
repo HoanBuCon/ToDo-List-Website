@@ -1,1 +1,0 @@
-print("yag si noCuBnaoH")

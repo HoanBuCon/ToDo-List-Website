@@ -49,24 +49,24 @@
         <canvas id="nn-background"></canvas>
         <div class="main-content neon-box">
             <h1 class="main-content-title">Register</h1>
-            <form class="login-form" action="">
+            <form id="registerForm" class="login-form" action="">
                 <div class="inputbox">
-                    <input type="text" class="username" required>
+                    <input type="text" id="username" class="username" required>
                     <span>Username</span>
                 </div>
                 <div class="inputbox">
-                    <input type="email" class="email" required placeholder=" ">
+                    <input type="email" id="email" class="email" required placeholder=" ">
                     <span>Email</span>
                 </div>
                 <div class="inputbox password-container">
-                    <input type="password" class="password" id="password" autocomplete="current-password" required>
+                    <input type="password" id="password" class="password" autocomplete="current-password" required>
                     <span>Password</span>
                     <button type="button" id="togglePasswordButton" class="password-toggle" tabindex="-1">
                         <i class="fa-solid fa-eye" id="eyeIcon"></i>
                     </button>
                 </div>
                 <div class="inputbox password-container">
-                    <input type="password" class="password" id="confirmPassword" autocomplete="current-password" required>
+                    <input type="password" id="confirmPassword" class="password" autocomplete="current-password" required>
                     <span>Confirm Password</span>
                     <button type="button" id="toggleConfirmPasswordButton" class="password-toggle" tabindex="-1">
                         <i class="fa-solid fa-eye" id="eyeIconConfirm"></i>
