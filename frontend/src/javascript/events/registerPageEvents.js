@@ -1,5 +1,6 @@
 import { openTerms, closeTerms, closeTermsByBackground } from '../features/termsModal.js';
 import { showErrorToast, showSuccessToast } from '../components/toast.js';
+import { registerUser, loginUser } from '../api/auth.api.js';
 
 // Hàm khởi tạo và đăng ký các sự kiện toàn cục dùng chung cho các pages
 export function registerRegisterPageEvents() {
@@ -73,35 +74,15 @@ export function registerRegisterPageEvents() {
             return;
         }
 
-        try {
-            const response = await fetch('/api/register', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({
-                    username,
-                    email,
-                    password
-                })
-            });
-
-            const data = await response.json();
-
-            // Kiểm tra phản hồi từ server
-            if (!response.ok) {
-                showErrorToast(data.message || 'Registration failed. Please try again.');
-                return;
-            }
-            
-            showSuccessToast('Registration successful!');
-            // Lưu token nếu backend trả về JWT
-            // localStorage.setItem('token', data.token);
-            window.location.href = '/home';
-
-        } catch (error) {
-            showErrorToast('An error occurred. Please try again.');
-        }
+        registerUser(username, email, password).then(() => {
+            showSuccessToast('Registration successful! You can now log in.');
+            // Chuyển hướng sang trang đăng nhập sau khi đăng ký thành công
+            // window.l ocation.href = '/login';
+        }).catch((error) => {
+            // Lỗi đã được hiển thị trong hàm registerUser
+            showErrorToast(error.message || 'Registration failed. Please try again.');
+            return;
+        });
     });
 
     // ============================
@@ -132,34 +113,14 @@ export function registerRegisterPageEvents() {
             username = userInput;
         }
 
-        try {
-            const response = await fetch('/api/login', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({
-                    username,
-                    email,
-                    password
-                })
-            });
-            
-            const data = await response.json();
-
-            // Kiểm tra phản hồi từ server
-            if (!response.ok) {
-                showErrorToast(data.message || 'Login failed. Please try again.');
-                return;
-            }
-
+        loginUser(username, email, password).then(() => {
             showSuccessToast('Login successful!');
-            if (data.token) localStorage.setItem('token', data.token);
-            window.location.href = '/home';
-
-        } catch (error) {
-            showErrorToast('An error occurred. Please try again.');
+            // Chuyển hướng sang trang đăng nhập sau khi đăng ký thành công
+            // window.location.href = '/home';
+        }).catch((error) => {
+            // Lỗi đã được hiển thị trong hàm registerUser
+            showErrorToast(error.message || 'Login failed. Please try again.');
             return;
-        }
+        });
     });
 }

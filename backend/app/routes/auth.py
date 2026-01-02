@@ -1,13 +1,13 @@
 from flask import Blueprint, jsonify, request
-from services.auth_service import login_user, register_user
+from services.auth_services import login_user, register_user
 
 # =========================
 # Tạo Blueprint cho các route liên quan đến xác thực
 # =========================
 auth_bp = Blueprint(
     'auth', # Tên blueprint
-    __name__, #Vị trí module
-    url_prefix='/api/auth' #Tiền tố URL cho tất cả các route trong blueprint này
+    __name__, # Vị trí module
+    url_prefix='/api/auth' # Tiền tố URL cho tất cả các route trong blueprint này
 )
 
 # =========================
@@ -49,7 +49,7 @@ def register():
 
 # =========================
 # LOGIN
-# POST /api/auth/register
+# POST /api/auth/login
 # =========================
 @auth_bp.route('/login', methods=['POST'])
 def login():

@@ -10,8 +10,7 @@
     },
   "dependencies": {
     "@fortawesome/fontawesome-free": "^7.0.0",
-    "fullcalendar": "^6.1.19",
-    "dotenv": "^17.2.3"
+    "fullcalendar": "^6.1.19"
   },
   "repository": {
     "type": "git",
