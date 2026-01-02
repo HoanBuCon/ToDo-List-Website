@@ -29,10 +29,6 @@ domReady(() => {
         registerPage();
     }
 
-    if (body.classList.contains('login-page') || body.classList.contains('register-page')) {
-        registerRegisterPageEvents();
-    }
-
     if (body.classList.contains('planning-page')) {
         registerPlanningPageEvents();
     }
