@@ -38,89 +38,80 @@ export function registerRegisterPageEvents() {
     // Xử lý đăng ký
     // ============================
     const registerForm = document.getElementById('registerForm');
-    if (!registerForm) return;
+    if (registerForm) {
 
-    registerForm.addEventListener('submit', async (e) => {
-        e.preventDefault();
+        registerForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
 
-        const username = document.getElementById("username")?.value.trim();
-        const email = document.getElementById("email")?.value.trim().toLowerCase();
-        const password = document.getElementById("password")?.value;
-        const confirmPassword = document.getElementById("confirmPassword")?.value;
-        const agreeTerms = document.getElementById("agreeTerms")?.checked;
+            const username = document.getElementById("username")?.value.trim();
+            const email = document.getElementById("email")?.value.trim().toLowerCase();
+            const password = document.getElementById("password")?.value;
+            const confirmPassword = document.getElementById("confirmPassword")?.value;
+            const agreeTerms = document.getElementById("agreeTerms")?.checked;
 
-        // Kiểm tra xem đủ thông tin không
-        if (!username || !email || !password || !confirmPassword) {
-            showErrorToast('Please fill in all required fields.');
-            return;
-        }
+            // Kiểm tra xem đủ thông tin không
+            if (!username || !email || !password || !confirmPassword) {
+                showErrorToast('Please fill in all required fields.');
+                return;
+            }
 
-        // Kiểm tra định dạng dạng email
-        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        if (!emailRegex.test(email)) {
-            showErrorToast('Invalid email format.');
-            return;
-        }
+            // Kiểm tra định dạng dạng email
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(email)) {
+                showErrorToast('Invalid email format.');
+                return;
+            }
 
-        // Kiểm tra xem mật khẩu có khớp không
-        if (password !== confirmPassword) {
-            showErrorToast('Passwords do not match.');
-            return;
-        }
+            // Kiểm tra xem mật khẩu có khớp không
+            if (password !== confirmPassword) {
+                showErrorToast('Passwords do not match.');
+                return;
+            }
 
-        // Kiểm tra xem đã tick đồng ý điều khoản chưa
-        if (!agreeTerms) {
-            showErrorToast('You must agree to the Terms and Conditions.');
-            return;
-        }
+            // Kiểm tra xem đã tick đồng ý điều khoản chưa
+            if (!agreeTerms) {
+                showErrorToast('You must agree to the Terms and Conditions.');
+                return;
+            }
 
-        registerUser(username, email, password).then(() => {
-            showSuccessToast('Registration successful! You can now log in.');
-            // Chuyển hướng sang trang đăng nhập sau khi đăng ký thành công
-            // window.l ocation.href = '/login';
-        }).catch((error) => {
-            // Lỗi đã được hiển thị trong hàm registerUser
-            showErrorToast(error.message || 'Registration failed. Please try again.');
-            return;
+            registerUser(username, email, password).then(() => {
+                showSuccessToast('Registration successful! You can now log in.');
+                // Chuyển hướng sang trang đăng nhập sau khi đăng ký thành công
+                // window.l ocation.href = '/login';
+            }).catch((error) => {
+                // Lỗi đã được hiển thị trong hàm registerUser
+                showErrorToast(error.message || 'Registration failed. Please try again.');
+                return;
+            });
         });
-    });
+    }
 
     // ============================
     // Xử lý đăng nhập
     // ============================
     const loginForm = document.getElementById('loginForm');
-    if (!loginForm) return;
+    if (loginForm) {
 
-    loginForm.addEventListener('submit', async (e) => {
-        e.preventDefault();
+        loginForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
 
-        const userInput = document.getElementById("username")?.value.trim()
-        const password = document.getElementById("password")?.value;
+            const login = document.getElementById("login")?.value.trim();
+            const password = document.getElementById("password")?.value;
 
-        if (!userInput || !password) {
-            showErrorToast('Please fill in all required fields.');
-            return;
-        }
+            if (!login || !password) {
+                showErrorToast('Please fill in all required fields.');
+                return;
+            }
 
-        // Xác định xem user nhập username hay email
-        let username;
-        let email;
-        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
-        if (emailRegex.test(userInput)) {
-            email = userInput.trim().toLowerCase();
-        } else {
-            username = userInput;
-        }
-
-        loginUser(username, email, password).then(() => {
-            showSuccessToast('Login successful!');
-            // Chuyển hướng sang trang đăng nhập sau khi đăng ký thành công
-            // window.location.href = '/home';
-        }).catch((error) => {
-            // Lỗi đã được hiển thị trong hàm registerUser
-            showErrorToast(error.message || 'Login failed. Please try again.');
-            return;
+            loginUser(login, password).then(() => {
+                showSuccessToast('Login successful!');
+                // Chuyển hướng sang trang đăng nhập sau khi đăng ký thành công
+                // window.location.href = '/home';
+            }).catch((error) => {
+                // Lỗi đã được hiển thị trong hàm registerUser
+                showErrorToast(error.message || 'Login failed. Please try again.');
+                return;
+            });
         });
-    });
+    }
 }

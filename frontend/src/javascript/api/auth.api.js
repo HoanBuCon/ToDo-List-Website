@@ -26,7 +26,8 @@ export async function registerUser(username, email, password) {
         if (!response.ok) {
             throw new Error(data.message || 'Failed to register user.');
         }
-        return response;
+
+        return data;
     } catch (error) {
         console.error('Error registering user:', error);
         throw error;
@@ -34,7 +35,7 @@ export async function registerUser(username, email, password) {
 }
 
 // Hàm xử lý đăng nhập người dùng
-export async function loginUser(username, email, password) {
+export async function loginUser(login, password) {
     try {
         const response = await fetch(`${API_BASE_URL}/auth/login`, {
             method: 'POST',
@@ -42,8 +43,7 @@ export async function loginUser(username, email, password) {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
-                username,
-                email,
+                login, // Có thể là username hoặc email
                 password
             })
         });
@@ -52,7 +52,8 @@ export async function loginUser(username, email, password) {
         if (!response.ok) {
             throw new Error(data.message || 'Failed to login user.');
         }
-        return response;
+
+        return data;
     } catch (error) {
         console.error('Error logging in user:', error);
         throw error;

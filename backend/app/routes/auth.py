@@ -63,12 +63,11 @@ def login():
         }), 400
         
     # Lấy thông tin từ yêu cầu
-    username = data.get('username')
-    email = data.get('email')
+    login_info = data.get('login')
     password = data.get('password')
     
     # Kiểm tra xem có đủ thông tin không
-    if not (username or email) or not password:
+    if not login_info or not password:
         return jsonify({
             "status": "error",
             "message": "Missing required fields"
@@ -76,8 +75,7 @@ def login():
         
     # Gọi hàm đăng nhập từ service
     result = login_user(
-        username,
-        email,
+        login_info,
         password
     )
         
