@@ -2,4 +2,18 @@
 /be_venv
 *.zip
 
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
 
+# Virtual env
+venv/
+/be_venv
+.env/
+.env
+
+# OS
+.DS_Store
+Thumbs.db
